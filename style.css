@@ -25,3 +25,7 @@
     border: 1px solid #e5e5e5;
     margin: 1rem;
 }
+
+.text-muted-foreground {
+    color: #6b7280;
+}
