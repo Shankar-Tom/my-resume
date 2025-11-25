@@ -1012,6 +1012,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 	<script>
+		speechIntroduction();
+		function speechIntroduction() {
+			const speech = new SpeechSynthesisUtterance("Hello visitor , Welcome to my website i am laravel developer from jamshedpur");
+			speech.lang = "en-US"; // language
+			speech.rate = 1; // speed (1 = normal)
+			speech.pitch = 1; // tone
+			window.speechSynthesis.speak(speech);
+		}
+
 		const downloadButton = document.getElementById('download-button');
 
 		if (downloadButton) {
