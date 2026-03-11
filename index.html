@@ -1,1224 +1,566 @@
-<html lang="en">
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Shankar Gorai | Full Stack Laravel Developer</title>
-	<meta name="description"
-		content="Full Stack Laravel Developer specializing in PHP, Laravel, CodeIgniter. Experienced in Inventory management, E-commerce, REST APIs, and AWS deployment.">
-	<meta name="author" content="Shankar Gorai">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Shankar Gorai | Senior Laravel Developer Portfolio</title>
+    <meta name="description"
+        content="Full Stack Laravel Developer specializing in PHP, Laravel, CodeIgniter. Experienced in Inventory management, E-commerce, REST APIs, and AWS deployment.">
+    <meta name="author" content="Shankar Gorai">
 
-	<meta property="og:title" content="Shankar Gorai | Full Stack Laravel Developer">
-	<meta property="og:description"
-		content="Full Stack Laravel Developer specializing in PHP, Laravel, CodeIgniter. Experienced in Inventory management, E-commerce, REST APIs, and AWS deployment.">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://shankargorai.site">
-	<meta property="og:image" content="https://shankargorai.site/shankargorai.png">
-	<meta property="og:site_name" content="Shankar Gorai">
-	<meta property="og:locale" content="en_IN">
-	<meta property="og:locale:alternate" content="en_US">
+    <meta property="og:title" content="Shankar Gorai | Full Stack Laravel Developer">
+    <meta property="og:description"
+        content="Full Stack Laravel Developer specializing in PHP, Laravel, CodeIgniter. Experienced in Inventory management, E-commerce, REST APIs, and AWS deployment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shankargorai.site">
+    <meta property="og:image" content="https://shankargorai.site/shankargorai.png">
+    <meta property="og:site_name" content="Shankar Gorai">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:locale:alternate" content="en_US">
 
-	<meta name="linkedin:url" content="https://www.linkedin.com/in/shankar-gorai-a35ba8208">
-	<meta name="github:url" content="https://github.com/Shankar-Tom">
+    <meta name="linkedin:url" content="https://www.linkedin.com/in/shankar-gorai-a35ba8208">
+    <meta name="github:url" content="https://github.com/Shankar-Tom">
 
-	<link rel="canonical" href="https://shankargorai.site">
+    <link rel="canonical" href="https://shankargorai.site">
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Inter and a bold display font like Oswald for the headers -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Oswald:wght@700&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#f4f1ea',
+                        'brand-maroon': '#4a0e0e',
+                        'brand-dark': '#1a1a1a',
+                        'brand-lime': '#c5f82a',
+                        'brand-grey': '#878B8F'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style data-purpose="custom-animations">
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-	<!-- Tailwind CSS CDN -->
-	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        .animate-on-scroll {
+            opacity: 0;
+        }
 
+        .animate-on-scroll.visible {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
 
+        /* Custom thin border styling to match the image aesthetic */
+        .border-thin {
+            border-top-width: 1px;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .border-thin {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
 
-<body cz-shortcut-listen="true">
-	<div id="root">
+<body class="bg-brand-cream text-brand-dark font-sans selection:bg-brand-maroon selection:text-white">
+    <!-- BEGIN: Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-brand-cream/80 backdrop-blur-md px-6 py-4 flex justify-between items-center border-b border-black/5">
+        <div class="text-xs font-medium uppercase tracking-widest">Jamshedpur Jharkhand, India </div>
 
-		<div class="min-h-screen bg-gradient-subtle">
-			<section class="bg-gradient-to-br from-background via-secondary/30 to-background py-16 relative">
-				<div class="absolute top-4 right-4 flex gap-2 no-print print:hidden">
+        <div>
+            <a href="resume.pdf" download
+                class="bg-brand-dark text-white px-4 py-2 text-[10px] uppercase font-bold tracking-widest hover:bg-brand-maroon transition-all">
+                Download resume
+            </a>
+        </div>
+    </nav>
+    <!-- END: Navigation -->
+    <!-- BEGIN: Hero Section -->
+    <main class="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+            <div class="lg:col-span-8">
+                <h1 class="text-7xl md:text-[120px] font-display leading-[0.9] uppercase tracking-tighter mb-8">
+                    SCALE CODE.<br />MITIGATE<br />TECHNICAL DEBT.
+                </h1>
+                <a class="inline-block border-b-2 border-brand-dark pb-1 text-xs font-bold uppercase tracking-widest hover:text-brand-maroon hover:border-brand-maroon transition-all"
+                    href="#contact">
+                    Free Consultation →
+                </a>
+            </div>
+            <div class="lg:col-span-4 relative">
+                <div class="bg-brand-grey p-4 aspect-[4/5] flex items-end justify-center relative overflow-hidden">
+                    <!-- Placeholder for Profile Image -->
+                    <img alt="Shankar Gorai " class=" contrast-125 mix-blend-multiply w-full h-full object-cover"
+                        src="https://shankargorai.site/shankargorai.png" />
+                    <div class="absolute bottom-6 left-6 text-brand-dark">
+                        <p class="font-display text-2xl text-white uppercase leading-none">Shankar Gorai</p>
+                        <p class="text-[10px] uppercase font-bold text-white opacity-70">Senior Laravel Developer</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-[11px] leading-relaxed max-w-xs uppercase font-medium">
+                    I help companies scale web applications, build robust APIs, and architect high-performance Laravel
+                    ecosystems.
+                </div>
+            </div>
+        </div>
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 pt-12 border-thin">
+            <div>
+                <p class="text-4xl font-display uppercase">8+</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Years of PHP Mastery</p>
+            </div>
+            <div>
+                <p class="text-4xl font-display uppercase">25+</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Production Apps Shipped</p>
+            </div>
+            <div>
+                <p class="text-4xl font-display uppercase">2</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Open Source Packages</p>
+            </div>
+            <div>
+                <p class="text-4xl font-display uppercase">99.9%</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Uptime Architecture</p>
+            </div>
+        </div>
+    </main>
+    <!-- END: Hero Section -->
+    <!-- BEGIN: Core Expertise Section -->
+    <section class="py-24 px-6 md:px-12 bg-white/50 animate-on-scroll" id="skills">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-16">
+                <span
+                    class="text-[10px] px-3 py-1 border border-black/20 rounded-full uppercase font-bold inline-block mb-4 md:mb-0">Technical
+                    Skills</span>
+                <h2 class="text-4xl md:text-6xl font-display uppercase leading-none">Mastering the Modern Stack</h2>
+            </div>
+            <div class="space-y-0">
+                <!-- Skill Row 1 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">01</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Back-End Architecture</div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        Laravel (TALL Stack), PHP 8.3+, Eloquent Optimization, Codeigniter.
+                    </div>
+                </div>
+                <!-- Skill Row 2 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">02</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Infrastructure &amp; DevOps
+                    </div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        AWS (Lighsail, S3), Docker, CI/CD Pipelines (GitHub Actions), Redis Caching.
+                    </div>
+                </div>
+                <!-- Skill Row 3 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">03</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Front-End Interface</div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        Tailwind CSS, Alpine.js, Livewire, Vue.js, Responsive Design Systems.
+                    </div>
+                </div>
+                <!-- Skill Row 4 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin border-b hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">04</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Testing &amp; Security
+                    </div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        Pest, PHPUnit, Integration Testing, Data Encryption, OAuth2/Passport.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Core Expertise Section -->
+    <!-- BEGIN: About Me Section -->
+    <section class="py-24 px-6 md:px-12 bg-brand-grey text-white animate-on-scroll" id="about">
+        <div class="max-w-7xl mx-auto rounded-3xl overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-4 bg-brand-grey aspect-[4/5] md:aspect-auto">
+                    <img alt="Shankar" class="w-full h-full object-cover mix-blend-multiply " src="shankar.png" />
+                </div>
+                <div class="lg:col-span-8 p-12 md:p-20 flex flex-col justify-center">
+                    <span
+                        class="text-[10px] px-3 py-1 border border-white/20 rounded-full uppercase font-bold inline-block mb-8 self-start">About
+                        Me</span>
+                    <h2 class="text-5xl md:text-7xl font-display uppercase leading-[0.9] mb-8">
+                        WHO AM I AND<br />HOW CAN I BE<br />OF HELP?
+                    </h2>
+                    <p class="text-sm md:text-base opacity-80 max-w-xl mb-12 font-medium">
+                        I'm Shankar Gorai, a Senior Laravel Developer focused on building clean, maintainable software.
+                        With over 8 years in the ecosystem, I bridge the gap between complex business logic and
+                        high-performance technical execution.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold mb-4 tracking-widest text-black">Key
+                                Philosophy</p>
+                            <ul class="text-xs space-y-2 uppercase font-medium">
+                                <li>• Clean Code over Clever Code</li>
+                                <li>• Scalability through Simplicity</li>
+                                <li>• Test-Driven Development</li>
+                                <li>• Automated Workflows</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col justify-end">
+                            <p class="text-[10px] uppercase font-bold opacity-50 mb-1">Email</p>
+                            <p class="text-xs font-bold mb-4">shankargoraise@gmail.com</p>
+                            <p class="text-[10px] uppercase font-bold opacity-50 mb-1">Location</p>
+                            <p class="text-xs font-bold uppercase">Remote / Jamshedpur,Jharkhand India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: About Me Section -->
+    <!-- BEGIN: Experience / Case Studies -->
+    <section class="py-24 px-6 md:px-12 animate-on-scroll" id="experience">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center space-x-4 mb-16">
+                <span
+                    class="text-[10px] px-3 py-1 border border-black/20 rounded-full uppercase font-bold">Experience</span>
+                <h2 class="text-4xl md:text-6xl font-display uppercase">Success Stories</h2>
+            </div>
+            <!-- Accordion-style Experience -->
+            <div class="space-y-4">
+                <!-- Exp 1 -->
+                <details class="group border-thin" open="">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40  w-32 hidden md:block">eHealth
+                                Platform</span>
+                            <!-- <span class="text-xl md:text-3xl font-display uppercase">Vadi Health </span> -->
+                            <a href="https://vadi.co.in/" target="_blank">
+                                <img src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi Health"
+                                    class="h-20">
+                            </a>
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Appointment booking for doctors and
+                                health services for multiple user without duplicate booking and seamless payment
+                                integration.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Used atomic lock to prevent
+                                duplicacy in booking and payment.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">99.99% uptime achieved, with a 65%
+                                reduction in API response times.</p>
+                        </div>
+                    </div> -->
+                </details>
+                <!-- Exp 2 -->
+                <details class="group border-thin">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40 uppercase w-32 hidden md:block">E-learning
+                            </span>
+                            <!-- <span class="text-xl md:text-3xl font-display uppercase">Swadhyay </span> -->
+                            <a href="https://swadhyay.j2p.in/" target="_blank">
+                                <img src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" class="h-20">
+                            </a>
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">To use Youtbe </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Implemented custom multi-tenancy
+                                logic using Laravel's core service container.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Scaled to 1,200+ tenants with zero
+                                data leakage and simplified deployments.</p>
+                        </div>
+                    </div> -->
+                </details>
+                <details class="group border-thin">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40 uppercase w-32 hidden md:block">Online
+                                Mentorship
+                            </span>
+                            <a href="https://kualia.app"
+                                class="w-32 md:w-[162px] h-12 md:h-[67px] text-purple-900 font-['Poppins'] font-semibold text-3xl md:text-[50px] tracking-[0] leading-normal">
+                                Kualia
+                            </a>
 
-					<button id="download-button"
-						class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-white h-11 rounded-md px-8 bg-blue-600 hover:bg-blue-700 no-print print:hidden gap-2">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="lucide lucide-download w-4 h-4">
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-							<polyline points="7 10 12 15 17 10"></polyline>
-							<line x1="12" x2="12" y1="15" y2="3"></line>
-						</svg>Download PDF</button>
-				</div>
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="flex flex-col md:flex-row gap-8 items-start">
-						<div class="flex-shrink-0">
-							<div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl border-2 border-blue-100">
-								<img src="shankargorai.png" alt="Shankar Gorai Profile"
-									class="w-full h-full object-cover rounded-2xl">
-							</div>
-						</div>
-						<div class="flex-1 space-y-4">
-							<div>
-								<h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Shankar Gorai</h1>
-								<p class="text-xl md:text-2xl text-blue-700 font-semibold">Full Stack Laravel Developer
-								</p>
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">To use Youtbe </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Implemented custom multi-tenancy
+                                logic using Laravel's core service container.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Scaled to 1,200+ tenants with zero
+                                data leakage and simplified deployments.</p>
+                        </div>
+                    </div> -->
+                </details>
+                <details class="group border-thin">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40 uppercase w-32 hidden md:block">
+                                E-Commerce
+                            </span>
+                            <a href="https://www.ghorua.online/" target="_blank">
+                                <img src="https://www.ghorua.online/logo.png" alt="Ghorua Online" class="h-20">
+                            </a>
 
-							</div>
-							<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2"><a
-									href="mailto:shankargoraise@gmail.com"
-									class="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"><svg
-										xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-										fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" class="lucide lucide-mail w-4 h-4 flex-shrink-0">
-										<rect width="20" height="16" x="2" y="4" rx="2"></rect>
-										<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-									</svg><span class="text-sm truncate">shankargoraise@gmail.com</span></a><a
-									href="tel:+918114577909"
-									class="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"><svg
-										xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-										fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" class="lucide lucide-phone w-4 h-4 flex-shrink-0">
-										<path
-											d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-										</path>
-									</svg><span class="text-sm">+91 8114577909</span></a>
-								<div class="flex items-center gap-2 text-muted-foreground"><svg
-										xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-										fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4 flex-shrink-0">
-										<path
-											d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
-										</path>
-										<circle cx="12" cy="10" r="3"></circle>
-									</svg><span class="text-sm">Jamshedpur, Jharkhand, India</span></div><a
-									href="https://www.shankargorai.site" target="_blank" rel="noopener noreferrer"
-									class="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"><svg
-										xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-										fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" class="lucide lucide-globe w-4 h-4 flex-shrink-0">
-										<circle cx="12" cy="12" r="10"></circle>
-										<path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-										<path d="M2 12h20"></path>
-									</svg><span class="text-sm">shankargorai.site</span></a>
-							</div>
-							<div class="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2"><a
-									href="https://github.com/Shankar-Tom" target="_blank" rel="noopener noreferrer"
-									class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all text-sm"><svg
-										xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-										fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" class="lucide lucide-github w-4 h-4">
-										<path
-											d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-										</path>
-										<path d="M9 18c-4.51 2-5-2-7-2"></path>
-									</svg><span>GitHub</span></a>
-								<a href="https://www.linkedin.com/in/shankar-gorai-a35ba8208" target="_blank"
-									rel="noopener noreferrer"
-									class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all text-sm">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-										fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-										stroke-linejoin="round" class="lucide lucide-linkedin w-4 h-4">
-										<path
-											d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-										</path>
-										<rect width="4" height="12" x="2" y="9"></rect>
-										<circle cx="4" cy="4" r="2"></circle>
-									</svg><span>LinkedIn</span>
-								</a>
-								<a href="https://wa.me/918114577909" target="_blank" rel="noopener noreferrer"
-									class="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:border-primary hover:shadow-sm transition-all text-sm">
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">To use Youtbe </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Implemented custom multi-tenancy
+                                logic using Laravel's core service container.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Scaled to 1,200+ tenants with zero
+                                data leakage and simplified deployments.</p>
+                        </div>
+                    </div> -->
+                </details>
+            </div>
+        </div>
+    </section>
+    <!-- END: Experience / Case Studies -->
+    <!-- BEGIN: Open Source Section -->
+    <section class="py-24 px-6 md:px-12 bg-white animate-on-scroll">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-8xl font-display uppercase leading-none tracking-tighter">Open Source
+                    &amp;<br />Packages</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/10 border border-black/10">
+                <!-- Package 1 -->
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/laravel-visit-tracker"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">laravel-visit-tracker</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">A Laravel package to track visits and
+                        page views.</p>
+                    <!-- <div class="text-xs font-bold uppercase">2.1k Stars • 14k Downloads</div> -->
+                </div>
+                <!-- Package 2 -->
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/country-phone-validator"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">country-phone-validator</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">Laravel package to validate phone
+                        numbers using country name or dial code</p>
+                    <!-- <div class="text-xs font-bold uppercase">1.2k Stars • 1k Downloads</div> -->
+                </div>
+                <!-- Package 3 -->
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/laravel-search"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">laravel-search</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">Global search across Laravel models
+                        and relationships.</p>
+                    <!-- <div class="text-xs font-bold uppercase">1.2k Stars • 1k Downloads</div> -->
+                </div>
 
-									<svg fill="#000000" width="10" height="10" viewBox="0 0 36 36" version="1.1"
-										xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
-										<title>whatsapp</title>
-										<path
-											d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z">
-										</path>
-									</svg>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6 md:px-12 bg-brand-grey text-white animate-on-scroll">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-8xl font-display  uppercase leading-none tracking-tighter">
+                    Education &
+                    Cerificates</h2>
+            </div>
+            <div class="cred-item">
+                <h3 class="cred-label text-xl font-semibold">Education</h3>
+                <div class="text-xl font-medium">
+                    <p>Diploma in Computer Science</p>
+                    <p class="text-sm">Al-kabir Polytechnic • 2014 - 2017</p>
+                </div>
+                <h3 class="cred-label text-xl font-semibold mt-4">Certifications</h3>
+                <div class="text-xl font-medium">
+                    <p>MongoDB Certified Developer, Associate (C100DEV)</p>
+                    <p>cPanel Ultimate Course</p>
+                    <p>SQL Crud Certification</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Open Source Section -->
+    <!-- BEGIN: Testimonials/Recommendations -->
+    <!-- <section class="py-24 px-6 md:px-12 bg-brand-cream animate-on-scroll">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-16">
+                <span
+                    class="text-[10px] px-3 py-1 border border-black/20 rounded-full uppercase font-bold inline-block mb-4 md:mb-0">Testimonials</span>
+                <h2 class="text-4xl md:text-6xl font-display uppercase leading-none">What Colleagues Say</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="border-t border-black/10 pt-8">
+                    <p class="text-[10px] font-bold uppercase opacity-40 mb-6">01/03</p>
+                    <p class="text-sm font-medium leading-relaxed italic mb-8">"Hugo’s ability to untangle legacy code
+                        and turn it into a high-performance system is unmatched. He saved us months of rework."</p>
+                    <div class="flex items-center space-x-4">
+                        <img alt="User" class="rounded-full grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy8oqgXhndJJnfx36RJNa1opuptgqkMlTfLeVzNiLcBGCrkUaR74BvHvzVXgLwQLf0kXX_yzUNMPRV6s807ozhOiJtl9koUxgl5wrYwpJQpUDmn5k5gxFEXKgf9M2VcEaZUtpoLyvx5ibhFCf5zBlIYpbrMYg0FIohFW1Xkj4ruJIQvlLfmgpzZxft1ptP0FPJAQtm3LzfEkiGIGZ0Osh75Urlb99lgn6bAXDh_4Hd-O6_hGpNquqPu4EH7eFh8th3QseFqWY9w9w" />
+                        <div>
+                            <p class="text-xs font-bold uppercase">Simon Davies</p>
+                            <p class="text-[10px] uppercase opacity-50">CTO at Altimit Logistics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-black/10 pt-8">
+                    <p class="text-[10px] font-bold uppercase opacity-40 mb-6">02/03</p>
+                    <p class="text-sm font-medium leading-relaxed italic mb-8">"Beyond his Laravel expertise, Hugo
+                        brings a strategic mindset to every project. He doesn't just write code; he solves business
+                        problems."</p>
+                    <div class="flex items-center space-x-4">
+                        <img alt="User" class="rounded-full grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6EJ4bExV9wI6d2K1ILBRMY1YlLj5Q-zmNaRL_TiKtWF2rd0w3ubliUpAcZ-V9Ad6x6NbTM7q57MxPDqC54tZG0U9GuMAJUcb_XT9-oOrBK7fxefUUIwlob7bRKhASZmHA9Z3zOu94oXL5_t-xH_ixx3-SGQKlrj8Ge9Lxv7a_3saheEfFWaewgU6kyFzdVs53Hbu5YGYEe_K1loqn8LQgbHUySGRYPMbYs9eO4SRj7uquVEUpzqX8V0GvXFhyZGpTwvCXZDIOj6c" />
+                        <div>
+                            <p class="text-xs font-bold uppercase">Harriet Wilson</p>
+                            <p class="text-[10px] uppercase opacity-50">VPE at Northstar Energy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-black/10 pt-8">
+                    <p class="text-[10px] font-bold uppercase opacity-40 mb-6">03/03</p>
+                    <p class="text-sm font-medium leading-relaxed italic mb-8">"A true professional and a mentor to the
+                        junior team. His documentation and code standards set the bar for our entire department."</p>
+                    <div class="flex items-center space-x-4">
+                        <img alt="User" class="rounded-full grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlBCvFiYN6YzE0f25-iZViIuwxpTfvyVw4mHZmeOeN7rJfIl1tND3-fLhhcW3OsgCNA5V7-AJDSeR4qO8Hlm6LdMFLfCyf9Z1eR7XA3c9ZtvQiV19fQQxoSD2IbMvBCIOOtgV0ke-TtmzLzfZJ-iTVPwCXjyNPbz1wzJ0D4CDR2P94KWfRXvAHAc4eTK46gzWnTZUoXNEA2KvSqcJ0UG_Q67qYTL2q3B33xo5Dfvb7FVFWzB_kN8QYaj1TLiVUqw057cHdQKezapo" />
+                        <div>
+                            <p class="text-xs font-bold uppercase">Oliver Thompson</p>
+                            <p class="text-[10px] uppercase opacity-50">Lead Architect at Meridia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- END: Testimonials/Recommendations -->
+    <!-- BEGIN: Contact Section -->
+    <!-- <section class="py-24 px-6 md:px-12 bg-brand-grey text-white animate-on-scroll" id="contact">
+        <div class="max-w-7xl mx-auto bg-brand-dark/20 rounded-3xl p-12 md:p-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div>
+                    <span
+                        class="text-[10px] px-3 py-1 border border-white/20 rounded-full uppercase font-bold inline-block mb-8">Contact
+                        Me</span>
+                    <h2 class="text-5xl md:text-7xl font-display uppercase leading-tight mb-8">SCHEDULE
+                        A<br />CONSULTATION</h2>
+                    <p class="text-sm opacity-60 max-w-sm mb-12 uppercase font-medium">I'm here to help you unlock
+                        technical clarity and drive growth through high-performance software engineering.</p>
 
-									<span>WhatsApp</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="py-8 bg-background animated">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="border-l-4 border-blue-700 pl-6">
-						<h2 class="text-2xl font-bold text-foreground mb-4">Professional Summary</h2>
-						<p class="text-muted-foreground leading-relaxed">Skilled in Laravel and PHP with extensive
-							experience working on diverse projects including Inventory management, Freight management,
-							Recharge and bill payments, E-commerce, Directory solutions, and more. Have knowledge of AWS
-							Lightsail and VPS setup for LAMP stack. Good experience in REST APIs using core PHP and
-							Laravel frameworks.</p>
-					</div>
-				</div>
-			</section>
-			<section class="py-8 bg-secondary/30 animated">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="border-l-4 border-blue-700 pl-6">
-						<h2 class="text-2xl font-bold text-foreground mb-6">Technical Skills</h2>
-						<div class="grid md:grid-cols-2 gap-6">
-							<div class="bg-card rounded-lg p-5 border border-border shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-code-xml w-5 h-5 text-primary">
-											<path d="m18 16 4-4-4-4"></path>
-											<path d="m6 8-4 4 4 4"></path>
-											<path d="m14.5 4-5 16"></path>
-										</svg></div>
-									<h3 class="font-semibold text-foreground">Backend Development</h3>
-								</div>
-								<div class="flex flex-wrap gap-2"><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Laravel</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">PHP</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">CodeIgniter</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Core
-										PHP</span></div>
-							</div>
-							<div class="bg-card rounded-lg p-5 border border-border shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-database w-5 h-5 text-primary">
-											<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-											<path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
-											<path d="M3 12A9 3 0 0 0 21 12"></path>
-										</svg></div>
-									<h3 class="font-semibold text-foreground">Frontend Development</h3>
-								</div>
-								<div class="flex flex-wrap gap-2"><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Livewire</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Tailwind
-										CSS</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Alpine.js</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Vue.js</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Inertia.js</span>
-								</div>
-							</div>
+                </div>
+                <div class="space-y-8">
+                    <h2
+                        class="text-[2vw] font-display uppercase leading-none tracking-tighter hover:text-brand-maroon transition-colors cursor-pointer select-none">
+                        shankargoraise@gmail.com
+                    </h2>
+                    <p class="text-2xl md:text-4xl font-display uppercase mt-4">+91 81145 77909</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- END: Contact Section -->
+    <!-- BEGIN: Footer -->
+    <footer class="py-20 px-6 md:px-12 text-center bg-brand-cream">
+        <div class="max-w-7xl mx-auto">
+            <h2
+                class="text-[6vw] font-display uppercase leading-none tracking-tighter hover:text-brand-maroon transition-colors cursor-pointer select-none">
+                shankargoraise@gmail.com
+            </h2>
+            <p class="text-4xl md:text-8xl font-display uppercase mt-4">+91 81145 77909</p>
 
-						</div>
-						<div class="grid md:grid-cols-2 gap-6">
-							<div class="bg-card rounded-lg p-5 border border-border shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-database w-5 h-5 text-primary">
-											<ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-											<path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
-											<path d="M3 12A9 3 0 0 0 21 12"></path>
-										</svg></div>
-									<h3 class="font-semibold text-foreground">Database </h3>
-								</div>
-								<div class="flex flex-wrap gap-2"><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">MySQL</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">MongoDB</span><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">PostgreSQL</span>
-									<span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">SQLite</span>
-									<span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">MongoDB</span>
-									<span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">Firestore</span>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+    <script data-purpose="scroll-animations">
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
 
-								</div>
-							</div>
-							<div class="bg-card rounded-lg p-5 border border-border shadow-sm">
-								<div class="flex items-center gap-3 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-cloud w-5 h-5 text-primary">
-											<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-										</svg></div>
-									<h3 class="font-semibold text-foreground">DevOps</h3>
-								</div>
-								<div class="flex flex-wrap gap-2"><span
-										class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border border-border">AWS
-										Lightsail</span>
-									<span class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border
-										border-border">LAMP
-										Stack</span>
-									<span class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border
-										border-border">VPS
-										Setup</span>
-									<span class="px-3 py-1 bg-secondary text-foreground text-sm rounded-md border
-										border-border">Google Console</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                    else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
 
-
-			</section>
-
-			<section class="py-8 bg-background animated">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="border-l-4 border-blue-700 pl-6">
-						<h2 class="text-2xl font-bold text-foreground mb-6">Work Experience</h2>
-						<div class="space-y-6">
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Full Stack Laravel Developer
-										</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">Cromp IT Solution</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>June 2024 - Present</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Developing and maintaining
-											Laravel-based applications</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Working on backend systems and API
-											development</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Full Stack Laravel Developer
-										</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">Origin Ventures</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>January 2024 - Present</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Building scalable Laravel
-											applications</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Implementing REST APIs and backend
-											solutions</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Senior Laravel Developer</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">AVC Dotfy LLP</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>October 2023 - January 2024</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Developed Laravel-based web
-											applications</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Worked on database design and
-											optimization</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Laravel Developer
-										</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">Appic</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>March 2023 - September 2023</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Built backend services using
-											Laravel framework</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Integrated third-party APIs and
-											services</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Senior Laravel Developer</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">Layroad</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>August 2021 - February 2023</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Developed Inventory management and
-											E-commerce solutions</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Built Freight management and
-											Recharge payment systems</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Worked on Directory and bill
-											payment applications</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">PHP Laravel Developer</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">BUSINESS FIRST INDIA</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>September 2022 - October 2022</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Contributed to Laravel-based
-											projects</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Maintained and updated existing
-											applications</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Web Developer</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">SHINE APEX INDIA</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>September 2018 - December 2021</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Developed web applications using
-											PHP and Laravel</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Managed AWS Lightsail and VPS LAMP
-											stack setup</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Built REST APIs using core PHP and
-											Laravel</span></li>
-								</ul>
-							</div>
-							<div class="relative">
-								<div class="flex items-start gap-4 mb-3">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg mt-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-briefcase w-5 h-5 text-primary">
-											<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-											<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-										</svg></div>
-									<div class="flex-1">
-										<h3 class="text-lg font-semibold text-foreground">Full-stack PHP Developer</h3>
-										<div class="flex flex-wrap items-center gap-2 text-muted-foreground mt-1"><span
-												class="font-medium">Highbees Informatica LLP</span><span>•</span><span
-												class="flex items-center gap-1 text-sm"><svg
-													xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-													viewBox="0 0 24 24" fill="none" stroke="currentColor"
-													stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-													class="lucide lucide-calendar w-3 h-3">
-													<path d="M8 2v4"></path>
-													<path d="M16 2v4"></path>
-													<rect width="18" height="18" x="3" y="4" rx="2"></rect>
-													<path d="M3 10h18"></path>
-												</svg>January 2021 - March 2021</span></div>
-									</div>
-								</div>
-								<ul class="ml-16 space-y-2">
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Worked on full-stack web
-											development projects</span></li>
-									<li class="text-muted-foreground text-sm flex gap-2"><span
-											class="text-primary mt-1.5">•</span><span>Contributed to frontend and
-											backend development</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="py-8 bg-secondary/30">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="border-l-4 border-blue-700 pl-6">
-						<h2 class="text-2xl font-bold text-foreground mb-6">Featured Projects</h2>
-						<div class="grid gap-6">
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<h3 class="text-lg font-semibold text-foreground">Kualia </h3>
-									<div class="flex gap-2 flex-shrink-0"><a href="https://kualia.app" target="_blank"
-											rel="noopener noreferrer"
-											class="p-2 hover:bg-secondary rounded-lg transition-colors"
-											aria-label="View live project"><svg xmlns="http://www.w3.org/2000/svg"
-												width="24" height="24" viewBox="0 0 24 24" fill="none"
-												stroke="currentColor" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="lucide lucide-external-link w-4 h-4 text-primary">
-												<path d="M15 3h6v6"></path>
-												<path d="M10 14 21 3"></path>
-												<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
-												</path>
-											</svg></a></div>
-								</div>
-								<p class="text-muted-foreground text-sm mb-3">Online Motivational Coach Platform</p>
-								<div class="flex flex-wrap gap-2 mb-3"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Laravel</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Tailwind
-										CSS</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Livewire</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Stripe</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">JWT</span>
-
-								</div>
-								<!-- <div class="flex flex-wrap gap-3 text-xs text-muted-foreground"><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>100K+ monthly
-										users</span><span class="flex items-center gap-1"><span
-											class="text-primary">✓</span>99.9% uptime</span><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>$5M+
-										GMV</span></div> -->
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<h3 class="text-lg font-semibold text-foreground">GHORUA </h3>
-									<div class="flex gap-2 flex-shrink-0"><a href="https://ghorua.online"
-											target="_blank" rel="noopener noreferrer"
-											class="p-2 hover:bg-secondary rounded-lg transition-colors"
-											aria-label="View live project"><svg xmlns="http://www.w3.org/2000/svg"
-												width="24" height="24" viewBox="0 0 24 24" fill="none"
-												stroke="currentColor" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="lucide lucide-external-link w-4 h-4 text-primary">
-												<path d="M15 3h6v6"></path>
-												<path d="M10 14 21 3"></path>
-												<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
-												</path>
-											</svg></a></div>
-								</div>
-								<!-- <p class="text-muted-foreground text-sm mb-3">Homemade pickle selling</p> -->
-								<div class="flex flex-wrap gap-2 mb-3"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Laravel</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Tailwind</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">MySql</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Dynamic
-										UPI Qr for payment</span>
-								</div>
-								<!-- <div class="flex flex-wrap gap-3 text-xs text-muted-foreground"><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>50+ teams
-										onboarded</span><span class="flex items-center gap-1"><span
-											class="text-primary">✓</span>Real-time collaboration</span><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>Mobile
-										responsive</span></div> -->
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<h3 class="text-lg font-semibold text-foreground">SWADHYAY</h3>
-									<div class="flex gap-2 flex-shrink-0"><a href="https://swadhyay.j2p.in"
-											target="_blank" rel="noopener noreferrer"
-											class="p-2 hover:bg-secondary rounded-lg transition-colors"
-											aria-label="View live project"><svg xmlns="http://www.w3.org/2000/svg"
-												width="24" height="24" viewBox="0 0 24 24" fill="none"
-												stroke="currentColor" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="lucide lucide-external-link w-4 h-4 text-primary">
-												<path d="M15 3h6v6"></path>
-												<path d="M10 14 21 3"></path>
-												<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
-												</path>
-											</svg></a></div>
-								</div>
-								<p class="text-muted-foreground text-sm mb-3">E-Learning Platform</p>
-								<div class="flex flex-wrap gap-2 mb-3"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Laravel</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Bootstrap</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">MySql</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Youtube
-										API Integration</span>
-									<span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Razorpay
-										API Integration</span>
-								</div>
-								<!-- <div class="flex flex-wrap gap-3 text-xs text-muted-foreground"><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>10M+ data
-										points</span><span class="flex items-center gap-1"><span
-											class="text-primary">✓</span>Custom reports</span><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>API
-										integration</span></div> -->
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<h3 class="text-lg font-semibold text-foreground">ShareCharger</h3>
-									<div class="flex gap-2 flex-shrink-0"><a href="https://evcharger.shankargorai.site"
-											target="_blank" rel="noopener noreferrer"
-											class="p-2 hover:bg-secondary rounded-lg transition-colors"
-											aria-label="View live project"><svg xmlns="http://www.w3.org/2000/svg"
-												width="24" height="24" viewBox="0 0 24 24" fill="none"
-												stroke="currentColor" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="lucide lucide-external-link w-4 h-4 text-primary">
-												<path d="M15 3h6v6"></path>
-												<path d="M10 14 21 3"></path>
-												<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
-												</path>
-											</svg></a></div>
-								</div>
-								<p class="text-muted-foreground text-sm mb-3">Plateform for ev owners to find charger
-									nearby </p>
-								<div class="flex flex-wrap gap-2 mb-3"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Laravel</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Tailwind
-										CSS</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">MySql</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Alpine.JS</span>
-
-								</div>
-								<!-- <div class="flex flex-wrap gap-3 text-xs text-muted-foreground"><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>10M+ data
-										points</span><span class="flex items-center gap-1"><span
-											class="text-primary">✓</span>Custom reports</span><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>API
-										integration</span></div> -->
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<h3 class="text-lg font-semibold text-foreground">Send Pilot</h3>
-									<div class="flex gap-2 flex-shrink-0"><a href="https://sendpilot.site"
-											target="_blank" rel="noopener noreferrer"
-											class="p-2 hover:bg-secondary rounded-lg transition-colors"
-											aria-label="View live project"><svg xmlns="http://www.w3.org/2000/svg"
-												width="24" height="24" viewBox="0 0 24 24" fill="none"
-												stroke="currentColor" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="lucide lucide-external-link w-4 h-4 text-primary">
-												<path d="M15 3h6v6"></path>
-												<path d="M10 14 21 3"></path>
-												<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
-												</path>
-											</svg></a></div>
-								</div>
-								<p class="text-muted-foreground text-sm mb-3">WhatsApp Bulk Messaging Web APP</p>
-								<div class="flex flex-wrap gap-2 mb-3"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Laravel</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Vue
-										JS
-									</span>
-									<span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Tailwind
-										CSS</span>
-									<span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">MySql</span>
-
-								</div>
-								<!-- <div class="flex flex-wrap gap-3 text-xs text-muted-foreground"><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>10M+ data
-										points</span><span class="flex items-center gap-1"><span
-											class="text-primary">✓</span>Custom reports</span><span
-										class="flex items-center gap-1"><span class="text-primary">✓</span>API
-										integration</span></div> -->
-							</div>
-
-
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="py-8">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="border-l-4 border-blue-700 pl-6">
-						<h2 class="text-2xl font-bold text-foreground mb-6">Open Source Packages</h2>
-						<div class="grid gap-6">
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<div class="flex items-center gap-3">
-										<div class="p-2 bg-primary/10 rounded-lg"><svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-package w-5 h-5 text-primary">
-												<path
-													d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z">
-												</path>
-												<path d="M12 22V12"></path>
-												<path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"></path>
-												<path d="m7.5 4.27 9 5.15"></path>
-											</svg></div>
-										<h3 class="text-lg font-semibold text-foreground">laravel-visit-tracker</h3>
-									</div><a href="https://github.com/Shankar-Tom/laravel-visit-tracker" target="_blank"
-										rel="noopener noreferrer"
-										class="p-2 hover:bg-secondary rounded-lg transition-colors flex-shrink-0"
-										aria-label="View on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-											height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-github w-4 h-4 text-primary">
-											<path
-												d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-											</path>
-											<path d="M9 18c-4.51 2-5-2-7-2"></path>
-										</svg></a>
-								</div>
-								<p class="text-muted-foreground text-sm mb-4">Track page and model visits (with morph
-									visitor) + analytics.</p>
-								<div class="flex flex-wrap gap-2 mb-4"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Laravel</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">PHP</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Composer</span>
-								</div>
-								<!-- <div class="flex gap-4 text-sm text-muted-foreground"><span
-										class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg"
-											width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-download w-4 h-4 text-primary">
-											<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-											<polyline points="7 10 12 15 17 10"></polyline>
-											<line x1="12" x2="12" y1="15" y2="3"></line>
-										</svg>1.2K+ downloads</span><span class="flex items-center gap-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-star w-4 h-4 text-primary">
-											<path
-												d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-											</path>
-										</svg>25 stars</span></div> -->
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow">
-								<div class="flex items-start justify-between gap-4 mb-3">
-									<div class="flex items-center gap-3">
-										<div class="p-2 bg-primary/10 rounded-lg"><svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-package w-5 h-5 text-primary">
-												<path
-													d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z">
-												</path>
-												<path d="M12 22V12"></path>
-												<path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"></path>
-												<path d="m7.5 4.27 9 5.15"></path>
-											</svg></div>
-										<h3 class="text-lg font-semibold text-foreground">country-phone-validation</h3>
-									</div><a href="https://github.com/Shankar-Tom/country-phone-validator"
-										target="_blank" rel="noopener noreferrer"
-										class="p-2 hover:bg-secondary rounded-lg transition-colors flex-shrink-0"
-										aria-label="View on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-											height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-github w-4 h-4 text-primary">
-											<path
-												d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-											</path>
-											<path d="M9 18c-4.51 2-5-2-7-2"></path>
-										</svg></a>
-								</div>
-								<p class="text-muted-foreground text-sm mb-4">Laravel package to validate phone numbers
-									using country name or dial code</p>
-								<div class="flex flex-wrap gap-2 mb-4"><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">PHP</span><span
-										class="px-2 py-1 bg-secondary text-foreground text-xs rounded border border-border">Composer</span>
-								</div>
-								<!-- <div class="flex gap-4 text-sm text-muted-foreground"><span
-										class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg"
-											width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-download w-4 h-4 text-primary">
-											<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-											<polyline points="7 10 12 15 17 10"></polyline>
-											<line x1="12" x2="12" y1="15" y2="3"></line>
-										</svg>800+ downloads</span><span class="flex items-center gap-1"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-star w-4 h-4 text-primary">
-											<path
-												d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-											</path>
-										</svg>15 stars</span></div> -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-
-			<!-- <section class="py-8 bg-secondary/30">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="border-l-4 border-primary pl-6">
-						<h2 class="text-2xl font-bold text-foreground mb-6">Testimonials &amp; Recommendations</h2>
-						<div class="grid gap-6">
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow print-break-inside-avoid">
-								<div class="flex items-start gap-4 mb-4">
-									<div class="flex-shrink-0"><img
-											src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&amp;h=150&amp;fit=crop"
-											alt="Sarah Mitchell"
-											class="w-16 h-16 rounded-full object-cover border-2 border-primary/20">
-									</div>
-									<div class="flex-1">
-										<div class="flex items-start justify-between gap-2 mb-2">
-											<div>
-												<h3 class="font-semibold text-foreground text-lg">Sarah Mitchell</h3>
-												<p class="text-sm text-muted-foreground">CTO at TechCorp Solutions</p>
-												<p class="text-xs text-muted-foreground">TechCorp Solutions</p>
-											</div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-quote w-8 h-8 text-primary/20 flex-shrink-0">
-												<path
-													d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-												</path>
-												<path
-													d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-												</path>
-											</svg>
-										</div>
-										<div class="flex items-center gap-1 mb-3"><svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg></div>
-									</div>
-								</div>
-								<p class="text-muted-foreground leading-relaxed mb-3 italic">"Alex is an exceptional
-									developer who consistently delivers high-quality work. His ability to architect
-									scalable solutions and mentor junior developers has been invaluable to our team. He
-									transformed our entire frontend infrastructure and reduced our deployment time by
-									75%."</p>
-								<p class="text-xs text-muted-foreground">March 2024</p>
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow print-break-inside-avoid">
-								<div class="flex items-start gap-4 mb-4">
-									<div class="flex-shrink-0"><img
-											src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&amp;h=150&amp;fit=crop"
-											alt="Michael Chen"
-											class="w-16 h-16 rounded-full object-cover border-2 border-primary/20">
-									</div>
-									<div class="flex-1">
-										<div class="flex items-start justify-between gap-2 mb-2">
-											<div>
-												<h3 class="font-semibold text-foreground text-lg">Michael Chen</h3>
-												<p class="text-sm text-muted-foreground">Product Manager at StartupXYZ
-												</p>
-												<p class="text-xs text-muted-foreground">StartupXYZ</p>
-											</div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-quote w-8 h-8 text-primary/20 flex-shrink-0">
-												<path
-													d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-												</path>
-												<path
-													d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-												</path>
-											</svg>
-										</div>
-										<div class="flex items-center gap-1 mb-3"><svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg></div>
-									</div>
-								</div>
-								<p class="text-muted-foreground leading-relaxed mb-3 italic">"Working with Alex was a
-									game-changer for our e-commerce platform. He not only built a robust system but also
-									proactively identified potential issues before they became problems. His attention
-									to detail and commitment to excellence is outstanding."</p>
-								<p class="text-xs text-muted-foreground">January 2024</p>
-							</div>
-							<div
-								class="bg-card rounded-lg p-6 border border-border shadow-sm hover:shadow-md transition-shadow print-break-inside-avoid">
-								<div class="flex items-start gap-4 mb-4">
-									<div class="flex-shrink-0"><img
-											src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&amp;h=150&amp;fit=crop"
-											alt="Emily Rodriguez"
-											class="w-16 h-16 rounded-full object-cover border-2 border-primary/20">
-									</div>
-									<div class="flex-1">
-										<div class="flex items-start justify-between gap-2 mb-2">
-											<div>
-												<h3 class="font-semibold text-foreground text-lg">Emily Rodriguez</h3>
-												<p class="text-sm text-muted-foreground">Lead Designer at Digital Agency
-													Co</p>
-												<p class="text-xs text-muted-foreground">Digital Agency Co</p>
-											</div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-quote w-8 h-8 text-primary/20 flex-shrink-0">
-												<path
-													d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-												</path>
-												<path
-													d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-												</path>
-											</svg>
-										</div>
-										<div class="flex items-center gap-1 mb-3"><svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-												stroke-linecap="round" stroke-linejoin="round"
-												class="lucide lucide-star w-4 h-4 fill-primary text-primary">
-												<path
-													d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-												</path>
-											</svg></div>
-									</div>
-								</div>
-								<p class="text-muted-foreground leading-relaxed mb-3 italic">"Alex has an incredible eye
-									for translating designs into pixel-perfect implementations. He bridges the gap
-									between design and development seamlessly, always ensuring the end product matches
-									our vision while maintaining excellent performance."</p>
-								<p class="text-xs text-muted-foreground">November 2023</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section> -->
-			<section class="py-8 bg-background">
-				<div class="container mx-auto px-4 max-w-5xl">
-					<div class="grid md:grid-cols-2 gap-8">
-						<div class="border-l-4 border-blue-700 pl-6">
-							<h2 class="text-2xl font-bold text-foreground mb-6">Education</h2>
-							<div class="space-y-6">
-								<div class="flex gap-4">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg h-fit"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-graduation-cap w-5 h-5 text-primary">
-											<path
-												d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
-											</path>
-											<path d="M22 10v6"></path>
-											<path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
-										</svg></div>
-									<div>
-										<h3 class="font-semibold text-foreground">Diploma of Education, Computer Science
-										</h3>
-										<p class="text-muted-foreground text-sm mt-1">Al-kabir Polytechnic</p>
-										<p class="text-muted-foreground text-sm">2014 - 2017</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="border-l-4 border-blue-700 pl-6">
-							<h2 class="text-2xl font-bold text-foreground mb-6">Certifications</h2>
-							<div class="space-y-4">
-								<div class="flex gap-4">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg h-fit"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-award w-5 h-5 text-primary">
-											<path
-												d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526">
-											</path>
-											<circle cx="12" cy="8" r="6"></circle>
-										</svg></div>
-									<div>
-										<h3 class="font-semibold text-foreground text-sm">MongoDB Certified Developer,
-											Associate (C100DEV)</h3>
-										<p class="text-muted-foreground text-sm">MongoDB University</p>
-									</div>
-								</div>
-								<div class="flex gap-4">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg h-fit"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-award w-5 h-5 text-primary">
-											<path
-												d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526">
-											</path>
-											<circle cx="12" cy="8" r="6"></circle>
-										</svg></div>
-									<div>
-										<h3 class="font-semibold text-foreground text-sm">cPanel Ultimate Course</h3>
-										<p class="text-muted-foreground text-sm">cPanel Certification</p>
-									</div>
-								</div>
-								<div class="flex gap-4">
-									<div class="p-2 bg-blue-300 text-blue-900 rounded-lg h-fit"><svg
-											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round"
-											class="lucide lucide-award w-5 h-5 text-primary">
-											<path
-												d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526">
-											</path>
-											<circle cx="12" cy="8" r="6"></circle>
-										</svg></div>
-									<div>
-										<h3 class="font-semibold text-foreground text-sm">SQL Crud</h3>
-										<p class="text-muted-foreground text-sm">SQL Database Management</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<footer class="py-8 bg-secondary/30 border-t border-border no-print print:hidden">
-				<div class="container mx-auto px-4 max-w-5xl text-center">
-					<p class="text-sm text-muted-foreground">© 2025 Shankar Gorai. Full Stack Laravel Developer.</p>
-				</div>
-			</footer>
-		</div>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-	<script>
-		// speechIntroduction();
-		// function speechIntroduction() {
-		// 	const speech = new SpeechSynthesisUtterance("Hello visitor , Welcome to my website i am laravel developer from jamshedpur");
-		// 	speech.lang = "en-US"; // language
-		// 	speech.rate = 1; // speed (1 = normal)
-		// 	speech.pitch = 1; // tone
-		// 	window.speechSynthesis.speak(speech);
-		// }
-
-		const downloadButton = document.getElementById('download-button');
-
-		if (downloadButton) {
-			downloadButton.addEventListener('click', () => {
-				const content = document.body; // Or specify a more targeted element if needed
-
-				html2pdf()
-					.set({
-						margin: 10,
-						filename: 'resume.pdf',
-						image: { type: 'jpeg', quality: 0.98 },
-						html2canvas: { scale: 2 },
-						jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-					})
-					.from(content)
-					.save();
-			});
-		}
-	</script>
-
-
-
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>
