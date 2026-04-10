@@ -1,89 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class="scroll-smooth" lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shankar Gorai — Full Stack Laravel Developer</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Shankar Gorai | Senior Laravel Developer Portfolio</title>
     <meta name="description"
-        content="Shankar Gorai — Full Stack Laravel Developer with 6+ years of experience in Laravel, PHP, REST APIs, and cloud deployments." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        content="Full Stack Laravel Developer specializing in PHP, Laravel, CodeIgniter. Experienced in Inventory management, E-commerce, REST APIs, and AWS deployment.">
+    <meta name="author" content="Shankar Gorai">
+
+    <meta property="og:title" content="Shankar Gorai | Full Stack Laravel Developer">
+    <meta property="og:description"
+        content="Full Stack Laravel Developer specializing in PHP, Laravel, CodeIgniter. Experienced in Inventory management, E-commerce, REST APIs, and AWS deployment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shankargorai.site">
+    <meta property="og:image" content="https://shankargorai.site/shankargorai.png">
+    <meta property="og:site_name" content="Shankar Gorai">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <meta name="linkedin:url" content="https://www.linkedin.com/in/shankar-gorai-a35ba8208">
+    <meta name="github:url" content="https://github.com/Shankar-Tom">
+
+    <link rel="canonical" href="https://shankargorai.site">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Inter and a bold display font like Oswald for the headers -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Oswald:wght@700&amp;display=swap"
         rel="stylesheet" />
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #f7f7f7;
-            --fg: #0d0d0d;
-            --card: #ffffff;
-            --muted: #666666;
-            --border: #d9d9d9;
-            --accent: #1a3fa0;
-            --accent-fg: #0d0d0d;
-            --primary: #0d0d0d;
-            --primary-fg: #f7f7f7;
-            --secondary: #ebebeb;
-            --font-display: 'Syne', sans-serif;
-            --font-body: 'Space Grotesk', sans-serif;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--fg);
-            font-family: var(--font-body);
-            line-height: 1.6;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: var(--font-display);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .section {
-            padding: 4rem 1.5rem;
-            border-bottom: 1px solid rgba(13, 13, 13, 0.1);
-        }
-
-        @media (min-width: 768px) {
-            .section {
-                padding: 6rem 3rem;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#f4f1ea',
+                        'brand-maroon': '#4a0e0e',
+                        'brand-dark': '#1a1a1a',
+                        'brand-lime': '#c5f82a',
+                        'brand-grey': '#878B8F'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                }
             }
         }
-
-        @media (min-width: 1024px) {
-            .section {
-                padding: 6rem 5rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeUp {
+    </script>
+    <style data-purpose="custom-animations">
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(20px);
             }
 
             to {
@@ -92,984 +63,512 @@
             }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .animate {
+        .animate-on-scroll {
             opacity: 0;
-            animation: fadeUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
-        .animate-delay-1 {
-            animation-delay: 0.1s;
+        .animate-on-scroll.visible {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .animate-delay-2 {
-            animation-delay: 0.2s;
+        /* Custom thin border styling to match the image aesthetic */
+        .border-thin {
+            border-top-width: 1px;
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
-        .animate-delay-3 {
-            animation-delay: 0.3s;
-        }
-
-        .animate-delay-4 {
-            animation-delay: 0.4s;
-        }
-
-        .animate-delay-5 {
-            animation-delay: 0.5s;
-        }
-
-        .animate-delay-6 {
-            animation-delay: 0.6s;
-        }
-
-        .animate-scale {
-            opacity: 0;
-            animation: scaleIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-        }
-
-        /* Scroll-triggered */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== NAVBAR ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.5rem;
-            background: rgba(247, 247, 247, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(13, 13, 13, 0.1);
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        @media (min-width: 768px) {
-            nav {
-                padding: 1rem 3rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            nav {
-                padding: 1rem 5rem;
-            }
-        }
-
-        nav .logo {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
-        }
-
-        nav .nav-links {
-            display: none;
-            gap: 2rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--muted);
-        }
-
-        @media (min-width: 768px) {
-            nav .nav-links {
-                display: flex;
-            }
-        }
-
-        nav .nav-links a:hover {
-            color: var(--fg);
-        }
-
-        nav .cta-btn {
-            background: var(--primary);
-            color: var(--primary-fg);
-            padding: 0.5rem 1.25rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        nav .cta-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            padding-top: 8rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero {
-                padding-top: 10rem;
-            }
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .hero h1 .accent {
-            color: var(--accent);
-        }
-
-        .hero-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1.5rem;
-        }
-
-        .hero-photo {
-            width: 10rem;
-            height: 10rem;
-            overflow: hidden;
-            background: var(--secondary);
-        }
-
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-name {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .hero-role {
-            color: var(--muted);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(13, 13, 13, 0.1);
-        }
-
-        @media (min-width: 768px) {
-            .stats {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .stat-value {
-            font-family: var(--font-display);
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3rem);
-        }
-
-        .stat-label {
-            color: var(--muted);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            white-space: pre-line;
-        }
-
-        /* ===== SKILLS ===== */
-        .skill-row {
-            display: grid;
-            grid-template-columns: auto 1fr 2fr;
-            gap: 1rem;
-            padding: 2rem 1rem;
-            border-top: 1px solid rgba(13, 13, 13, 0.1);
-            transition: background 0.2s;
-        }
-
-        @media (min-width: 768px) {
-            .skill-row {
-                grid-template-columns: 3rem 1fr 2fr;
-            }
-        }
-
-        .skill-row:hover {
-            background: rgba(26, 63, 160, 0.06);
-        }
-
-        .skill-num {
-            color: var(--muted);
-            font-size: 0.875rem;
-            font-family: monospace;
-        }
-
-        .skill-title {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .skill-desc {
-            color: var(--muted);
-            font-size: 0.875rem;
-        }
-
-        /* ===== ABOUT ===== */
-        .about {
-            background: var(--primary);
-            color: var(--primary-fg);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .about-photo {
-            position: relative;
-            width: 100%;
-            max-width: 28rem;
-            aspect-ratio: 1;
-            overflow: hidden;
-            background: var(--muted);
-        }
-
-        .about-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-photo .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(26, 63, 160, 0.3);
-            mix-blend-mode: multiply;
-        }
-
-        .about h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .about .label {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .about p {
-            color: rgba(247, 247, 247, 0.7);
-            font-size: 0.875rem;
-            line-height: 1.7;
-        }
-
-        /* ===== EXPERIENCE ===== */
-        .exp-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
-            padding: 1.5rem 1rem;
-            border-top: 1px solid rgba(13, 13, 13, 0.1);
-            transition: background 0.2s;
-        }
-
-        @media (min-width: 768px) {
-            .exp-row {
-                grid-template-columns: 2fr 4fr 6fr;
-                gap: 1rem;
-            }
-        }
-
-        .exp-row:hover {
-            background: rgba(26, 63, 160, 0.05);
-        }
-
-        .exp-period {
-            color: var(--muted);
-            font-size: 0.75rem;
-            font-family: monospace;
-        }
-
-        .exp-role {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-        }
-
-        .exp-company {
-            color: var(--muted);
-            font-size: 0.75rem;
-            margin-top: 0.25rem;
-        }
-
-        .exp-desc {
-            color: var(--muted);
-            font-size: 0.875rem;
-        }
-
-        /* ===== PROJECTS ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .project-card {
-            padding: 2rem;
-            background: var(--card);
-            border: 1px solid rgba(13, 13, 13, 0.1);
-            transition: border-color 0.2s, transform 0.2s;
-            display: block;
-        }
-
-        .project-card:hover {
-            border-color: rgba(13, 13, 13, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .project-header h3 {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.25rem;
-            text-transform: uppercase;
-        }
-
-        .project-header svg {
-            width: 16px;
-            height: 16px;
-            color: var(--muted);
-            transition: color 0.2s;
-        }
-
-        .project-card:hover .project-header svg {
-            color: var(--fg);
-        }
-
-        .project-desc {
-            color: var(--muted);
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            font-size: 0.75rem;
-            font-family: monospace;
-            padding: 0.25rem 0.5rem;
-            background: var(--secondary);
-        }
-
-        .oss-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .oss-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .oss-card {
-            padding: 1.5rem;
-            border: 1px solid rgba(13, 13, 13, 0.1);
-            transition: border-color 0.2s, transform 0.2s;
-            display: block;
-        }
-
-        .oss-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .oss-card h4 {
-            font-family: monospace;
-            font-size: 0.875rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .oss-card p {
-            color: var(--muted);
-            font-size: 0.875rem;
-        }
-
-        /* ===== CREDENTIALS ===== */
-        .credentials {
-            background: var(--secondary);
-        }
-
-        .cred-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-
-        @media (min-width: 768px) {
-            .cred-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .cred-item {
-            border-top: 1px solid rgba(13, 13, 13, 0.1);
-            padding-top: 1rem;
-        }
-
-        .cred-item p {
-            font-family: var(--font-display);
-            font-weight: 700;
-        }
-
-        .cred-item .sub {
-            color: var(--muted);
-            font-size: 0.875rem;
-            font-family: var(--font-body);
-            font-weight: 400;
-        }
-
-        .cred-label {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 1rem;
-        }
-
-        /* ===== CTA ===== */
-        .cta-section {
-            background: var(--accent);
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1;
-            color: var(--primary-fg);
-        }
-
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            background: var(--primary);
-            color: var(--primary-fg);
-            padding: 1rem 2rem;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--primary);
-            color: var(--primary-fg);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            color: rgba(247, 247, 247, 0.6);
-            transition: color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-fg);
-        }
-
-        .social-links svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: rgba(247, 247, 247, 0.8);
-            transition: color 0.2s;
-            margin-bottom: 1rem;
-        }
-
-        .contact-link:hover {
-            color: var(--primary-fg);
-        }
-
-        .contact-link svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
-
-        .contact-link span {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 4rem;
+        .dark .border-thin {
+            border-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 
-<body>
+<body class="bg-brand-cream text-brand-dark font-sans selection:bg-brand-maroon selection:text-white">
+    <!-- BEGIN: Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-brand-cream/80 backdrop-blur-md px-6 py-4 flex justify-between items-center border-b border-black/5">
+        <div class="text-xs font-medium uppercase tracking-widest">Jamshedpur Jharkhand, India </div>
 
-    <!-- NAVBAR -->
-  
-
-    <!-- HERO -->
-    <section class="section hero">
-        <div class="hero-grid">
-            <div>
-                <h1 class="animate">Build.<br>Ship.<br><span class="accent">Scale.</span></h1>
+        <div>
+            <a href="resume.pdf" download
+                class="bg-brand-dark text-white px-4 py-2 text-[10px] uppercase font-bold tracking-widest hover:bg-brand-maroon transition-all">
+                Download resume
+            </a>
+        </div>
+    </nav>
+    <!-- END: Navigation -->
+    <!-- BEGIN: Hero Section -->
+    <main class="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+            <div class="lg:col-span-8">
+                <h1 class="text-7xl md:text-[120px] font-display leading-[0.9] uppercase tracking-tighter mb-8">
+                    SCALE CODE.<br />MITIGATE<br />TECHNICAL DEBT.
+                </h1>
+                <a class="inline-block border-b-2 border-brand-dark pb-1 text-xs font-bold uppercase tracking-widest hover:text-brand-maroon hover:border-brand-maroon transition-all"
+                    href="#contact">
+                    Free Consultation →
+                </a>
             </div>
-            <div class="hero-info">
-                <div class="hero-photo animate-scale">
-                    <img src="https://shankargorai.site/shankargorai.png" alt="Shankar Gorai" />
+            <div class="lg:col-span-4 relative">
+                <div class="bg-brand-grey p-4 aspect-[4/5] flex items-end justify-center relative overflow-hidden">
+                    <!-- Placeholder for Profile Image -->
+                    <img alt="Shankar Gorai " class=" contrast-125 mix-blend-multiply w-full h-full object-cover"
+                        src="https://shankargorai.site/shankargorai.png" />
+                    <div class="absolute bottom-6 left-6 text-brand-dark">
+                        <p class="font-display text-2xl text-white uppercase leading-none">Shankar Gorai</p>
+                        <p class="text-[10px] uppercase font-bold text-white opacity-70">Senior Laravel Developer</p>
+                    </div>
                 </div>
-                <div class="animate animate-delay-5">
-                    <p class="hero-name">SHANKAR GORAI</p>
-                    <p class="hero-role">Full Stack Laravel Developer</p>
-                    <p class="hero-role">Jamshedpur, Jharkhand, India</p>
+                <div class="mt-4 text-[11px] leading-relaxed max-w-xs uppercase font-medium">
+                    I help companies scale web applications, build robust APIs, and architect high-performance Laravel
+                    ecosystems.
                 </div>
             </div>
         </div>
-        <div class="stats animate animate-delay-6">
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 pt-12 border-thin">
             <div>
-                <p class="stat-value">6+</p>
-                <p class="stat-label">Years of Experience</p>
+                <p class="text-4xl font-display uppercase">8+</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Years of PHP Mastery</p>
             </div>
             <div>
-                <p class="stat-value">15+</p>
-                <p class="stat-label">Projects Delivered</p>
+                <p class="text-4xl font-display uppercase">25+</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Production Apps Shipped</p>
             </div>
-
             <div>
-                <p class="stat-value">2</p>
-                <p class="stat-label">Open Source Packages</p>
+                <p class="text-4xl font-display uppercase">2</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Open Source Packages</p>
+            </div>
+            <div>
+                <p class="text-4xl font-display uppercase">99.9%</p>
+                <p class="text-[10px] uppercase font-bold opacity-60">Uptime Architecture</p>
+            </div>
+        </div>
+    </main>
+    <!-- END: Hero Section -->
+    <!-- BEGIN: Core Expertise Section -->
+    <section class="py-24 px-6 md:px-12 bg-white/50 animate-on-scroll" id="skills">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-16">
+                <span
+                    class="text-[10px] px-3 py-1 border border-black/20 rounded-full uppercase font-bold inline-block mb-4 md:mb-0">Technical
+                    Skills</span>
+                <h2 class="text-4xl md:text-6xl font-display uppercase leading-none">Mastering the Modern Stack</h2>
+            </div>
+            <div class="space-y-0">
+                <!-- Skill Row 1 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">01</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Back-End Architecture</div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        Laravel (TALL Stack), PHP 8.3+, Eloquent Optimization, Codeigniter.
+                    </div>
+                </div>
+                <!-- Skill Row 2 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">02</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Infrastructure &amp; DevOps
+                    </div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        AWS (Lighsail, S3), Docker, CI/CD Pipelines (GitHub Actions), Redis Caching.
+                    </div>
+                </div>
+                <!-- Skill Row 3 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">03</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Front-End Interface</div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        Tailwind CSS, Alpine.js, Livewire, Vue.js, Responsive Design Systems.
+                    </div>
+                </div>
+                <!-- Skill Row 4 -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-12 py-8 border-thin border-b hover:bg-brand-cream/40 transition-colors px-4">
+                    <div class="md:col-span-1 text-[10px] font-bold opacity-40">04</div>
+                    <div class="md:col-span-4 font-display text-xl uppercase tracking-wider">Testing &amp; Security
+                    </div>
+                    <div class="md:col-span-7 text-xs uppercase leading-relaxed font-medium opacity-70">
+                        Pest, PHPUnit, Integration Testing, Data Encryption, OAuth2/Passport.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- SKILLS -->
-    <section class="section">
-        <h2 class="section-title reveal">How I Solve Your<br>Challenges</h2>
-        <div class="skill-row reveal">
-            <span class="skill-num">01</span>
-            <h3 class="skill-title">Backend Development</h3>
-            <p class="skill-desc">Laravel, PHP, CodeIgniter, Core PHP — building robust server-side applications with
-                clean architecture and REST APIs.</p>
-        </div>
-        <div class="skill-row reveal">
-            <span class="skill-num">02</span>
-            <h3 class="skill-title">Frontend Development</h3>
-            <p class="skill-desc">Livewire, Tailwind CSS, Alpine.js, Vue.js, Inertia.js — crafting responsive and
-                interactive user interfaces.</p>
-        </div>
-        <div class="skill-row reveal">
-            <span class="skill-num">03</span>
-            <h3 class="skill-title">Database Management</h3>
-            <p class="skill-desc">MySQL, MongoDB, PostgreSQL, SQLite, Firestore — designing efficient database schemas
-                and optimizing queries.</p>
-        </div>
-        <div class="skill-row reveal">
-            <span class="skill-num">04</span>
-            <h3 class="skill-title">DevOps & Deployment</h3>
-            <p class="skill-desc">AWS Lightsail, LAMP Stack, VPS Setup, Google Console — managing infrastructure and
-                deployment pipelines.</p>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section about">
-        <div class="about-grid">
-            <div class="about-photo reveal">
-                <div class="overlay"></div>
-                <img src="https://shankargorai.site/shankargorai.png" alt="Shankar Gorai" />
-            </div>
-            <div class="reveal">
-                <h2>Who Am I and<br>How Can I<br>Be of Help?</h2>
-                <div>
-                    <p class="label">My Story</p>
-                    <p>Skilled in Laravel and PHP with 6+ years of experience working on diverse projects including
-                        Inventory management, Freight management, Recharge and bill payments, E-commerce, Directory
-                        solutions, and more. I have knowledge of AWS Lightsail and VPS setup for LAMP stack, and good
-                        experience in REST APIs using core PHP and Laravel frameworks.</p>
+    <!-- END: Core Expertise Section -->
+    <!-- BEGIN: About Me Section -->
+    <section class="py-24 px-6 md:px-12 bg-brand-grey text-white animate-on-scroll" id="about">
+        <div class="max-w-7xl mx-auto rounded-3xl overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-4 bg-brand-grey aspect-[4/5] md:aspect-auto">
+                    <img alt="Shankar" class="w-full h-full object-cover mix-blend-multiply " src="shankar.png" />
+                </div>
+                <div class="lg:col-span-8 p-12 md:p-20 flex flex-col justify-center">
+                    <span
+                        class="text-[10px] px-3 py-1 border border-white/20 rounded-full uppercase font-bold inline-block mb-8 self-start">About
+                        Me</span>
+                    <h2 class="text-5xl md:text-7xl font-display uppercase leading-[0.9] mb-8">
+                        WHO AM I AND<br />HOW CAN I BE<br />OF HELP?
+                    </h2>
+                    <p class="text-sm md:text-base opacity-80 max-w-xl mb-12 font-medium">
+                        I'm Shankar Gorai, a Senior Laravel Developer focused on building clean, maintainable software.
+                        With over 8 years in the ecosystem, I bridge the gap between complex business logic and
+                        high-performance technical execution.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold mb-4 tracking-widest text-black">Key
+                                Philosophy</p>
+                            <ul class="text-xs space-y-2 uppercase font-medium">
+                                <li>• Clean Code over Clever Code</li>
+                                <li>• Scalability through Simplicity</li>
+                                <li>• Test-Driven Development</li>
+                                <li>• Automated Workflows</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-col justify-end">
+                            <p class="text-[10px] uppercase font-bold opacity-50 mb-1">Email</p>
+                            <p class="text-xs font-bold mb-4">shankargoraise@gmail.com</p>
+                            <p class="text-[10px] uppercase font-bold opacity-50 mb-1">Location</p>
+                            <p class="text-xs font-bold uppercase">Remote / Jamshedpur,Jharkhand India</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- END: About Me Section -->
+    <!-- BEGIN: Experience / Case Studies -->
+    <section class="py-24 px-6 md:px-12 animate-on-scroll" id="experience">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center space-x-4 mb-16">
+                <span
+                    class="text-[10px] px-3 py-1 border border-black/20 rounded-full uppercase font-bold">Experience</span>
+                <h2 class="text-4xl md:text-6xl font-display uppercase">Success Stories</h2>
+            </div>
+            <!-- Accordion-style Experience -->
+            <div class="space-y-4">
+                <!-- Exp 1 -->
+                <details class="group border-thin" open="">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40  w-32 hidden md:block">eHealth
+                                Platform</span>
+                            <!-- <span class="text-xl md:text-3xl font-display uppercase">Vadi Health </span> -->
+                            <a href="https://vadi.co.in/" target="_blank">
+                                <img src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi Health"
+                                    class="h-20">
+                            </a>
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Appointment booking for doctors and
+                                health services for multiple user without duplicate booking and seamless payment
+                                integration.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Used atomic lock to prevent
+                                duplicacy in booking and payment.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">99.99% uptime achieved, with a 65%
+                                reduction in API response times.</p>
+                        </div>
+                    </div> -->
+                </details>
+                <!-- Exp 2 -->
+                <details class="group border-thin">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40 uppercase w-32 hidden md:block">E-learning
+                            </span>
+                            <!-- <span class="text-xl md:text-3xl font-display uppercase">Swadhyay </span> -->
+                            <a href="https://swadhyay.j2p.in/" target="_blank">
+                                <img src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" class="h-20">
+                            </a>
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">To use Youtbe </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Implemented custom multi-tenancy
+                                logic using Laravel's core service container.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Scaled to 1,200+ tenants with zero
+                                data leakage and simplified deployments.</p>
+                        </div>
+                    </div> -->
+                </details>
+                <details class="group border-thin">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40 uppercase w-32 hidden md:block">Online
+                                Mentorship
+                            </span>
+                            <a href="https://kualia.app"
+                                class="w-32 md:w-[162px] h-12 md:h-[67px] text-purple-900 font-['Poppins'] font-semibold text-3xl md:text-[50px] tracking-[0] leading-normal">
+                                Kualia
+                            </a>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-        <h2 class="section-title reveal">Success<br>Stories</h2>
-        <div class="exp-row reveal">
-            <span class="exp-period">June 2024 - Present</span>
-            <div>
-                <p class="exp-role">Full Stack Laravel Developer</p>
-                <p class="exp-company">Cromp IT Solution</p>
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">To use Youtbe </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Implemented custom multi-tenancy
+                                logic using Laravel's core service container.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Scaled to 1,200+ tenants with zero
+                                data leakage and simplified deployments.</p>
+                        </div>
+                    </div> -->
+                </details>
+                <details class="group border-thin">
+                    <summary class="flex justify-between items-center py-6 cursor-pointer list-none">
+                        <div class="flex items-baseline space-x-12">
+                            <span class="text-[10px] font-bold opacity-40 uppercase w-32 hidden md:block">
+                                E-Commerce
+                            </span>
+                            <a href="https://www.ghorua.online/" target="_blank">
+                                <img src="https://www.ghorua.online/logo.png" alt="Ghorua Online" class="h-20">
+                            </a>
+
+                        </div>
+                        <!-- <div class="text-2xl transition-transform group-open:rotate-180">↓</div> -->
+                    </summary>
+                    <!-- <div class="pb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Challenge</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">To use Youtbe </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Solution</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Implemented custom multi-tenancy
+                                logic using Laravel's core service container.</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold opacity-40 mb-2">The Result</p>
+                            <p class="text-xs leading-relaxed uppercase font-medium">Scaled to 1,200+ tenants with zero
+                                data leakage and simplified deployments.</p>
+                        </div>
+                    </div> -->
+                </details>
             </div>
-            <p class="exp-desc">Developing and maintaining Laravel-based applications, backend systems and API
-                development.</p>
-        </div>
-        <div class="exp-row reveal">
-            <span class="exp-period">Jan 2024 - Present</span>
-            <div>
-                <p class="exp-role">Full Stack Laravel Developer</p>
-                <p class="exp-company">Origin Ventures</p>
-            </div>
-            <p class="exp-desc">Building scalable Laravel applications, implementing REST APIs and backend solutions.
-            </p>
-        </div>
-        <div class="exp-row reveal">
-            <span class="exp-period">Oct 2023 - Jan 2024</span>
-            <div>
-                <p class="exp-role">Senior Laravel Developer</p>
-                <p class="exp-company">AVC Dotfy LLP</p>
-            </div>
-            <p class="exp-desc">Developed Laravel-based web applications, database design and optimization.</p>
-        </div>
-        <div class="exp-row reveal">
-            <span class="exp-period">Mar 2023 - Sep 2023</span>
-            <div>
-                <p class="exp-role">Laravel Developer</p>
-                <p class="exp-company">Appic</p>
-            </div>
-            <p class="exp-desc">Built backend services using Laravel, integrated third-party APIs and services.</p>
-        </div>
-        <div class="exp-row reveal">
-            <span class="exp-period">Aug 2021 - Feb 2023</span>
-            <div>
-                <p class="exp-role">Senior Laravel Developer</p>
-                <p class="exp-company">Layroad</p>
-            </div>
-            <p class="exp-desc">Developed Inventory management, E-commerce, Freight management and Recharge payment
-                systems.</p>
-        </div>
-        <div class="exp-row reveal">
-            <span class="exp-period">Sep 2018 - Dec 2021</span>
-            <div>
-                <p class="exp-role">Web Developer</p>
-                <p class="exp-company">SHINE APEX INDIA</p>
-            </div>
-            <p class="exp-desc">Developed web apps using PHP and Laravel. Managed AWS Lightsail and VPS LAMP stack
-                setup.</p>
         </div>
     </section>
+    <!-- END: Experience / Case Studies -->
+    <!-- BEGIN: Open Source Section -->
+    <section class="py-24 px-6 md:px-12 bg-white animate-on-scroll">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-8xl font-display uppercase leading-none tracking-tighter">Open Source
+                    &amp;<br />Packages</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/10 border border-black/10">
+                <!-- Package 1 -->
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/laravel-visit-tracker"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">laravel-visit-tracker</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">A Laravel package to track visits and
+                        page views.</p>
+                    <!-- <div class="text-xs font-bold uppercase">2.1k Stars • 14k Downloads</div> -->
+                </div>
+                <!-- Package 2 -->
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/country-phone-validator"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">country-phone-validator</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">Laravel package to validate phone
+                        numbers using country name or dial code</p>
+                    <!-- <div class="text-xs font-bold uppercase">1.2k Stars • 1k Downloads</div> -->
+                </div>
+                <!-- Package 3 -->
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/laravel-search"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">laravel-search</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">Global search across Laravel models
+                        and relationships.</p>
+                    <!-- <div class="text-xs font-bold uppercase">1.2k Stars • 1k Downloads</div> -->
+                </div>
+                <div class="bg-white p-8 group hover:bg-brand-cream  transition-all duration-300">
+                    <div class="flex justify-between mb-8">
+                        <span class="text-[10px] font-bold uppercase tracking-widest opacity-50">Laravel</span>
+                        <a target="_blank" href="https://github.com/Shankar-Tom/laravel-search"
+                            class="text-xs font-bold uppercase underline">GitHub</a>
+                    </div>
+                    <h3 class="text-2xl font-display uppercase mb-4">laravel-login-limit</h3>
+                    <p class="text-xs uppercase leading-relaxed font-medium mb-8">Global search across Laravel models
+                        and relationships.</p>
+                    <!-- <div class="text-xs font-bold uppercase">1.2k Stars • 1k Downloads</div> -->
+                </div>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-        <h2 class="section-title reveal">Featured<br>Projects</h2>
-        <div class="projects-grid">
-            <a href="https://kualia.app/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
-                <div class="project-header">
-                    <h3>Kualia</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </div>
-                <p class="project-desc">Online Motivational Coach Platform</p>
-                <div class="tech-tags"><span class="tech-tag">Laravel</span><span class="tech-tag">Tailwind</span><span
-                        class="tech-tag">Livewire</span><span class="tech-tag">Stripe</span><span
-                        class="tech-tag">JWT</span></div>
-            </a>
-            <a href="https://ghorua.online/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
-                <div class="project-header">
-                    <h3>GHORUA</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </div>
-                <p class="project-desc">Dynamic UPI QR payment platform</p>
-                <div class="tech-tags"><span class="tech-tag">Laravel</span><span class="tech-tag">Tailwind</span><span
-                        class="tech-tag">MySQL</span></div>
-            </a>
-            <a href="https://swadhyay.j2p.in/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
-                <div class="project-header">
-                    <h3>SWADHYAY</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </div>
-                <p class="project-desc">E-Learning Platform</p>
-                <div class="tech-tags"><span class="tech-tag">Laravel</span><span class="tech-tag">Bootstrap</span><span
-                        class="tech-tag">MySQL</span><span class="tech-tag">Razorpay</span></div>
-            </a>
-            <a href="https://evcharger.shankargorai.site/" target="_blank" rel="noopener noreferrer"
-                class="project-card reveal">
-                <div class="project-header">
-                    <h3>ShareCharger</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </div>
-                <p class="project-desc">Platform for EV owners to find chargers nearby</p>
-                <div class="tech-tags"><span class="tech-tag">Laravel</span><span class="tech-tag">Tailwind</span><span
-                        class="tech-tag">MySQL</span><span class="tech-tag">Alpine.JS</span></div>
-            </a>
-            <a href="https://sendpilot.site/" target="_blank" rel="noopener noreferrer" class="project-card reveal">
-                <div class="project-header">
-                    <h3>Send Pilot</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </div>
-                <p class="project-desc">WhatsApp Bulk Messaging Web App</p>
-                <div class="tech-tags"><span class="tech-tag">Laravel</span><span class="tech-tag">Vue.js</span><span
-                        class="tech-tag">Tailwind</span><span class="tech-tag">MySQL</span></div>
-            </a>
-        </div>
-
-        <h3 class="reveal"
-            style="font-family:var(--font-display);font-weight:700;font-size:1.5rem;text-transform:uppercase;margin-top:4rem;margin-bottom:2rem;">
-            Open Source Packages</h3>
-        <div class="oss-grid">
-            <a href="https://github.com/Shankar-Tom/laravel-visit-tracker" target="_blank" rel="noopener noreferrer"
-                class="oss-card reveal">
-                <h4>laravel-visit-tracker</h4>
-                <p>Track page and model visits (with morph visitor) + analytics.</p>
-            </a>
-            <a href="https://github.com/Shankar-Tom/country-phone-validator" target="_blank" rel="noopener noreferrer"
-                class="oss-card reveal">
-                <h4>country-phone-validation</h4>
-                <p>Laravel package to validate phone numbers using country name or dial code.</p>
-            </a>
+            </div>
         </div>
     </section>
-
-    <!-- CREDENTIALS -->
-    <section class="section credentials">
-        <div class="cred-grid">
-            <div class="reveal">
-                <h2 class="section-title" style="margin-bottom:0">Trusted<br>Credentials<br>& Education</h2>
+    <section class="py-24 px-6 md:px-12 bg-brand-grey text-white animate-on-scroll">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-8xl font-display  uppercase leading-none tracking-tighter">
+                    Education &
+                    Cerificates</h2>
             </div>
-            <div class="reveal">
-                <p class="cred-label">Education</p>
-                <div class="cred-item" style="margin-bottom:2rem;">
+            <div class="cred-item">
+                <h3 class="cred-label text-xl font-semibold">Education</h3>
+                <div class="text-xl font-medium">
                     <p>Diploma in Computer Science</p>
-                    <p class="sub">Al-kabir Polytechnic • 2014 - 2017</p>
+                    <p class="text-sm">Al-kabir Polytechnic • 2014 - 2017</p>
                 </div>
-                <p class="cred-label">Certifications</p>
-                <div class="cred-item">
+                <h3 class="cred-label text-xl font-semibold mt-4">Certifications</h3>
+                <div class="text-xl font-medium">
                     <p>MongoDB Certified Developer, Associate (C100DEV)</p>
-                </div>
-                <div class="cred-item">
                     <p>cPanel Ultimate Course</p>
-                </div>
-                <div class="cred-item">
                     <p>SQL Crud Certification</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- CTA -->
-    <section id="contact" class="section cta-section">
-        <div class="reveal">
-            <h2>Schedule<br>A Consultation</h2>
-            <a href="mailto:shankargoraise@gmail.com" class="cta-button">Let's Talk</a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <section class="section footer">
-        <div class="footer-grid">
-            <div class="reveal">
-                <div class="social-links">
-                    <a href="https://github.com/Shankar-Tom" target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shankar-gorai-a35ba8208" target="_blank"
-                        rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                    </a>
+    <!-- END: Open Source Section -->
+    <!-- BEGIN: Testimonials/Recommendations -->
+    <!-- <section class="py-24 px-6 md:px-12 bg-brand-cream animate-on-scroll">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-16">
+                <span
+                    class="text-[10px] px-3 py-1 border border-black/20 rounded-full uppercase font-bold inline-block mb-4 md:mb-0">Testimonials</span>
+                <h2 class="text-4xl md:text-6xl font-display uppercase leading-none">What Colleagues Say</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="border-t border-black/10 pt-8">
+                    <p class="text-[10px] font-bold uppercase opacity-40 mb-6">01/03</p>
+                    <p class="text-sm font-medium leading-relaxed italic mb-8">"Hugo’s ability to untangle legacy code
+                        and turn it into a high-performance system is unmatched. He saved us months of rework."</p>
+                    <div class="flex items-center space-x-4">
+                        <img alt="User" class="rounded-full grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy8oqgXhndJJnfx36RJNa1opuptgqkMlTfLeVzNiLcBGCrkUaR74BvHvzVXgLwQLf0kXX_yzUNMPRV6s807ozhOiJtl9koUxgl5wrYwpJQpUDmn5k5gxFEXKgf9M2VcEaZUtpoLyvx5ibhFCf5zBlIYpbrMYg0FIohFW1Xkj4ruJIQvlLfmgpzZxft1ptP0FPJAQtm3LzfEkiGIGZ0Osh75Urlb99lgn6bAXDh_4Hd-O6_hGpNquqPu4EH7eFh8th3QseFqWY9w9w" />
+                        <div>
+                            <p class="text-xs font-bold uppercase">Simon Davies</p>
+                            <p class="text-[10px] uppercase opacity-50">CTO at Altimit Logistics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-black/10 pt-8">
+                    <p class="text-[10px] font-bold uppercase opacity-40 mb-6">02/03</p>
+                    <p class="text-sm font-medium leading-relaxed italic mb-8">"Beyond his Laravel expertise, Hugo
+                        brings a strategic mindset to every project. He doesn't just write code; he solves business
+                        problems."</p>
+                    <div class="flex items-center space-x-4">
+                        <img alt="User" class="rounded-full grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6EJ4bExV9wI6d2K1ILBRMY1YlLj5Q-zmNaRL_TiKtWF2rd0w3ubliUpAcZ-V9Ad6x6NbTM7q57MxPDqC54tZG0U9GuMAJUcb_XT9-oOrBK7fxefUUIwlob7bRKhASZmHA9Z3zOu94oXL5_t-xH_ixx3-SGQKlrj8Ge9Lxv7a_3saheEfFWaewgU6kyFzdVs53Hbu5YGYEe_K1loqn8LQgbHUySGRYPMbYs9eO4SRj7uquVEUpzqX8V0GvXFhyZGpTwvCXZDIOj6c" />
+                        <div>
+                            <p class="text-xs font-bold uppercase">Harriet Wilson</p>
+                            <p class="text-[10px] uppercase opacity-50">VPE at Northstar Energy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-black/10 pt-8">
+                    <p class="text-[10px] font-bold uppercase opacity-40 mb-6">03/03</p>
+                    <p class="text-sm font-medium leading-relaxed italic mb-8">"A true professional and a mentor to the
+                        junior team. His documentation and code standards set the bar for our entire department."</p>
+                    <div class="flex items-center space-x-4">
+                        <img alt="User" class="rounded-full grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlBCvFiYN6YzE0f25-iZViIuwxpTfvyVw4mHZmeOeN7rJfIl1tND3-fLhhcW3OsgCNA5V7-AJDSeR4qO8Hlm6LdMFLfCyf9Z1eR7XA3c9ZtvQiV19fQQxoSD2IbMvBCIOOtgV0ke-TtmzLzfZJ-iTVPwCXjyNPbz1wzJ0D4CDR2P94KWfRXvAHAc4eTK46gzWnTZUoXNEA2KvSqcJ0UG_Q67qYTL2q3B33xo5Dfvb7FVFWzB_kN8QYaj1TLiVUqw057cHdQKezapo" />
+                        <div>
+                            <p class="text-xs font-bold uppercase">Oliver Thompson</p>
+                            <p class="text-[10px] uppercase opacity-50">Lead Architect at Meridia</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="reveal">
-                <a href="mailto:shankargoraise@gmail.com" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
-                    <span>shankargoraise@gmail.com</span>
-                </a>
-                <a href="tel:+918114577909" class="contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                    <span>+91 8114577909</span>
-                </a>
+        </div>
+    </section> -->
+    <!-- END: Testimonials/Recommendations -->
+    <!-- BEGIN: Contact Section -->
+    <!-- <section class="py-24 px-6 md:px-12 bg-brand-grey text-white animate-on-scroll" id="contact">
+        <div class="max-w-7xl mx-auto bg-brand-dark/20 rounded-3xl p-12 md:p-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div>
+                    <span
+                        class="text-[10px] px-3 py-1 border border-white/20 rounded-full uppercase font-bold inline-block mb-8">Contact
+                        Me</span>
+                    <h2 class="text-5xl md:text-7xl font-display uppercase leading-tight mb-8">SCHEDULE
+                        A<br />CONSULTATION</h2>
+                    <p class="text-sm opacity-60 max-w-sm mb-12 uppercase font-medium">I'm here to help you unlock
+                        technical clarity and drive growth through high-performance software engineering.</p>
+
+                </div>
+                <div class="space-y-8">
+                    <h2
+                        class="text-[2vw] font-display uppercase leading-none tracking-tighter hover:text-brand-maroon transition-colors cursor-pointer select-none">
+                        shankargoraise@gmail.com
+                    </h2>
+                    <p class="text-2xl md:text-4xl font-display uppercase mt-4">+91 81145 77909</p>
+                </div>
             </div>
         </div>
-    </section>
+    </section> -->
+    <!-- END: Contact Section -->
+    <!-- BEGIN: Footer -->
+    <footer class="py-20 px-6 md:px-12 text-center bg-brand-cream">
+        <div class="max-w-7xl mx-auto">
+            <h2
+                class="text-[6vw] font-display uppercase leading-none tracking-tighter hover:text-brand-maroon transition-colors cursor-pointer select-none">
+                shankargoraise@gmail.com
+            </h2>
+            <p class="text-4xl md:text-8xl font-display uppercase mt-4">+91 81145 77909</p>
 
-    <script>
-        // Scroll-triggered reveal animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-                else {
-                    entry.target.classList.remove('visible')
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '-50px' });
+        </div>
+    </footer>
+    <!-- END: Footer -->
+    <script data-purpose="scroll-animations">
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                    else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
 
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
             });
         });
     </script>
