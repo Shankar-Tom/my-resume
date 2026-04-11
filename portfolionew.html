@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Shankar Gorai — Senior Laravel Developer</title>
+<meta name="description" content="Portfolio of Shankar Gorai, Senior Laravel Developer with 8+ years of experience building scalable web applications."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0a0a;--fg:#ededed;--card:#121212;--primary:#22c55e;--primary-fg:#020202;
+--muted:#888;--border:#242424;--secondary:#1e1e1e;
+}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;scroll-behavior:smooth}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* Navbar */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(12px);background:rgba(10,10,10,.7);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:72rem;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:.875rem;color:var(--primary);font-weight:600}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--muted);transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+.mobile-toggle{display:none;background:none;border:none;color:var(--fg);font-size:1.5rem;cursor:pointer}
+.mobile-menu{display:none;padding:1rem 1.5rem;background:rgba(10,10,10,.95);border-bottom:1px solid var(--border)}
+.mobile-menu a{display:block;padding:.5rem 0;font-size:.875rem;color:var(--muted)}
+.mobile-menu a:hover{color:var(--primary)}
+
+@media(max-width:768px){
+.nav-links{display:none}
+.mobile-toggle{display:block}
+.mobile-menu.open{display:block}
+}
+
+/* Section wrapper */
+.section{position:relative;z-index:10;min-height:120svh}
+@media(min-width:769px){.section{min-height:130svh}}
+.section-sticky{position:sticky;top:0;height:100svh;overflow:hidden}
+.section-label-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 1.5rem;pointer-events:none}
+.section-label{font-size:clamp(3.5rem,14vw,13rem);font-weight:900;white-space:nowrap;text-align:center;line-height:1;color:#fff;transition:opacity .05s linear,transform .05s linear,color .05s linear}
+.section-content-wrap{position:relative;z-index:10;display:flex;min-height:100svh;align-items:flex-end;padding:5rem 1.5rem}
+.section-content{width:100%;transition:opacity .05s linear,transform .05s linear}
+
+/* Text gradient */
+.text-gradient{background:linear-gradient(135deg,var(--primary),#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.glow{box-shadow:0 0 30px -5px rgba(34,197,94,.3)}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.25rem;transition:all .5s}
+.card:hover{border-color:rgba(34,197,94,.5);transform:translateY(-4px);box-shadow:0 0 30px -5px rgba(34,197,94,.3)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.25rem .5rem;border-radius:.375rem;background:var(--secondary);color:var(--primary)}
+
+/* Grid helpers */
+.grid-2{display:grid;grid-template-columns:1fr;gap:1.5rem}
+.grid-4{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-4{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.grid-4{grid-template-columns:repeat(4,1fr)}}
+.grid-3{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.grid-3{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+/* Hero grid */
+.hero-grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr}}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+@media(min-width:640px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.btn-primary{display:inline-block;padding:.75rem 1.5rem;border-radius:.5rem;background:var(--primary);color:var(--primary-fg);font-weight:500;font-size:.875rem;transition:opacity .3s}
+.btn-primary:hover{opacity:.9}
+.btn-outline{display:inline-block;padding:.75rem 1.5rem;border-radius:.5rem;border:1px solid var(--primary);color:var(--primary);font-weight:500;font-size:.875rem;transition:background .3s}
+.btn-outline:hover{background:rgba(34,197,94,.1)}
+
+/* Photo */
+.photo-wrap{position:relative;display:flex;justify-content:center}
+@media(min-width:768px){.photo-wrap{justify-content:flex-end}}
+.photo{width:16rem;height:18rem;border-radius:1rem;overflow:hidden;border:2px solid var(--border);object-fit:cover}
+@media(min-width:768px){.photo{width:20rem;height:24rem}}
+.photo-badge{position:absolute;bottom:-1rem;left:-1rem;background:var(--card);border:1px solid var(--border);border-radius:.5rem;padding:.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--primary)}
+
+/* Timeline */
+.timeline-item{position:relative;padding-left:2rem;border-left:1px solid var(--border);transition:border-color .5s}
+.timeline-item:hover{border-color:var(--primary)}
+.timeline-dot{position:absolute;left:-5px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--border);transition:background .5s}
+.timeline-item:hover .timeline-dot{background:var(--primary)}
+
+/* Edu cards */
+.edu-card{display:flex;align-items:flex-start;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;transition:all .5s}
+.edu-card:hover{border-color:rgba(34,197,94,.5);box-shadow:0 0 30px -5px rgba(34,197,94,.3)}
+.edu-icon{padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,.1);color:var(--primary);font-size:1.5rem}
+
+/* Contact */
+.contact-card{display:flex;align-items:center;gap:.75rem;padding:1rem;border-radius:.75rem;background:var(--card);border:1px solid var(--border);transition:all .3s}
+.contact-card:hover{border-color:rgba(34,197,94,.5);box-shadow:0 0 30px -5px rgba(34,197,94,.3)}
+.social-link{color:var(--muted);transition:color .3s}
+.social-link:hover{color:var(--primary)}
+
+/* Footer */
+footer{position:relative;z-index:10;border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center}
+footer .socials{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
+footer p{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted)}
+
+/* Utils */
+.max-w-sm{max-width:28rem;margin:0 auto}
+.max-w-md{max-width:32rem;margin:0 auto}
+.max-w-lg{max-width:36rem;margin:0 auto}
+.max-w-3xl{max-width:48rem;margin:0 auto}
+.max-w-5xl{max-width:64rem;margin:0 auto}
+.max-w-6xl{max-width:72rem;margin:0 auto}
+.text-center{text-align:center}
+.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}
+.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-10{margin-top:2.5rem}
+.gap-2{gap:.5rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}
+.flex{display:flex}.flex-wrap{flex-wrap:wrap}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}
+.space-y-8>*+*{margin-top:2rem}.space-y-12>*+*{margin-top:3rem}
+.w-full{width:100%}
+.text-xs{font-size:.75rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.text-xl{font-size:1.25rem}.text-2xl{font-size:1.5rem}.text-3xl{font-size:1.875rem}.text-4xl{font-size:2.25rem}.text-5xl{font-size:3rem}
+@media(min-width:768px){.md-text-3xl{font-size:1.875rem}.md-text-4xl{font-size:2.25rem}.md-text-7xl{font-size:4.5rem}}
+.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-black{font-weight:900}
+.text-primary{color:var(--primary)}.text-muted{color:var(--muted)}.text-fg{color:var(--fg)}
+.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}
+.hidden{display:none}
+
+/* SVG icons inline */
+.icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+<div class="nav-inner">
+<a href="#intro" class="nav-logo">&lt;ShankarGorai /&gt;</a>
+<ul class="nav-links">
+<li><a href="#intro">Intro</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#opensource">Open Source</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">☰</button>
+</div>
+<div id="mobileMenu" class="mobile-menu">
+<a href="#intro" onclick="this.parentElement.classList.remove('open')">Intro</a>
+<a href="#skills" onclick="this.parentElement.classList.remove('open')">Skills</a>
+<a href="#experience" onclick="this.parentElement.classList.remove('open')">Experience</a>
+<a href="#education" onclick="this.parentElement.classList.remove('open')">Education</a>
+<a href="#projects" onclick="this.parentElement.classList.remove('open')">Projects</a>
+<a href="#opensource" onclick="this.parentElement.classList.remove('open')">Open Source</a>
+<a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
+</div>
+</nav>
+
+<!-- INTRO -->
+<section class="section" id="intro">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Introduction</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-6xl hero-grid" style="padding:5rem 0">
+<div>
+<p class="mono text-primary text-sm mb-4">Hi, I'm</p>
+<h1 class="text-5xl md-text-7xl font-bold leading-tight">Shankar Gorai</h1>
+<h2 class="text-2xl md-text-3xl font-bold text-muted mt-2">Senior Laravel Developer</h2>
+<p class="text-muted mt-6 text-lg leading-relaxed" style="max-width:36rem">I help companies scale web applications, build robust APIs, and architect high-performance <span class="text-primary font-medium">Laravel ecosystems</span>.</p>
+<div class="stats-grid mt-8">
+<div><p class="text-2xl font-bold text-gradient">8+</p><p class="text-xs text-muted mt-1">Years of PHP Mastery</p></div>
+<div><p class="text-2xl font-bold text-gradient">25+</p><p class="text-xs text-muted mt-1">Production Apps Shipped</p></div>
+<div><p class="text-2xl font-bold text-gradient">3</p><p class="text-xs text-muted mt-1">Open Source Packages</p></div>
+<div><p class="text-2xl font-bold text-gradient">99.9%</p><p class="text-xs text-muted mt-1">Uptime Architecture</p></div>
+</div>
+<div class="flex flex-wrap gap-4 mt-10">
+<a href="#contact" class="btn-primary glow">Free Consultation →</a>
+<a href="#projects" class="btn-outline">View My Work</a>
+</div>
+</div>
+<div class="photo-wrap">
+<div style="position:relative">
+<img src="https://shankargorai.site/shankargorai.png" alt="Shankar Gorai" class="photo glow"/>
+<div class="photo-badge">📍 Jamshedpur, India</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Skills</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-5xl">
+<p class="mono text-primary text-sm mb-2">Technical Skills</p>
+<h3 class="text-2xl md-text-3xl font-bold mb-10">Mastering the Modern Stack</h3>
+<div class="grid-4">
+<div class="card"><div class="text-primary mb-3">🖥️</div><h4 class="text-sm font-semibold mb-2">Back-End Architecture</h4><p class="text-xs text-muted leading-relaxed">Laravel (TALL Stack), PHP 8.3+, Eloquent Optimization, Codeigniter.</p></div>
+<div class="card"><div class="text-primary mb-3">⚙️</div><h4 class="text-sm font-semibold mb-2">Infrastructure & DevOps</h4><p class="text-xs text-muted leading-relaxed">AWS (Lightsail, S3), Docker, CI/CD Pipelines (GitHub Actions), Redis Caching.</p></div>
+<div class="card"><div class="text-primary mb-3">🎨</div><h4 class="text-sm font-semibold mb-2">Front-End Interface</h4><p class="text-xs text-muted leading-relaxed">Tailwind CSS, Alpine.js, Livewire, Vue.js, Responsive Design Systems.</p></div>
+<div class="card"><div class="text-primary mb-3">🛡️</div><h4 class="text-sm font-semibold mb-2">Testing & Security</h4><p class="text-xs text-muted leading-relaxed">Pest, PHPUnit, Integration Testing, Data Encryption, OAuth2/Passport.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Experience</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-3xl">
+<p class="mono text-primary text-sm mb-2">02.</p>
+<h3 class="text-3xl md-text-4xl font-bold mb-4">Success Stories</h3>
+<p class="text-muted mb-12">Production applications I've built and shipped.</p>
+<div class="space-y-12">
+
+<a href="https://vadi.co.in/" target="_blank" class="timeline-item" style="display:block">
+<div class="timeline-dot"></div>
+<p class="mono text-xs text-muted mb-1">Production</p>
+<h4 class="text-lg font-semibold">eHealth Platform <span class="text-primary">@ Vadi Health</span></h4>
+<p class="text-muted text-sm mt-2 leading-relaxed">Built a comprehensive eHealth platform enabling digital health services, patient management, and telemedicine capabilities using Laravel.</p>
+<div class="flex flex-wrap gap-2 mt-3"><span class="tag">Laravel</span><span class="tag">PHP 8</span><span class="tag">MySQL</span><span class="tag">REST API</span></div>
+</a>
+
+<a href="https://swadhyay.j2p.in/" target="_blank" class="timeline-item" style="display:block">
+<div class="timeline-dot"></div>
+<p class="mono text-xs text-muted mb-1">Production</p>
+<h4 class="text-lg font-semibold">E-Learning Platform <span class="text-primary">@ Swadhyay</span></h4>
+<p class="text-muted text-sm mt-2 leading-relaxed">Developed a full-featured e-learning platform with course management, student tracking, and interactive learning modules.</p>
+<div class="flex flex-wrap gap-2 mt-3"><span class="tag">Laravel</span><span class="tag">Livewire</span><span class="tag">Tailwind CSS</span><span class="tag">MySQL</span></div>
+</a>
+
+<a href="https://kualia.app/" target="_blank" class="timeline-item" style="display:block">
+<div class="timeline-dot"></div>
+<p class="mono text-xs text-muted mb-1">Production</p>
+<h4 class="text-lg font-semibold">Online Mentorship Platform <span class="text-primary">@ Kualia</span></h4>
+<p class="text-muted text-sm mt-2 leading-relaxed">Architected an online mentorship application connecting mentors and mentees with scheduling, video sessions, and progress tracking.</p>
+<div class="flex flex-wrap gap-2 mt-3"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">Redis</span><span class="tag">AWS</span></div>
+</a>
+
+<a href="https://www.ghorua.online/" target="_blank" class="timeline-item" style="display:block">
+<div class="timeline-dot"></div>
+<p class="mono text-xs text-muted mb-1">Production</p>
+<h4 class="text-lg font-semibold">E-Commerce Platform <span class="text-primary">@ Ghorua Online</span></h4>
+<p class="text-muted text-sm mt-2 leading-relaxed">Built a robust e-commerce solution with product management, payment integration, order tracking, and inventory systems.</p>
+<div class="flex flex-wrap gap-2 mt-3"><span class="tag">Laravel</span><span class="tag">Alpine.js</span><span class="tag">Stripe</span><span class="tag">Docker</span></div>
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Education</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-3xl">
+<p class="mono text-primary text-sm mb-2">03.</p>
+<h3 class="text-3xl md-text-4xl font-bold mb-12">Education & Certifications</h3>
+<div class="space-y-8">
+<div class="edu-card"><div class="edu-icon">🎓</div><div><p class="mono text-xs text-muted mb-1">Education</p><h4 class="text-lg font-semibold">Diploma in Computer Science</h4><p class="text-primary text-sm font-medium mt-1">Al-kabir Polytechnic</p><p class="text-muted text-sm mt-1">2014 — 2017</p></div></div>
+<div class="edu-card"><div class="edu-icon">🏆</div><div><p class="mono text-xs text-muted mb-1">Certification</p><h4 class="text-lg font-semibold">MongoDB Certified Developer, Associate (C100DEV)</h4><p class="text-muted text-sm mt-2">Official MongoDB certification for database development.</p></div></div>
+<div class="edu-card"><div class="edu-icon">🏆</div><div><p class="mono text-xs text-muted mb-1">Certification</p><h4 class="text-lg font-semibold">cPanel Ultimate Course</h4><p class="text-muted text-sm mt-2">Server management and hosting configuration.</p></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Projects</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-5xl">
+<p class="mono text-primary text-sm mb-2">04.</p>
+<h3 class="text-3xl md-text-4xl font-bold mb-12">Projects</h3>
+<div class="grid-2">
+
+<a href="https://vadi.co.in/" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="mb-4" style="height:3rem;display:flex;align-items:center"><img src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi Health" style="height:2.5rem;object-fit:contain;opacity:.7"/></div>
+<p class="mono text-xs text-primary mb-2">eHealth Platform</p>
+<h4 class="text-xl font-bold mb-2">Vadi Health</h4>
+<p class="text-muted text-sm leading-relaxed" style="flex:1">A comprehensive eHealth platform enabling digital health services, patient management, and telemedicine capabilities.</p>
+<div class="flex flex-wrap gap-2 mt-4"><span class="tag">Laravel</span><span class="tag">TALL Stack</span><span class="tag">MySQL</span><span class="tag">REST API</span><span class="tag">AWS</span></div>
+</a>
+
+<a href="https://swadhyay.j2p.in/" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="mb-4" style="height:3rem;display:flex;align-items:center"><img src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" style="height:2.5rem;object-fit:contain;opacity:.7"/></div>
+<p class="mono text-xs text-primary mb-2">E-Learning</p>
+<h4 class="text-xl font-bold mb-2">Swadhyay</h4>
+<p class="text-muted text-sm leading-relaxed" style="flex:1">Full-featured e-learning platform with course management, student progress tracking, and interactive learning modules.</p>
+<div class="flex flex-wrap gap-2 mt-4"><span class="tag">Laravel</span><span class="tag">Livewire</span><span class="tag">Tailwind CSS</span><span class="tag">MySQL</span></div>
+</a>
+
+<a href="https://kualia.app/" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="mb-4" style="height:3rem;display:flex;align-items:center"><span class="text-2xl font-bold text-gradient">K</span></div>
+<p class="mono text-xs text-primary mb-2">Online Mentorship</p>
+<h4 class="text-xl font-bold mb-2">Kualia</h4>
+<p class="text-muted text-sm leading-relaxed" style="flex:1">Online mentorship platform connecting mentors and mentees with scheduling, session management, and progress tracking.</p>
+<div class="flex flex-wrap gap-2 mt-4"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">Redis</span><span class="tag">WebSockets</span></div>
+</a>
+
+<a href="https://www.ghorua.online/" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="mb-4" style="height:3rem;display:flex;align-items:center"><img src="https://www.ghorua.online/logo.png" alt="Ghorua" style="height:2.5rem;object-fit:contain;opacity:.7"/></div>
+<p class="mono text-xs text-primary mb-2">E-Commerce</p>
+<h4 class="text-xl font-bold mb-2">Ghorua Online</h4>
+<p class="text-muted text-sm leading-relaxed" style="flex:1">Robust e-commerce solution with product management, payment gateway integration, order tracking, and inventory management.</p>
+<div class="flex flex-wrap gap-2 mt-4"><span class="tag">Laravel</span><span class="tag">Alpine.js</span><span class="tag">Payment Gateway</span><span class="tag">Docker</span></div>
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- OPEN SOURCE -->
+<section class="section" id="opensource">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Open Source</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-5xl">
+<p class="mono text-primary text-sm mb-2">05.</p>
+<h3 class="text-3xl md-text-4xl font-bold mb-4">Open Source & Packages</h3>
+<p class="text-muted mb-12" style="max-width:36rem">Laravel packages I've built and shared with the developer community.</p>
+<div class="grid-3">
+
+<a href="https://github.com/Shankar-Tom/laravel-visit-tracker" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="flex items-center" style="justify-content:space-between;margin-bottom:.75rem"><span style="color:var(--muted)">📦</span><span class="tag">Laravel</span></div>
+<h4 class="mono text-sm font-semibold mb-2">laravel-visit-tracker</h4>
+<p class="text-muted text-xs leading-relaxed" style="flex:1">A Laravel package to track visits and page views with detailed analytics and reporting.</p>
+<div class="flex items-center gap-2 mt-4"><span style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span class="text-xs text-muted">PHP</span></div>
+</a>
+
+<a href="https://github.com/Shankar-Tom/country-phone-validator" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="flex items-center" style="justify-content:space-between;margin-bottom:.75rem"><span style="color:var(--muted)">📦</span><span class="tag">Laravel</span></div>
+<h4 class="mono text-sm font-semibold mb-2">country-phone-validator</h4>
+<p class="text-muted text-xs leading-relaxed" style="flex:1">Laravel package to validate phone numbers using country name or dial code with comprehensive coverage.</p>
+<div class="flex items-center gap-2 mt-4"><span style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span class="text-xs text-muted">PHP</span></div>
+</a>
+
+<a href="https://github.com/Shankar-Tom/laravel-search" target="_blank" class="card" style="display:flex;flex-direction:column">
+<div class="flex items-center" style="justify-content:space-between;margin-bottom:.75rem"><span style="color:var(--muted)">📦</span><span class="tag">Laravel</span></div>
+<h4 class="mono text-sm font-semibold mb-2">laravel-search</h4>
+<p class="text-muted text-xs leading-relaxed" style="flex:1">Global search across Laravel models and relationships with flexible query building.</p>
+<div class="flex items-center gap-2 mt-4"><span style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span class="text-xs text-muted">PHP</span></div>
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+<div class="section-sticky">
+<div class="section-label-wrap"><span class="section-label" data-label>Contact</span></div>
+<div class="section-content-wrap">
+<div class="section-content" data-content>
+<div class="max-w-3xl text-center">
+<p class="mono text-primary text-sm mb-2">06.</p>
+<h3 class="text-3xl md-text-4xl font-bold mb-4">Get In Touch</h3>
+<p class="text-muted mb-10" style="max-width:32rem;margin-left:auto;margin-right:auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+<div class="grid-2 max-w-md mb-10">
+<a href="mailto:shankargoraise@gmail.com" class="contact-card"><span class="text-primary">✉️</span><div style="text-align:left"><p class="text-xs text-muted">Email</p><p class="text-sm">shankargoraise@gmail.com</p></div></a>
+<div class="contact-card"><span class="text-primary">📍</span><div style="text-align:left"><p class="text-xs text-muted">Location</p><p class="text-sm">Jamshedpur, Jharkhand, India</p></div></div>
+</div>
+<div class="mb-10"><a href="mailto:shankargoraise@gmail.com" class="btn-primary glow">Say Hello →</a></div>
+<div class="flex justify-center gap-6">
+<a href="https://github.com/Shankar-Tom" target="_blank" class="social-link">GitHub</a>
+<a href="https://linkedin.com/in/shankargorai" target="_blank" class="social-link">LinkedIn</a>
+<a href="mailto:shankargoraise@gmail.com" class="social-link">Email</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="socials">
+<a href="https://github.com/Shankar-Tom" target="_blank" class="social-link">GitHub</a>
+<a href="https://linkedin.com/in/shankargorai" target="_blank" class="social-link">LinkedIn</a>
+<a href="mailto:shankargoraise@gmail.com" class="social-link">Email</a>
+</div>
+<p>© 2025 Shankar Gorai. Built with passion.</p>
+</footer>
+
+<script>
+// Scroll-driven section animations
+function initSections(){
+  const sections=document.querySelectorAll('.section');
+  let raf=0;
+  function update(){
+    sections.forEach(sec=>{
+      const rect=sec.getBoundingClientRect();
+      const scrollable=Math.max(sec.offsetHeight-window.innerHeight,1);
+      const travelled=Math.min(Math.max(-rect.top,0),scrollable);
+      const progress=travelled/scrollable;
+      const eased=1-Math.pow(1-progress,4);
+
+      const label=sec.querySelector('[data-label]');
+      const content=sec.querySelector('[data-content]');
+      if(!label||!content)return;
+
+      const labelOpacity=Math.max(0.05,1-eased*0.95);
+      const labelScale=1-eased*0.12;
+      const labelTranslate=eased*16;
+      const colorVal=Math.round(100-eased*75);
+
+      label.style.color=`hsl(0 0% ${colorVal}%)`;
+      label.style.opacity=labelOpacity;
+      label.style.transform=`translateY(${labelTranslate}px) scale(${labelScale})`;
+
+      const contentOpacity=Math.max(0,Math.min((eased-0.05)/0.3,1));
+      const contentTranslate=(1-contentOpacity)*40;
+      content.style.opacity=contentOpacity;
+      content.style.transform=`translateY(${contentTranslate}px)`;
+    });
+  }
+  function onScroll(){cancelAnimationFrame(raf);raf=requestAnimationFrame(update)}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  update();
+}
+
+// Active nav link
+function initNav(){
+  const links=document.querySelectorAll('.nav-links a');
+  const sectionIds=['intro','skills','experience','education','projects','opensource','contact'];
+  function update(){
+    let current='';
+    sectionIds.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&el.getBoundingClientRect().top<=window.innerHeight/2)current=id;
+    });
+    links.forEach(a=>{
+      a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+    });
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+}
+
+initSections();
+initNav();
+</script>
+</body>
+</html>
