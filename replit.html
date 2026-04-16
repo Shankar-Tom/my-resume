@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Doe — Senior Laravel Developer</title>
+  <meta name="description" content="Senior Laravel Developer specializing in complex PHP applications, distributed architecture, and APIs that scale seamlessly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #090e15;
+      --fg: #cbd5e1;
+      --fg-muted: #64748b;
+      --fg-dim: #94a3b8;
+      --border: #1e293b;
+      --card: #0d1420;
+      --primary: #00ffff;
+      --primary-glow: rgba(0,255,255,0.15);
+      --secondary: #00ff66;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(0,255,255,0.2); color: var(--primary); }
+
+    /* ── Scroll progress bar ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: var(--primary);
+      box-shadow: 0 0 12px var(--primary);
+      width: 0%; z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Background section text ── */
+    #bg-text {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; pointer-events: none; z-index: 0;
+    }
+    #bg-text span {
+      font-family: var(--font-mono);
+      font-size: clamp(60px, 15vw, 180px);
+      font-weight: 700;
+      color: var(--primary);
+      opacity: 0;
+      white-space: nowrap;
+      letter-spacing: -0.04em;
+      transform: translateY(60px) scale(0.95);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+      user-select: none;
+    }
+    #bg-text span.visible {
+      opacity: 0.045;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ── Navigation dots ── */
+    #nav-dots {
+      position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+      z-index: 50; display: flex; flex-direction: column; gap: 16px;
+    }
+    .nav-dot-wrap {
+      display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+      cursor: pointer;
+    }
+    .nav-dot-label {
+      font-family: var(--font-mono);
+      font-size: 11px; letter-spacing: 0.08em;
+      color: var(--fg-muted);
+      opacity: 0; transform: translateX(12px);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .nav-dot-wrap:hover .nav-dot-label,
+    .nav-dot-wrap.active .nav-dot-label {
+      opacity: 1; transform: translateX(0);
+      color: var(--primary);
+    }
+    .nav-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--fg-muted);
+      opacity: 0.35;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    .nav-dot-wrap.active .nav-dot {
+      background: var(--primary);
+      opacity: 1;
+      transform: scale(1.5);
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    @media (max-width: 768px) { #nav-dots { display: none; } }
+
+    /* ── Sections ── */
+    section {
+      min-height: 100vh;
+      padding: 96px 0;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 10;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0; transform: scale(0.94);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+    .stagger > * {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.08s; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.16s; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.24s; }
+    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.32s; }
+    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+
+    /* ── Section headings ── */
+    .section-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 700; white-space: nowrap;
+    }
+    .section-header .divider {
+      height: 1px; flex: 1; background: var(--border);
+    }
+
+    /* ── HERO ── */
+    #hero { min-height: 100vh; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 14px; color: var(--primary);
+      margin-bottom: 24px;
+      opacity: 0; transform: translateX(-20px);
+      animation: slideInLeft 0.5s 0.2s ease forwards;
+    }
+    .hero-tag svg { width: 18px; height: 18px; }
+    @keyframes slideInLeft {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero-name {
+      font-size: clamp(42px, 8vw, 80px);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+      margin-bottom: 16px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.5s 0.3s ease forwards;
+    }
+    .hero-title {
+      font-size: clamp(24px, 4vw, 36px);
+      color: var(--fg-muted); font-weight: 400;
+      margin-bottom: 24px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.5s 0.4s ease forwards;
+    }
+    .hero-bio {
+      font-size: 18px; color: rgba(203,213,225,0.75);
+      line-height: 1.8; max-width: 560px;
+      margin-bottom: 48px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.5s 0.5s ease forwards;
+    }
+    .hero-links {
+      display: flex; flex-wrap: wrap; gap: 28px;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.5s 0.6s ease forwards;
+    }
+    .hero-links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 14px;
+      color: var(--fg-muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-links a:hover { color: var(--primary); }
+    .hero-links a svg { width: 20px; height: 20px; transition: transform 0.2s; }
+    .hero-links a:hover svg { transform: scale(1.15); }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px; padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    @media (min-width: 640px) {
+      .exp-item { grid-template-columns: 160px 1fr; gap: 32px; }
+    }
+    .exp-years {
+      font-family: var(--font-mono);
+      font-size: 13px; color: var(--fg-muted);
+      padding-top: 4px;
+    }
+    .exp-role {
+      font-size: 20px; font-weight: 600; line-height: 1.3;
+      transition: color 0.2s;
+    }
+    .exp-item:hover .exp-role { color: var(--primary); }
+    .exp-company {
+      font-size: 16px; color: var(--fg-muted);
+      margin-bottom: 12px;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .exp-bullets li {
+      font-size: 15px; color: rgba(203,213,225,0.75);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .exp-bullets li::before {
+      content: "▶";
+      color: var(--primary);
+      font-size: 8px;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: flex; flex-direction: column;
+      gap: 4px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .edu-card:hover {
+      border-color: rgba(0,255,255,0.35);
+      box-shadow: 0 0 24px rgba(0,255,255,0.06);
+    }
+    @media (min-width: 640px) {
+      .edu-card { flex-direction: row; align-items: center; justify-content: space-between; }
+    }
+    .edu-degree { font-size: 19px; font-weight: 600; }
+    .edu-institution { font-size: 15px; color: var(--fg-muted); }
+    .edu-year {
+      font-family: var(--font-mono);
+      font-size: 13px; color: var(--primary);
+      white-space: nowrap; margin-top: 4px;
+    }
+    @media (min-width: 640px) { .edu-year { margin-top: 0; } }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 640px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+    .project-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      cursor: default;
+    }
+    .project-card:hover {
+      border-color: rgba(0,255,255,0.4);
+      box-shadow: 0 0 32px rgba(0,255,255,0.1);
+      transform: translateY(-3px);
+    }
+    .project-img {
+      height: 200px; overflow: hidden; position: relative;
+    }
+    .project-img::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, var(--card));
+    }
+    .project-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .project-card:hover .project-img img { transform: scale(1.06); }
+    .project-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 28px; color: var(--primary);
+      opacity: 0.3; background: linear-gradient(135deg, #0d1b2a 0%, #0a1628 100%);
+    }
+    .project-body { padding: 20px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+    .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .project-name {
+      font-size: 18px; font-weight: 700;
+      transition: color 0.2s;
+    }
+    .project-card:hover .project-name { color: var(--primary); }
+    .project-links { display: flex; gap: 12px; }
+    .project-links a {
+      color: var(--fg-muted); transition: color 0.2s;
+      display: flex; align-items: center;
+    }
+    .project-links a:hover { color: var(--primary); }
+    .project-links svg { width: 17px; height: 17px; }
+    .project-desc {
+      font-size: 14px; color: rgba(203,213,225,0.72);
+      line-height: 1.7; flex: 1; margin-bottom: 16px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 11px; color: var(--primary);
+      background: rgba(0,255,255,0.08);
+      padding: 3px 9px;
+      border-radius: 3px;
+    }
+
+    /* ── OPEN SOURCE ── */
+    .oss-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) { .oss-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 900px) { .oss-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .oss-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: rgba(13,20,32,0.5);
+      position: relative; overflow: hidden;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .oss-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .oss-card:hover::before { opacity: 1; }
+    .oss-card:hover { background: rgba(13,20,32,0.9); border-color: rgba(0,255,102,0.3); }
+    .oss-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .oss-icon { color: var(--secondary); opacity: 0.5; transition: opacity 0.25s; }
+    .oss-card:hover .oss-icon { opacity: 1; }
+    .oss-external { color: var(--fg-muted); opacity: 0; transform: translateX(6px); transition: all 0.25s; }
+    .oss-card:hover .oss-external { opacity: 1; transform: translateX(0); }
+    .oss-name {
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 700; margin-bottom: 8px;
+      color: var(--fg); transition: color 0.2s;
+    }
+    .oss-card:hover .oss-name { color: var(--secondary); }
+    .oss-desc {
+      font-size: 13px; color: var(--fg-muted);
+      line-height: 1.7; flex: 1; margin-bottom: 20px;
+    }
+    .oss-stats { display: flex; gap: 16px; font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); }
+    .oss-stars::before { content: "★ "; color: var(--secondary); }
+    .oss-downloads::before { content: "↓ "; color: var(--primary); }
+
+    /* ── CONTACT ── */
+    #contact { min-height: 70vh; }
+    .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800; margin-bottom: 20px;
+    }
+    .contact-text { font-size: 17px; color: rgba(203,213,225,0.75); line-height: 1.8; margin-bottom: 40px; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 32px;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      font-family: var(--font-mono); font-weight: 700; font-size: 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .cta-btn:hover {
+      background: var(--primary); color: var(--bg);
+      box-shadow: 0 0 24px rgba(0,255,255,0.4);
+    }
+    .cta-btn svg { width: 20px; height: 20px; }
+    .contact-socials {
+      display: flex; justify-content: center; gap: 24px; margin-top: 64px;
+    }
+    .contact-socials a {
+      color: var(--fg-muted); transition: color 0.2s;
+      display: flex; align-items: center;
+    }
+    .contact-socials a:hover { color: var(--fg); }
+    .contact-socials svg { width: 24px; height: 24px; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-family: var(--font-mono);
+      font-size: 12px; color: var(--fg-muted);
+      border-top: 1px solid var(--border);
+      position: relative; z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div id="progress-bar"></div>
+
+<!-- Animated background text -->
+<div id="bg-text" aria-hidden="true">
+  <span id="bg-label">INTRODUCTION</span>
+</div>
+
+<!-- Navigation dots -->
+<nav id="nav-dots" aria-label="Section navigation">
+  <div class="nav-dot-wrap active" data-target="hero">
+    <span class="nav-dot-label">INTRODUCTION</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-dot-wrap" data-target="experience">
+    <span class="nav-dot-label">EXPERIENCE</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-dot-wrap" data-target="education">
+    <span class="nav-dot-label">EDUCATION</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-dot-wrap" data-target="projects">
+    <span class="nav-dot-label">PROJECTS</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-dot-wrap" data-target="open-source">
+    <span class="nav-dot-label">OPEN SOURCE</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-dot-wrap" data-target="contact">
+    <span class="nav-dot-label">CONTACT</span>
+    <div class="nav-dot"></div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="container" style="max-width:800px">
+    <p class="hero-tag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+      system.init()
+    </p>
+    <h1 class="hero-name">John Doe.</h1>
+    <h2 class="hero-title">Senior Laravel Developer</h2>
+    <p class="hero-bio">
+      I architect elegant, performant backend systems.
+      Specializing in complex PHP applications, distributed architecture,
+      and APIs that scale seamlessly.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:hello@johndoe.dev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Experience</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="stagger">
+
+      <div class="exp-item">
+        <div class="exp-years">2021 — Present</div>
+        <div>
+          <div class="exp-role">Senior Backend Engineer</div>
+          <div class="exp-company">Acme Cloud Solutions</div>
+          <ul class="exp-bullets">
+            <li>Architected a multi-tenant SaaS backend in Laravel scaling to 50k+ active users.</li>
+            <li>Optimized MySQL queries, reducing average API response times by 40%.</li>
+            <li>Implemented a real-time event broadcasting system using Redis and WebSockets.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-years">2018 — 2021</div>
+        <div>
+          <div class="exp-role">Full Stack Developer</div>
+          <div class="exp-company">DevOps Dynamics</div>
+          <ul class="exp-bullets">
+            <li>Led the migration from a monolithic legacy PHP application to a modern Laravel 8 API.</li>
+            <li>Developed robust CI/CD pipelines with GitHub Actions, reducing deployment time by 60%.</li>
+            <li>Mentored junior developers in SOLID principles and clean architecture.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-years">2015 — 2018</div>
+        <div>
+          <div class="exp-role">PHP Developer</div>
+          <div class="exp-company">Webcraft Agency</div>
+          <ul class="exp-bullets">
+            <li>Built custom e-commerce solutions and CMS platforms tailored to client needs.</li>
+            <li>Integrated third-party payment gateways like Stripe and PayPal.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Education</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="stagger" style="display:flex;flex-direction:column;gap:16px">
+      <div class="edu-card reveal-left">
+        <div>
+          <div class="edu-degree">B.S. Computer Science</div>
+          <div class="edu-institution">Tech University</div>
+        </div>
+        <div class="edu-year">2011 — 2015</div>
+      </div>
+      <div class="edu-card reveal-left">
+        <div>
+          <div class="edu-degree">Certification in Distributed Systems</div>
+          <div class="edu-institution">Advanced Algorithms Bootcamp</div>
+        </div>
+        <div class="edu-year">2016</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Featured Work</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="projects-grid stagger">
+
+      <div class="project-card reveal-scale">
+        <div class="project-img">
+          <div class="project-img-placeholder">{ }</div>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">E-Commerce API Gateway</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="#" title="Live">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">A highly scalable API built with Laravel 10, featuring robust caching strategies, complex queued jobs for inventory sync, and comprehensive test coverage.</p>
+          <div class="project-tags">
+            <span class="tag">Laravel</span><span class="tag">Redis</span><span class="tag">MySQL</span><span class="tag">Docker</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-scale">
+        <div class="project-img">
+          <div class="project-img-placeholder">[ ]</div>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">Real-time Analytics Dashboard</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="#" title="Live">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">A financial dashboard aggregating millions of data points, utilizing Laravel Zero for microservices and Vue 3 for a snappy frontend experience.</p>
+          <div class="project-tags">
+            <span class="tag">Laravel Zero</span><span class="tag">Vue 3</span><span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-scale">
+        <div class="project-img">
+          <div class="project-img-placeholder">$ _</div>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">SaaS Management Platform</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="#" title="Live">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">A multi-tenant billing and user management portal handling subscription lifecycles, webhooks, and automated provisioning.</p>
+          <div class="project-tags">
+            <span class="tag">Laravel Cashier</span><span class="tag">Stripe</span><span class="tag">Tailwind</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-scale">
+        <div class="project-img">
+          <div class="project-img-placeholder">&lt;/&gt;</div>
+        </div>
+        <div class="project-body">
+          <div class="project-header">
+            <div class="project-name">Fintech Mobile API</div>
+            <div class="project-links">
+              <a href="#" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="#" title="Live">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">Secure, stateless REST API powering a fintech mobile app with OAuth2 authentication and strict rate limiting.</p>
+          <div class="project-tags">
+            <span class="tag">Laravel Passport</span><span class="tag">Memcached</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ OPEN SOURCE ═══════════ -->
+<section id="open-source">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Open Source</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="oss-grid stagger">
+
+      <a class="oss-card" href="#" target="_blank" rel="noopener">
+        <div class="oss-card-header">
+          <svg class="oss-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg class="oss-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </div>
+        <div class="oss-name">laravel-audit-trail</div>
+        <div class="oss-desc">A package to seamlessly track model changes, polymorphic relationships, and user actions with minimal configuration.</div>
+        <div class="oss-stats">
+          <span class="oss-stars">1.2k</span>
+          <span class="oss-downloads">500k+</span>
+        </div>
+      </a>
+
+      <a class="oss-card" href="#" target="_blank" rel="noopener">
+        <div class="oss-card-header">
+          <svg class="oss-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg class="oss-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </div>
+        <div class="oss-name">php-response-builder</div>
+        <div class="oss-desc">Standardize JSON API responses across your PHP applications. Integrates smoothly with Laravel's exception handler.</div>
+        <div class="oss-stats">
+          <span class="oss-stars">850</span>
+          <span class="oss-downloads">210k+</span>
+        </div>
+      </a>
+
+      <a class="oss-card" href="#" target="_blank" rel="noopener">
+        <div class="oss-card-header">
+          <svg class="oss-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg class="oss-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </div>
+        <div class="oss-name">artisan-metrics</div>
+        <div class="oss-desc">Terminal-based dashboard for monitoring Laravel queues and server health directly from the command line.</div>
+        <div class="oss-stats">
+          <span class="oss-stars">420</span>
+          <span class="oss-downloads">85k+</span>
+        </div>
+      </a>
+
+      <a class="oss-card" href="#" target="_blank" rel="noopener">
+        <div class="oss-card-header">
+          <svg class="oss-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg class="oss-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </div>
+        <div class="oss-name">laravel-feature-flags</div>
+        <div class="oss-desc">A lightweight feature flag system for Laravel apps. Toggle features per user, role, or environment without config files.</div>
+        <div class="oss-stats">
+          <span class="oss-stars">310</span>
+          <span class="oss-downloads">62k+</span>
+        </div>
+      </a>
+
+      <a class="oss-card" href="#" target="_blank" rel="noopener">
+        <div class="oss-card-header">
+          <svg class="oss-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg class="oss-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </div>
+        <div class="oss-name">query-cache-plus</div>
+        <div class="oss-desc">Intelligent Eloquent query result caching with automatic invalidation based on model events. Zero boilerplate.</div>
+        <div class="oss-stats">
+          <span class="oss-stars">195</span>
+          <span class="oss-downloads">41k+</span>
+        </div>
+      </a>
+
+      <a class="oss-card" href="#" target="_blank" rel="noopener">
+        <div class="oss-card-header">
+          <svg class="oss-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg class="oss-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </div>
+        <div class="oss-name">php-dto-mapper</div>
+        <div class="oss-desc">Type-safe Data Transfer Object mapper for PHP 8.1+. Reduces boilerplate and enforces strict boundaries between layers.</div>
+        <div class="oss-stats">
+          <span class="oss-stars">145</span>
+          <span class="oss-downloads">28k+</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <h2 class="contact-title reveal">Get In Touch</h2>
+      <p class="contact-text reveal">
+        Whether you have a question, a project proposition, or just want to say hi,
+        I'll try my best to get back to you.
+      </p>
+      <div class="reveal">
+        <a href="mailto:hello@johndoe.dev" class="cta-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Say Hello
+        </a>
+      </div>
+      <div class="contact-socials reveal">
+        <a href="https://github.com" target="_blank" rel="noopener" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:hello@johndoe.dev" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span style="font-family:var(--font-mono);font-size:12px;color:var(--fg-muted)">
+    Designed &amp; built by John Doe &mdash; <span style="color:var(--primary)">john@johndoe.dev</span>
+  </span>
+</footer>
+
+<script>
+  // ── Section data ──
+  const SECTIONS = [
+    { id: "hero",        label: "INTRODUCTION" },
+    { id: "experience",  label: "EXPERIENCE"   },
+    { id: "education",   label: "EDUCATION"    },
+    { id: "projects",    label: "PROJECTS"     },
+    { id: "open-source", label: "OPEN SOURCE"  },
+    { id: "contact",     label: "CONTACT"      },
+  ];
+
+  // ── Progress bar ──
+  const progressBar = document.getElementById("progress-bar");
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + "%";
+  }, { passive: true });
+
+  // ── Background text + nav dots (IntersectionObserver) ──
+  const bgLabel    = document.getElementById("bg-label");
+  const navDots    = document.querySelectorAll(".nav-dot-wrap");
+  const dotMap     = {};
+  navDots.forEach(d => { dotMap[d.dataset.target] = d; });
+
+  let currentSection = "hero";
+  let bgTimeout = null;
+
+  function updateSection(id) {
+    if (id === currentSection) return;
+    currentSection = id;
+
+    // Background text swap
+    const info = SECTIONS.find(s => s.id === id);
+    if (info) {
+      bgLabel.classList.remove("visible");
+      clearTimeout(bgTimeout);
+      bgTimeout = setTimeout(() => {
+        bgLabel.textContent = info.label;
+        bgLabel.classList.add("visible");
+      }, 220);
+    }
+
+    // Nav dots
+    navDots.forEach(d => d.classList.remove("active"));
+    if (dotMap[id]) dotMap[id].classList.add("active");
+  }
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        updateSection(entry.target.id);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  SECTIONS.forEach(({ id }) => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
+
+  // Show initial background text
+  setTimeout(() => { bgLabel.classList.add("visible"); }, 400);
+
+  // Nav dot click
+  navDots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const target = document.getElementById(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // ── Scroll reveal ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "-40px 0px" });
+
+  document.querySelectorAll(".reveal, .reveal-left, .reveal-scale, .stagger").forEach(el => {
+    revealObserver.observe(el);
+  });
+</script>
+</body>
+</html>

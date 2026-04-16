@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shankar Gorai — Senior Laravel Developer</title>
+  <meta name="description"
+    content="Senior Laravel Developer with 8+ years of PHP mastery. Building scalable web apps, robust APIs, and high-performance Laravel ecosystems." />
+  <meta property="og:title" content="Shankar Gorai — Senior Laravel Developer" />
+  <meta property="og:description"
+    content="I help companies scale web applications, build robust APIs, and architect high-performance Laravel ecosystems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://shankargorai.site/shankargorai.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0a;
+      --fg: #ededed;
+      --card: #121212;
+      --primary: red;
+      --primary-fg: #050505;
+      --muted: #8a8a8a;
+      --border: #242424;
+      --secondary: #1f1f1f;
+      --bg-text: #141414;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Background text */
+    #bg-text {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #bg-text span {
+      font-size: clamp(5rem, 15vw, 14rem);
+      font-weight: 900;
+      color: var(--bg-text);
+      white-space: nowrap;
+      transition: opacity .5s, transform .5s;
+      user-select: none;
+    }
+
+    #bg-text span.hide {
+      opacity: 0;
+      transform: scale(.95);
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 10, .7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .875rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--fg);
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 1rem 1.5rem;
+      background: rgba(10, 10, 10, .95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: .75rem 0;
+      font-size: .875rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .mobile-menu a.active {
+      color: var(--primary);
+    }
+
+    @media(max-width:768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Sections */
+    section {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      padding: 8rem 1.5rem;
+    }
+
+    .container {
+      max-width: 72rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .container-sm {
+      max-width: 48rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .875rem;
+      color: var(--primary);
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 36rem;
+    }
+
+    .text-primary {
+      color: var(--primary);
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 {
+      transition-delay: .1s;
+    }
+
+    .d2 {
+      transition-delay: .2s;
+    }
+
+    .d3 {
+      transition-delay: .3s;
+    }
+
+    .d4 {
+      transition-delay: .4s;
+    }
+
+    .d5 {
+      transition-delay: .5s;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media(max-width:768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo {
+        order: -1;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.25rem, 3vw, 1.875rem);
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: .5rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-top: 1.5rem;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      max-width: 36rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media(max-width:640px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-val {
+      font-size: clamp(1.5rem, 3vw, 1.875rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .25rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .btn-primary {
+      padding: .75rem 1.5rem;
+      border-radius: .5rem;
+      background: var(--primary);
+      color: var(--primary-fg);
+      font-weight: 500;
+      font-size: .875rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity .3s;
+      box-shadow: 0 0 30px -5px rgba(34, 197, 94, .3);
+    }
+
+    .btn-primary:hover {
+      opacity: .9;
+    }
+
+    .btn-outline {
+      padding: .75rem 1.5rem;
+      border-radius: .5rem;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-weight: 500;
+      font-size: .875rem;
+      background: transparent;
+      cursor: pointer;
+      transition: background .3s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(34, 197, 94, .1);
+    }
+
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-container {
+      position: relative;
+    }
+
+    .photo-img {
+      width: 16rem;
+      height: 18rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: 0 0 30px -5px rgba(34, 197, 94, .3);
+      object-fit: cover;
+    }
+
+    @media(min-width:768px) {
+      .photo-img {
+        width: 20rem;
+        height: 24rem;
+      }
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: -1rem;
+      left: -1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: .5rem;
+      padding: .5rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: var(--primary);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media(max-width:1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:640px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-card {
+      padding: 1.25rem;
+      border-radius: .75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color .5s, box-shadow .5s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(34, 197, 94, .5);
+      box-shadow: 0 0 30px -5px rgba(34, 197, 94, .3);
+    }
+
+    .skill-icon {
+      color: var(--primary);
+      margin-bottom: .75rem;
+      font-size: 1.5rem;
+    }
+
+    .skill-card h4 {
+      font-size: .875rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+
+    .skill-card p {
+      font-size: .75rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Experience timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .timeline-item {
+      padding-left: 2rem;
+      border-left: 1px solid var(--border);
+      position: relative;
+      transition: border-color .5s;
+    }
+
+    .timeline-item:hover {
+      border-left-color: var(--primary);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background .5s;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--primary);
+    }
+
+    .timeline-item h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      transition: color .3s;
+    }
+
+    .timeline-item:hover h4 {
+      color: var(--primary);
+    }
+
+    .tech-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      padding: .25rem .5rem;
+      border-radius: .25rem;
+      background: var(--secondary);
+      color: var(--primary);
+    }
+
+    /* Cards (education, projects, packages) */
+    .card {
+      padding: 1.5rem;
+      border-radius: .75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color .5s, box-shadow .5s, transform .5s;
+    }
+
+    .card:hover {
+      border-color: rgba(34, 197, 94, .5);
+      box-shadow: 0 0 30px -5px rgba(34, 197, 94, .3);
+    }
+
+    .card-lift:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      padding: .5rem;
+      border-radius: .5rem;
+      background: rgba(34, 197, 94, .1);
+      color: var(--primary);
+      display: inline-flex;
+    }
+
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media(max-width:640px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-logo {
+      height: 2.5rem;
+      object-fit: contain;
+      opacity: .7;
+      transition: opacity .3s;
+    }
+
+    .card:hover .project-logo {
+      opacity: 1;
+    }
+
+    .project-initial {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Packages grid */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media(max-width:1024px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:640px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lang-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 28rem;
+      margin: 0 auto 2.5rem;
+    }
+
+    @media(max-width:640px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem;
+      border-radius: .75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(34, 197, 94, .5);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .social-links a {
+      color: var(--muted);
+      transition: color .3s;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    footer .social-links {
+      margin-bottom: 1.5rem;
+    }
+
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    /* SVG icons inline */
+    svg {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Text -->
+  <div id="bg-text"><span>Introduction</span></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#intro" class="nav-logo">&lt;ShankarGorai /&gt;</a>
+      <ul class="nav-links">
+        <li><a href="#intro" data-nav="Introduction" class="active">Intro</a></li>
+        <li><a href="#experience" data-nav="Experience">Experience</a></li>
+        <li><a href="#education" data-nav="Education">Education</a></li>
+        <li><a href="#projects" data-nav="Projects">Projects</a></li>
+        <li><a href="#opensource" data-nav="Open Source">Open Source</a></li>
+        <li><a href="#contact" data-nav="Contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')"
+        aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#intro" onclick="this.parentElement.classList.remove('open')">Intro</a>
+      <a href="#experience" onclick="this.parentElement.classList.remove('open')">Experience</a>
+      <a href="#education" onclick="this.parentElement.classList.remove('open')">Education</a>
+      <a href="#projects" onclick="this.parentElement.classList.remove('open')">Projects</a>
+      <a href="#opensource" onclick="this.parentElement.classList.remove('open')">Open Source</a>
+      <a href="#contact" onclick="this.parentElement.classList.remove('open')">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="intro" data-section="Introduction" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <p class="reveal mono text-primary" style="font-size:.875rem;margin-bottom:1rem">Hi, I'm</p>
+          <h1 class="reveal d1">Shankar Gorai</h1>
+          <h2 class="reveal d2">Senior Laravel Developer</h2>
+          <p class="reveal d3">I help companies scale web applications, build robust APIs, and architect
+            high-performance <span class="text-primary" style="font-weight:500">Laravel ecosystems</span>.</p>
+          <div class="reveal d4 stats">
+            <div>
+              <div class="stat-val">8+</div>
+              <div class="stat-label">Years of PHP Mastery</div>
+            </div>
+            <div>
+              <div class="stat-val">25+</div>
+              <div class="stat-label">Production Apps Shipped</div>
+            </div>
+            <div>
+              <div class="stat-val">3</div>
+              <div class="stat-label">Open Source Packages</div>
+            </div>
+            <div>
+              <div class="stat-val">99.9%</div>
+              <div class="stat-label">Uptime Architecture</div>
+            </div>
+          </div>
+          <div class="reveal d5 hero-buttons">
+            <a href="#contact" class="btn-primary">Free Consultation →</a>
+            <a href="#projects" class="btn-outline">View My Work</a>
+          </div>
+        </div>
+        <div class="hero-photo photo-wrap reveal d2">
+          <div class="photo-container">
+            <img src="https://shankargorai.site/shankargorai.png" alt="Shankar Gorai" class="photo-img" />
+            <div class="photo-badge">📍 Jamshedpur, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section style="min-height:auto;padding:5rem 1.5rem">
+    <div class="container">
+      <p class="reveal section-num">Technical Skills</p>
+      <h3 class="reveal d1 section-title">Mastering the Modern Stack</h3>
+      <div class="reveal d2 skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">⚙️</div>
+          <h4>Back-End Architecture</h4>
+          <p>Laravel (TALL Stack), PHP 8.3+, Eloquent Optimization, Codeigniter.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
+          <h4>Infrastructure & DevOps</h4>
+          <p>AWS (Lightsail, S3), Docker, CI/CD Pipelines (GitHub Actions), Redis Caching.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <h4>Front-End Interface</h4>
+          <p>Tailwind CSS, Alpine.js, Livewire, Vue.js, Responsive Design Systems.</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🛡️</div>
+          <h4>Testing & Security</h4>
+          <p>Pest, PHPUnit, Integration Testing, Data Encryption, OAuth2/Passport.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" data-section="Experience">
+    <div class="container-sm">
+      <p class="reveal section-num">02.</p>
+      <h3 class="reveal d1 section-title">Success Stories</h3>
+      <p class="reveal d1 section-desc">Production applications I've built and shipped.</p>
+      <div class="timeline">
+        <a href="https://vadi.co.in/" target="_blank" rel="noopener noreferrer" class="reveal d2 timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Production</p>
+          <h4>eHealth Platform <span class="text-primary">@ Vadi Health</span></h4>
+          <p class="text-muted" style="font-size:.875rem;margin-top:.5rem;line-height:1.6">Built a comprehensive eHealth
+            platform enabling digital health services, patient management, and telemedicine capabilities using Laravel.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem"><span
+              class="tech-tag">Laravel</span><span class="tech-tag">PHP 8</span><span class="tech-tag">MySQL</span><span
+              class="tech-tag">REST API</span></div>
+        </a>
+        <a href="https://swadhyay.j2p.in/" target="_blank" rel="noopener noreferrer" class="reveal d3 timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Production</p>
+          <h4>E-Learning Platform <span class="text-primary">@ Swadhyay</span></h4>
+          <p class="text-muted" style="font-size:.875rem;margin-top:.5rem;line-height:1.6">Developed a full-featured
+            e-learning platform with course management, student tracking, and interactive learning modules.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem"><span
+              class="tech-tag">Laravel</span><span class="tech-tag">Livewire</span><span class="tech-tag">Tailwind
+              CSS</span><span class="tech-tag">MySQL</span></div>
+        </a>
+        <a href="https://kualia.app/" target="_blank" rel="noopener noreferrer" class="reveal d4 timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Production</p>
+          <h4>Online Mentorship Platform <span class="text-primary">@ Kualia</span></h4>
+          <p class="text-muted" style="font-size:.875rem;margin-top:.5rem;line-height:1.6">Architected an online
+            mentorship application connecting mentors and mentees with scheduling, video sessions, and progress
+            tracking.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem"><span
+              class="tech-tag">Laravel</span><span class="tech-tag">Vue.js</span><span
+              class="tech-tag">Redis</span><span class="tech-tag">AWS</span></div>
+        </a>
+        <a href="https://www.ghorua.online/" target="_blank" rel="noopener noreferrer" class="reveal d5 timeline-item">
+          <div class="timeline-dot"></div>
+          <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Production</p>
+          <h4>E-Commerce Platform <span class="text-primary">@ Ghorua Online</span></h4>
+          <p class="text-muted" style="font-size:.875rem;margin-top:.5rem;line-height:1.6">Built a robust e-commerce
+            solution with product management, payment integration, order tracking, and inventory systems.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem"><span
+              class="tech-tag">Laravel</span><span class="tech-tag">Alpine.js</span><span
+              class="tech-tag">Stripe</span><span class="tech-tag">Docker</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" data-section="Education">
+    <div class="container-sm">
+      <p class="reveal section-num">03.</p>
+      <h3 class="reveal d1 section-title">Education & Certifications</h3>
+      <div style="display:flex;flex-direction:column;gap:2rem">
+        <div class="reveal d2 card">
+          <div style="display:flex;align-items:flex-start;gap:1rem">
+            <div class="card-icon">🎓</div>
+            <div>
+              <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Education</p>
+              <h4 style="font-size:1.125rem;font-weight:600">Diploma in Computer Science</h4>
+              <p class="text-primary" style="font-size:.875rem;font-weight:500;margin-top:.25rem">Al-kabir Polytechnic
+              </p>
+              <p class="text-muted" style="font-size:.875rem;margin-top:.25rem">2014 — 2017</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal d3 card">
+          <div style="display:flex;align-items:flex-start;gap:1rem">
+            <div class="card-icon">🏆</div>
+            <div>
+              <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Certification</p>
+              <h4 style="font-size:1.125rem;font-weight:600">MongoDB Certified Developer, Associate (C100DEV)</h4>
+              <p class="text-muted" style="font-size:.875rem;margin-top:.5rem">Official MongoDB certification for
+                database development.</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal d4 card">
+          <div style="display:flex;align-items:flex-start;gap:1rem">
+            <div class="card-icon">🏆</div>
+            <div>
+              <p class="mono text-muted" style="font-size:.75rem;margin-bottom:.25rem">Certification</p>
+              <h4 style="font-size:1.125rem;font-weight:600">cPanel Ultimate Course</h4>
+              <p class="text-muted" style="font-size:.875rem;margin-top:.5rem">Server management and hosting
+                configuration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" data-section="Projects">
+    <div class="container">
+      <p class="reveal section-num">04.</p>
+      <h3 class="reveal d1 section-title">Projects</h3>
+      <div class="projects-grid">
+        <a href="https://vadi.co.in/" target="_blank" rel="noopener noreferrer" class="reveal d2 card card-lift"
+          style="display:flex;flex-direction:column">
+          <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
+              src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi Health" class="project-logo" />
+          </div>
+          <p class="mono text-primary" style="font-size:.75rem;margin-bottom:.5rem">eHealth Platform</p>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem">Vadi Health</h4>
+          <p class="text-muted" style="font-size:.875rem;line-height:1.6;flex:1">A comprehensive eHealth platform
+            enabling digital health services, patient management, and telemedicine capabilities for healthcare
+            providers.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem"><span class="tech-tag">Laravel</span><span
+              class="tech-tag">Livewire</span><span class="tech-tag">MySQL</span><span class="tech-tag">REST
+              API</span><span class="tech-tag">AWS</span><span class="tech-tag">Google Realtime database</span></div>
+        </a>
+        <a href="https://swadhyay.j2p.in/" target="_blank" rel="noopener noreferrer" class="reveal d3 card card-lift"
+          style="display:flex;flex-direction:column">
+          <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
+              src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" class="project-logo" /></div>
+          <p class="mono text-primary" style="font-size:.75rem;margin-bottom:.5rem">E-Learning</p>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem">Swadhyay</h4>
+          <p class="text-muted" style="font-size:.875rem;line-height:1.6;flex:1">Full-featured e-learning platform with
+            course management, student progress tracking, and interactive learning modules for online education.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem"><span class="tech-tag">Laravel</span><span
+              class="tech-tag">Livewire</span><span class="tech-tag">Tailwind CSS</span><span
+              class="tech-tag">MySQL</span></div>
+        </a>
+        <a href="https://kualia.app/" target="_blank" rel="noopener noreferrer" class="reveal d4 card card-lift"
+          style="display:flex;flex-direction:column">
+          <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><span
+              class="project-initial">K</span></div>
+          <p class="mono text-primary" style="font-size:.75rem;margin-bottom:.5rem">Online Mentorship</p>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem">Kualia</h4>
+          <p class="text-muted" style="font-size:.875rem;line-height:1.6;flex:1">Online mentorship platform connecting
+            mentors and mentees with scheduling, session management, and progress tracking features.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem"><span class="tech-tag">Laravel</span><span
+              class="tech-tag">Livewire</span><span class="tech-tag">Redis</span>
+          </div>
+        </a>
+        <a href="https://www.ghorua.online/" target="_blank" rel="noopener noreferrer" class="reveal d5 card card-lift"
+          style="display:flex;flex-direction:column">
+          <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
+              src="https://www.ghorua.online/logo.png" alt="Ghorua Online" class="project-logo" /></div>
+          <p class="mono text-primary" style="font-size:.75rem;margin-bottom:.5rem">E-Commerce</p>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem">Ghorua Online</h4>
+          <p class="text-muted" style="font-size:.875rem;line-height:1.6;flex:1">Robust e-commerce solution with product
+            management, payment gateway integration, order tracking, and inventory management systems.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem"><span class="tech-tag">Laravel</span><span
+              class="tech-tag">Alpine.js</span><span class="tech-tag">AWS</span><span class="tech-tag">Webpush
+              Notification</span></div>
+        </a>
+        <a href="https://bisonxchange.com/" target="_blank" rel="noopener noreferrer" class="reveal d5 card card-lift"
+          style="display:flex;flex-direction:column">
+          <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
+              src="https://bisonxchange.com/logo.png" alt="Ghorua Online" class="project-logo" /></div>
+          <p class="mono text-primary" style="font-size:.75rem;margin-bottom:.5rem">Crypto Trading WebApp</p>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem">BisonXchange</h4>
+          <p class="text-muted" style="font-size:.875rem;line-height:1.6;flex:1">Bisonexchange is a web application  that
+            allows users to trade in crypto currency .</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem"><span class="tech-tag">Laravel</span><span
+              class="tech-tag">Livewire</span><span class="tech-tag">Coinpayment Gateway</span></div>
+        </a>
+        <a href="https://https://sendpilot.site/" target="_blank" rel="noopener noreferrer"
+          class="reveal d5 card card-lift" style="display:flex;flex-direction:column">
+          <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
+              src="https://sendpilot.site/media/public/YsqueUBV0yaboS6h82Kk5AtJMBCZnv7YV1z8rolR.png" alt="Ghorua Online"
+              class="project-logo" /></div>
+          <p class="mono text-primary" style="font-size:.75rem;margin-bottom:.5rem">Bulk Whatsapp Sender</p>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem">Sendpilot</h4>
+          <p class="text-muted" style="font-size:.875rem;line-height:1.6;flex:1">Sendpilot is whatsapp bulk sender SaaS that allow users to send whatsapp messages using meta's official api.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem"><span class="tech-tag">Laravel</span><span
+              class="tech-tag">Vie.js</span><span class="tech-tag">Payment Gateway</span><span
+              class="tech-tag">Websocket</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source -->
+  <section id="opensource" data-section="Open Source">
+    <div class="container">
+      <p class="reveal section-num">05.</p>
+      <h3 class="reveal d1 section-title">Open Source & Packages</h3>
+      <p class="reveal d2 section-desc">Laravel packages I've built and shared with the developer community.</p>
+      <div class="packages-grid">
+        <a href="https://github.com/Shankar-Tom/laravel-visit-tracker" target="_blank" rel="noopener noreferrer"
+          class="reveal d2 card card-lift" style="display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              class="text-muted">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+            <span class="mono text-primary"
+              style="font-size:.75rem;padding:.125rem .5rem;border-radius:.25rem;background:rgba(34,197,94,.1)">Laravel</span>
+          </div>
+          <h4 class="mono" style="font-size:.875rem;font-weight:600;margin-bottom:.5rem">laravel-visit-tracker</h4>
+          <p class="text-muted" style="font-size:.75rem;line-height:1.6;flex:1">A Laravel package to track visits and
+            page views with detailed analytics and reporting.</p>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-top:1rem"><span class="lang-dot"></span><span
+              class="text-muted" style="font-size:.75rem">PHP</span></div>
+        </a>
+        <a href="https://github.com/Shankar-Tom/country-phone-validator" target="_blank" rel="noopener noreferrer"
+          class="reveal d3 card card-lift" style="display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              class="text-muted">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+            <span class="mono text-primary"
+              style="font-size:.75rem;padding:.125rem .5rem;border-radius:.25rem;background:rgba(34,197,94,.1)">Laravel</span>
+          </div>
+          <h4 class="mono" style="font-size:.875rem;font-weight:600;margin-bottom:.5rem">country-phone-validator</h4>
+          <p class="text-muted" style="font-size:.75rem;line-height:1.6;flex:1">Laravel package to validate phone
+            numbers using country name or dial code with comprehensive coverage.</p>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-top:1rem"><span class="lang-dot"></span><span
+              class="text-muted" style="font-size:.75rem">PHP</span></div>
+        </a>
+        <a href="https://github.com/Shankar-Tom/laravel-search" target="_blank" rel="noopener noreferrer"
+          class="reveal d4 card card-lift" style="display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              class="text-muted">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+            <span class="mono text-primary"
+              style="font-size:.75rem;padding:.125rem .5rem;border-radius:.25rem;background:rgba(34,197,94,.1)">Laravel</span>
+          </div>
+          <h4 class="mono" style="font-size:.875rem;font-weight:600;margin-bottom:.5rem">laravel-search</h4>
+          <p class="text-muted" style="font-size:.75rem;line-height:1.6;flex:1">Global search across Laravel models and
+            relationships with flexible query building.</p>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-top:1rem"><span class="lang-dot"></span><span
+              class="text-muted" style="font-size:.75rem">PHP</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-section="Contact" style="display:flex;align-items:center">
+    <div class="container-sm" style="text-align:center">
+      <p class="reveal section-num">06.</p>
+      <h3 class="reveal d1 section-title">Get In Touch</h3>
+      <p class="reveal d2 text-muted" style="max-width:32rem;margin:0 auto 2.5rem">I'm always open to discussing new
+        projects, creative ideas, or opportunities to be part of your vision.</p>
+      <div class="reveal d3 contact-grid">
+        <a href="mailto:shankargoraise@gmail.com" class="contact-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          <div style="text-align:left">
+            <p class="text-muted" style="font-size:.75rem">Email</p>
+            <p style="font-size:.875rem">shankargoraise@gmail.com</p>
+          </div>
+        </a>
+        <div class="contact-card">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <div style="text-align:left">
+            <p class="text-muted" style="font-size:.75rem">Location</p>
+            <p style="font-size:.875rem">Jamshedpur, Jharkhand, India</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d4"><a href="mailto:shankargoraise@gmail.com" class="btn-primary">Say Hello →</a></div>
+      <div class="reveal d5 social-links">
+        <a href="https://github.com/Shankar-Tom" target="_blank" rel="noopener noreferrer"><svg width="22" height="22"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg></a>
+        <a href="https://linkedin.com/in/shankargorai" target="_blank" rel="noopener noreferrer"><svg width="22"
+            height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect width="4" height="12" x="2" y="9" />
+            <circle cx="4" cy="4" r="2" />
+          </svg></a>
+        <a href="mailto:shankargoraise@gmail.com"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/Shankar-Tom" target="_blank" rel="noopener noreferrer"><svg width="20" height="20"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path
+            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </svg></a>
+      <a href="https://linkedin.com/in/shankargorai" target="_blank" rel="noopener noreferrer"><svg width="20"
+          height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect width="4" height="12" x="2" y="9" />
+          <circle cx="4" cy="4" r="2" />
+        </svg></a>
+      <a href="mailto:shankargoraise@gmail.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg></a>
+    </div>
+    <p>&copy; 2026 Shankar Gorai. Built with passion.</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Active section tracking + background text
+    const bgSpan = document.querySelector('#bg-text span');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting);
+      if (visible.length) {
+        const best = visible.reduce((a, b) => a.intersectionRatio > b.intersectionRatio ? a : b);
+        const name = best.target.getAttribute('data-section');
+        if (name && bgSpan.textContent !== name) {
+          bgSpan.classList.add('hide');
+          setTimeout(() => { bgSpan.textContent = name; bgSpan.classList.remove('hide'); }, 300);
+          document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('data-nav') === name);
+          });
+        }
+      }
+    }, { threshold: [0.2, 0.4, 0.6], rootMargin: '-10% 0px -10% 0px' });
+    document.querySelectorAll('[data-section]').forEach(s => sectionObserver.observe(s));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+<?php
+
+$portfolies = [
+    'index.html',
+    'replit.html',
+    'resume.html',
+    'shankar-gorai-portfolio.html'
+];
+
+$openfile = $portfolies[array_rand($portfolies)];
+
+include($openfile);
