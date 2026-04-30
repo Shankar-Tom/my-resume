@@ -559,26 +559,72 @@
       line-height: 1.25
     }
   </style>
+
+  <style>
+    /* CARD BASE */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      transform: scale(1);
+    }
+
+    /* 🔼 IMAGE */
+    .hover-image {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.4s ease;
+    }
+
+    .hover-image img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    /* CONTENT */
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+    }
+
+    /* LOGO */
+    .logo-wrap {
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .project-logo {
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    /* 🔥 HOVER EFFECT */
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card:hover .hover-image {
+      height: 100%;
+    }
+
+    .project-card:hover .project-logo {
+      transform: scale(0.9);
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <a href="#intro" class="nav-logo">&lt;ShankarGorai /&gt;</a>
-      <ul class="nav-links">
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#opensource">Open Source</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="mobile-toggle"
-        onclick="document.querySelector('.nav-links').style.display=this.dataset.open?'none':'flex';this.dataset.open=this.dataset.open?'':'1';this.textContent=this.dataset.open?'✕':'☰'">☰</button>
-    </div>
-  </nav>
+
 
   <!-- INTRO -->
   <section class="section" id="intro" data-section="Introduction">
@@ -808,92 +854,238 @@
         <h2 class="reveal mono text-primary text-sm mb-2">04.</h2>
         <h3 class="reveal s1 text-3xl font-bold mb-12">Projects</h3>
         <div class="grid-2">
-          <a href="https://vadi.co.in/" target="_blank" rel="noopener noreferrer" class="reveal s2 card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
-            <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
-                src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Ghorua Online"
-                class="project-logo" /></div>
-            <p class="text-xs mono text-primary mb-2">eHealth Platform</p>
-            <h4 class="text-xl font-bold mb-2">Vadi Health</h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">A comprehensive eHealth platform enabling
-              digital health services, patient management, and telemedicine capabilities.</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">TALL Stack</span>
-              <span class="badge">MySQL</span> <span class="badge">AWS</span>
-            </div>
-          </a>
-          <a href="https://swadhyay.j2p.in/" target="_blank" rel="noopener noreferrer" class="reveal s3 card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
-            <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
-                src="https://swadhyay.j2p.in/common/images/logo.png" alt="Ghorua Online" class="project-logo" /></div>
+          <a href="https://vadi.co.in/" target="_blank" class="reveal s3 card project-card"
+            style="text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden">
 
-            <p class="text-xs mono text-primary mb-2">E-Learning</p>
-            <h4 class="text-xl font-bold mb-2">Swadhyay</h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">Full-featured e-learning platform with course
-              management, student progress tracking, and interactive learning modules.</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">Livewire</span>
-              <span class="badge">Tailwind CSS</span> <span class="badge">MySQL</span>
+            <!-- 🔼 HOVER IMAGE -->
+            <div class="hover-image">
+              <img src="projects/vadi.png" alt="Vadi Screenshot">
             </div>
-          </a>
-          <a href="https://kualia.app/" target="_blank" rel="noopener noreferrer" class="reveal s4 card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
 
-            <p class="text-xs mono text-primary mb-2">Online Mentorship</p>
-            <h4 class="text-xl font-bold mb-2">Kualia</h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">Online mentorship platform connecting mentors
-              and mentees with scheduling, session management, and progress tracking.</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">Vue.js</span> <span
-                class="badge">Redis</span> <span class="badge">WebSockets</span></div>
-          </a>
-          <a href="https://www.ghorua.online/" target="_blank" rel="noopener noreferrer" class="reveal s5 card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
-            <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
-                src="https://www.ghorua.online/logo.png" alt="Ghorua Online" class="project-logo" /></div>
-            <p class="text-xs mono text-primary mb-2">E-Commerce</p>
-            <h4 class="text-xl font-bold mb-2">Ghorua Online</h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">Robust e-commerce solution with product
-              management, payment gateway integration, order tracking, and inventory management.</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">Alpine.js</span>
-              <span class="badge">Payment Gateway</span>
-            </div>
-          </a>
-          <a href="https://bisonxchange.com/" target="_blank" rel="noopener noreferrer" class="reveal s5 card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
-            <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
-                src="https://bisonxchange.com/logo.png" alt="Ghorua Online" class="project-logo" /></div>
-            <p class="text-xs mono text-primary mb-2">Crypto Trading WebApp</p>
-            <h4 class="text-xl font-bold mb-2">BisonXchange</h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">Bisonexchange is a web application that
-              allows users to trade in crypto currency .</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">Livewire</span>
+            <!-- 🔽 ORIGINAL CONTENT (unchanged structure) -->
+            <div class="card-content">
+
+              <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem">
+                <img src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi" class="project-logo" />
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">eHealth Platform</p>
+              <h4 class="text-xl font-bold mb-2">Vadi</h4>
+
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                A comprehensive eHealth platform enabling
+                digital health services, patient management, and telemedicine capabilities.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Livewire</span>
+                <span class="badge">Tailwind CSS</span>
+                <span class="badge">MySQL</span>
+                <span class="badge">Firebase</span>
+                <span class="badge">Razorpay</span>
+              </div>
 
             </div>
           </a>
-          <a href="https://sendpilot.site" target="_blank" rel="noopener noreferrer" class="reveal s5 card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
-            <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
-                src="https://sendpilot.site/media/public/YsqueUBV0yaboS6h82Kk5AtJMBCZnv7YV1z8rolR.png"
-                alt="Ghorua Online" class="project-logo" /></div>
-            <p class="text-xs mono text-primary mb-2">Bulk Whatsapp Sender</p>
-            <h4 class="text-xl font-bold mb-2">SendPilot</h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">Sendpilot is whatsapp bulk sender SaaS that
-              allow users to send whatsapp messages using meta's official api.</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">Veu.JS</span> <span
-                class="badge">Inertia.JS</span>
-              <span class="badge">Payment Gateway</span>
+          <a href="https://swadhyay.j2p.in/" target="_blank" class="reveal s3 card project-card"
+            style="text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden">
+
+            <!-- 🔼 HOVER IMAGE -->
+            <div class="hover-image">
+              <img src="projects/swadhyay.png" alt="Swadhyay Screenshot">
+            </div>
+
+            <!-- 🔽 ORIGINAL CONTENT (unchanged structure) -->
+            <div class="card-content">
+
+              <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem">
+                <img src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" class="project-logo" />
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">E-Learning</p>
+              <h4 class="text-xl font-bold mb-2">Swadhyay</h4>
+
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                Full-featured e-learning platform with course management, student progress tracking,
+                and interactive learning modules.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Livewire</span>
+                <span class="badge">Bootstrap</span>
+                <span class="badge">MySQL</span>
+                <span class="badge">YouTube API</span>
+              </div>
+
             </div>
           </a>
-          <a href="https://app.shreeganeshkhajrana.com/" target="_blank" rel="noopener noreferrer"
-            class="reveal s5 card" style="text-decoration:none;color:inherit;display:flex;flex-direction:column">
-            <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem"><img
-                src="https://shreeganeshkhajrana.com/wp-content/uploads/2024/05/Khajrana-logo-1.png" alt="Ghorua Online"
-                class="project-logo" /></div>
-            <p class="text-xs mono text-primary mb-2">ERP System </p>
-            <h4 class="text-xl font-bold mb-2">Khajrana Temple </h4>
-            <p class="text-muted text-sm leading-relaxed" style="flex:1">This is system to take and manage donations ,
-              inventories and document approval.</p>
-            <div class="flex-wrap gap-2 mt-4"><span class="badge">Laravel</span> <span class="badge">Livewire</span>
-              <span class="badge">MySql</span>
-              <span class="badge">Payment Gateway</span> <span class="badge"></span>
+
+
+          <!-- Kualia -->
+          <a href="https://kualia.app/" target="_blank" class="reveal s4 card project-card">
+
+            <div class="hover-image">
+              <img src="projects/Kualia.png" alt="Kualia Screenshot">
+            </div>
+
+            <div class="card-content">
+              <div class="logo-wrap">
+                <img src="kualialogo.png" class="project-logo">
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">Online Mentorship</p>
+              <h4 class="text-xl font-bold mb-2">Kualia</h4>
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                Online mentorship platform connecting mentors and mentees with scheduling,
+                session management, and progress tracking.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Vue.js</span>
+                <span class="badge">Redis</span>
+                <span class="badge">WebSockets</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Ghorua -->
+          <a href="https://www.ghorua.online/" target="_blank" class="reveal s5 card project-card">
+
+            <div class="hover-image">
+              <img src="projects/ghorua.png">
+            </div>
+
+            <div class="card-content">
+              <div class="logo-wrap">
+                <img src="https://www.ghorua.online/logo.png" class="project-logo">
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">E-Commerce</p>
+              <h4 class="text-xl font-bold mb-2">Ghorua Online</h4>
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                Robust e-commerce solution with product management, payment gateway integration,
+                order tracking, and inventory management.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Alpine.js</span>
+                <span class="badge">Payment Gateway</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- BisonXchange -->
+          <a href="https://bisonxchange.com/" target="_blank" class="reveal s5 card project-card">
+
+            <div class="hover-image">
+              <img src="https://bisonxchange.com/logo.png">
+            </div>
+
+            <div class="card-content">
+              <div class="logo-wrap">
+                <img src="https://bisonxchange.com/logo.png" class="project-logo">
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">Crypto Trading WebApp</p>
+              <h4 class="text-xl font-bold mb-2">BisonXchange</h4>
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                Bisonexchange is a web application that allows users to trade in crypto currency.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Livewire</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- SendPilot -->
+          <a href="https://sendpilot.site" target="_blank" class="reveal s5 card project-card">
+
+            <div class="hover-image">
+              <img src="projects/sendpilot.png">
+            </div>
+
+            <div class="card-content">
+              <div class="logo-wrap">
+                <img src="https://sendpilot.site/media/public/YsqueUBV0yaboS6h82Kk5AtJMBCZnv7YV1z8rolR.png"
+                  class="project-logo">
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">Bulk Whatsapp Sender</p>
+              <h4 class="text-xl font-bold mb-2">SendPilot</h4>
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                Sendpilot is whatsapp bulk sender SaaS using Meta official API.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Vue.js</span>
+                <span class="badge">Inertia.js</span>
+                <span class="badge">Payment Gateway</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Khajrana -->
+          <a href="https://app.shreeganeshkhajrana.com/" target="_blank" class="reveal s5 card project-card">
+
+            <div class="hover-image">
+              <img src="projects/khajrana.jpg">
+            </div>
+
+            <div class="card-content">
+              <div class="logo-wrap">
+                <img src="https://shreeganeshkhajrana.com/wp-content/uploads/2024/05/Khajrana-logo-1.png"
+                  class="project-logo">
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">ERP System</p>
+              <h4 class="text-xl font-bold mb-2">Khajrana Temple</h4>
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                System to manage donations, inventory, and approvals.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Livewire</span>
+                <span class="badge">MySQL</span>
+                <span class="badge">Payment Gateway</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://app.shreeganeshkhajrana.com/" target="_blank" class="reveal s5 card project-card">
+
+            <div class="hover-image">
+              <img src="projects/bibblebowl.png">
+            </div>
+
+            <div class="card-content">
+              <div class="logo-wrap">
+                <img src="https://biblebowlapp.christiantechsolutions.com/logo.png" class="project-logo">
+              </div>
+
+              <p class="text-xs mono text-primary mb-2">Quiz App admin panel</p>
+              <h4 class="text-xl font-bold mb-2">Bibble Bowl</h4>
+              <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                Admin panel for managing quiz applications.
+              </p>
+
+              <div class="flex-wrap gap-2 mt-4">
+                <span class="badge">Laravel</span>
+                <span class="badge">Livewire</span>
+                <span class="badge">MySQL</span>
+
+              </div>
             </div>
           </a>
 
@@ -978,13 +1170,14 @@
         <div class="reveal s3 grid-2" style="max-width:28rem;margin:0 auto 2.5rem">
           <a href="mailto:shankargoraise@gmail.com" class="card"
             style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:.75rem"><span
-              class="text-primary">✉️</span>
+              class="material-icons">email</span>
             <div style="text-align:left">
               <p class="text-xs text-muted">Email</p>
               <p class="text-sm">shankargoraise@gmail.com</p>
             </div>
           </a>
-          <div class="card" style="display:flex;align-items:center;gap:.75rem"><span class="text-primary">📍</span>
+          <div class="card" style="display:flex;align-items:center;gap:.75rem"><span
+              class="material-icons">location_on</span>
             <div style="text-align:left">
               <p class="text-xs text-muted">Location</p>
               <p class="text-sm">Jamshedpur,Jharkhand,India</p>
