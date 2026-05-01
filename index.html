@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shankar Gorai - Senior Laravel Developer</title>
   <meta name="description"
-    content="Senior Laravel Developer with 8+ years of PHP mastery. Building scalable web apps, robust APIs, and high-performance Laravel ecosystems." />
+    content="Senior Laravel Developer with 8+ years of PHP mastery. Building scalable web apps, robust APIs, and high-performance Laravel ecosystems. Opensource contributor" />
+  <meta name="keywords"
+    content="Laravel, Vue Js, Livewire, Codeigniter, PHP , MySQL , PostGres , AWS , GIT , github, Rest APIs,  Senior Developer, Web Development, API Development, OpenSource, Jamshedpur , Jharkhand , India, Developer, Software Engineer" />
   <meta property="og:title" content="Shankar Gorai — Senior Laravel Developer" />
   <meta property="og:description"
     content="I help companies scale web applications, build robust APIs, and architect high-performance Laravel ecosystems." />
@@ -17,1203 +19,655 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    :root {
-      --bg: #0a0a0a;
-      --fg: #ededed;
-      --card: #121212;
-      --primary: #22b8c5;
-      --primary-fg: #050505;
-      --muted: #8a8a8a;
-      --border: #242424;
-      --secondary: #1e1e1e
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      -webkit-font-smoothing: antialiased
-    }
-
-    .mono {
-      font-family: 'JetBrains Mono', monospace
-    }
-
-    /* Nav */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(10, 10, 10, 0.7);
-      border-bottom: 1px solid var(--border)
-    }
-
-    .nav-inner {
-      max-width: 72rem;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--primary);
-      margin-bottom: 24px;
-      opacity: 0;
-      transform: translateX(-20px);
-      animation: slideInLeft 0.5s 0.2s ease forwards;
-    }
-
-    .hero-tag svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    @keyframes slideInLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .nav-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .875rem;
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none
-    }
-
-    .nav-links a {
-      font-size: .875rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .3s
-    }
-
-    .nav-links a:hover {
-      color: var(--fg)
-    }
-
-    /* Section wrapper */
-    .section {
-      position: relative;
-      z-index: 10;
-      overflow: hidden
-    }
-
-    .section-bg {
-      position: sticky;
-      top: 0;
-      height: 0;
-      z-index: 0
-    }
-
-    .section-bg-inner {
-      margin-top: 5%;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      padding: 0 1.5rem
-    }
-
-    .section-bg-text {
-      user-select: none;
-      white-space: nowrap;
-      text-align: center;
-      font-weight: 900;
-      font-size: clamp(3rem, 12vw, 11rem);
-      color: hsla(166, 94%, 49%, 0.964);
-      transition: opacity .15s, transform .15s, color .15s
-    }
-
-    .section-content {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-      padding: 6rem 1.5rem
-    }
-
-    /* Reveal animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1)
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0)
-    }
-
-    .s1 {
-      transition-delay: .1s
-    }
-
-    .s2 {
-      transition-delay: .2s
-    }
-
-    .s3 {
-      transition-delay: .3s
-    }
-
-    .s4 {
-      transition-delay: .4s
-    }
-
-
-    .s5 {
-      transition-delay: .5s
-    }
-
-    /* Cards */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: .75rem;
-      padding: 1.5rem;
-      transition: all .5s
-    }
-
-    .project-logo {
-      height: 2.5rem;
-      object-fit: contain;
-      opacity: .7;
-      transition: opacity .3s;
-    }
-
-    .card:hover {
-      border-color: rgba(34, 197, 94, 0.5);
-      box-shadow: 0 0 30px -5px rgba(34, 197, 94, 0.3)
-    }
-
-    .badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      padding: .25rem .5rem;
-      border-radius: .375rem;
-      background: var(--secondary);
-      color: var(--primary)
-    }
-
-    .text-primary {
-      color: var(--primary)
-    }
-
-    .text-muted {
-      color: var(--muted)
-    }
-
-    .text-gradient {
-      background: linear-gradient(135deg, #22c2c5, #4aa5de);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .glow {
-      box-shadow: 0 0 30px -5px rgba(34, 197, 194, 0.3)
-    }
-
-    /* Timeline */
-    .timeline-item {
-      position: relative;
-      padding-left: 2rem;
-      border-left: 1px solid var(--border);
-      transition: border-color .5s
-    }
-
-    .timeline-item:hover {
-      border-color: var(--primary)
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -5px;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--border);
-      transition: background .5s
-    }
-
-    .timeline-item:hover .timeline-dot {
-      background: var(--primary)
-    }
-
-    /* Grid */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem
-    }
-
-    @media(min-width:640px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(4, 1fr)
-      }
-    }
-
-    @media(min-width:768px) {
-      .hero-grid {
-        grid-template-columns: 1fr 1fr
-      }
-
-      .grid-4 {
-        grid-template-columns: repeat(4, 1fr)
-      }
-    }
-
-    .max-w-3xl {
-      max-width: 48rem;
-      margin: 0 auto;
-      width: 100%
-    }
-
-    .max-w-5xl {
-      max-width: 64rem;
-      margin: 0 auto;
-      width: 100%
-    }
-
-    .max-w-6xl {
-      max-width: 72rem;
-      margin: 0 auto;
-      width: 100%
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: .75rem 1.5rem;
-      border-radius: .5rem;
-      font-size: .875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all .3s
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: var(--primary-fg)
-    }
-
-    .btn-primary:hover {
-      opacity: .9
-    }
-
-    .btn-outline {
-      border: 1px solid var(--primary);
-      color: var(--primary)
-    }
-
-    .btn-outline:hover {
-      background: rgba(34, 197, 94, 0.1)
-    }
-
-    /* Photo */
-    .photo-wrap {
-      width: 16rem;
-      height: 18rem;
-      border-radius: 1rem;
-      overflow: hidden;
-      border: 2px solid var(--border)
-    }
-
-    .photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .photo-badge {
-      position: absolute;
-      bottom: -1rem;
-      left: -1rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: .5rem;
-      padding: .5rem 1rem
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 1.5rem;
-      text-align: center
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .3s
-    }
-
-    footer a:hover {
-      color: var(--primary)
-    }
-
-    /* Mobile nav */
-    .mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--fg);
-      font-size: 1.5rem;
-      cursor: pointer
-    }
-
-    @media(max-width:767px) {
-      .nav-links {
-        display: none
-      }
-
-      .mobile-toggle {
-        display: block
-      }
-    }
-
-    /* Utility */
-    .flex-center {
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .space-y>*+* {
-      margin-top: 2rem
-    }
-
-    .space-y-lg>*+* {
-      margin-top: 3rem
-    }
-
-    .mt-2 {
-      margin-top: .5rem
-    }
-
-    .mt-3 {
-      margin-top: .75rem
-    }
-
-    .mt-4 {
-      margin-top: 1rem
-    }
-
-    .mt-6 {
-      margin-top: 1.5rem
-    }
-
-    .mt-8 {
-      margin-top: 2rem
-    }
-
-    .mt-10 {
-      margin-top: 2.5rem
-    }
-
-    .mb-1 {
-      margin-bottom: .25rem
-    }
-
-    .mb-2 {
-      margin-bottom: .5rem
-    }
-
-    .mb-3 {
-      margin-bottom: .75rem
-    }
-
-    .mb-4 {
-      margin-bottom: 1rem
-    }
-
-    .mb-10 {
-      margin-bottom: 2.5rem
-    }
-
-    .mb-12 {
-      margin-bottom: 3rem
-    }
-
-    .gap-2 {
-      gap: .5rem
-    }
-
-    .gap-4 {
-      gap: 1rem
-    }
-
-    .gap-6 {
-      gap: 1.5rem
-    }
-
-    .flex-wrap {
-      display: flex;
-      flex-wrap: wrap
-    }
-
-    .text-xs {
-      font-size: .75rem
-    }
-
-    .text-sm {
-      font-size: .875rem
-    }
-
-    .text-lg {
-      font-size: 1.125rem
-    }
-
-    .text-xl {
-      font-size: 1.25rem
-    }
-
-    .text-2xl {
-      font-size: 1.5rem
-    }
-
-    .text-3xl {
-      font-size: 1.875rem
-    }
-
-    .text-5xl {
-      font-size: 3rem
-    }
-
-    .font-bold {
-      font-weight: 700
-    }
-
-    .font-semibold {
-      font-weight: 600
-    }
-
-    .font-medium {
-      font-weight: 500
-    }
-
-    .leading-relaxed {
-      line-height: 1.625
-    }
-
-    .leading-tight {
-      line-height: 1.25
-    }
-  </style>
-
-  <style>
-    /* CARD BASE */
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: inherit;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      transform: scale(1);
-    }
-
-    /* 🔼 IMAGE */
-    .hover-image {
-      height: 0;
-      overflow: hidden;
-      transition: height 0.4s ease;
-    }
-
-    .hover-image img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    /* CONTENT */
-    .card-content {
-      display: flex;
-      flex-direction: column;
-      padding: 0.5rem;
-    }
-
-    /* LOGO */
-    .logo-wrap {
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .project-logo {
-      height: 100%;
-      transition: transform 0.3s ease;
-    }
-
-    /* 🔥 HOVER EFFECT */
-    .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .project-card:hover .hover-image {
-      height: 100%;
-    }
-
-    .project-card:hover .project-logo {
-      transform: scale(0.9);
-    }
-  </style>
+  <link rel="stylesheet" href="newcss.css">
 </head>
+
 
 <body>
 
   <!-- Nav -->
-
-
-  <!-- INTRO -->
-  <section class="section" id="intro" data-section="Introduction">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Introduction</span></div>
-    </div>
-    <div class="section-content" style="display:flex;align-items:center;padding-top:5rem">
-      <div class="hero-grid max-w-6xl" style="padding:5rem 0">
-        <div>
-          <p class="hero-tag">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
-              <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
-              <line x1="6" x2="6.01" y1="6" y2="6" />
-              <line x1="6" x2="6.01" y1="18" y2="18" />
-            </svg>
-            system.init()
-          </p>
-          <p class="reveal mono text-primary text-sm mb-4">Hi, I'm</p>
-          <h1 class="reveal s1 text-5xl font-bold leading-tight">Shankar Gorai</h1>
-          <h2 class="reveal s2 text-2xl font-bold text-muted mt-2">Senior Laravel Developer</h2>
-          <p class="reveal s3 text-muted mt-6 text-lg leading-relaxed" style="max-width:36rem">I help companies scale
-            web applications, build robust APIs, and architect high-performance <span
-              class="text-primary font-medium">Laravel ecosystems</span>.</p>
-          <div class="reveal s4 stats-grid">
-            <div>
-              <p class="text-2xl font-bold text-gradient">4+</p>
-              <p class="text-xs text-muted mt-1">Years Experience</p>
-            </div>
-            <div>
-              <p class="text-2xl font-bold text-gradient">25+</p>
-              <p class="text-xs text-muted mt-1">Apps Shipped</p>
-            </div>
-            <div>
-              <p class="text-2xl font-bold text-gradient">3</p>
-              <p class="text-xs text-muted mt-1">Open Source Pkgs</p>
-            </div>
-            <div>
-              <p class="text-2xl font-bold text-gradient">5</p>
-              <p class="text-xs text-muted mt-1">Companies</p>
-            </div>
-          </div>
-          <div class="reveal s5 mt-10 flex-wrap gap-4" style="display:flex">
-            <a href="#contact" class="btn btn-primary glow">Free Consultation →</a>
-            <a href="#projects" class="btn btn-outline">View My Work</a>
-          </div>
-        </div>
-        <div class="reveal s2 flex-center">
-          <div style="position:relative">
-            <div class="photo-wrap glow"><img src="https://shankargorai.site/shankargorai.png" alt="Shankar Gorai">
-            </div>
-            <div class="photo-badge">
-              <p class="mono text-xs text-primary">📍 Jamshedpur, India</p>
-            </div>
-          </div>
-        </div>
+  <div class="loader"
+    style="display:flex;justify-content:center;align-items:center;height:100vh;position:fixed;top:0;left:0;right:0;z-index:100">
+    <div class="loader-inner">
+      <div class="loader-text" style="position:relative; font-size: 78px;">
+        <span class="animate-writing" id="laodertext"></span>
       </div>
+      <!-- <div class="loader-spinner">
+        <div class="loader-spinner-inner">
+          <span class="material-icons">play_arrow</span>
+        </div> 
+      </div> -->
     </div>
-  </section>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      let index = 0;
+      let content = '';
 
-  <!-- SKILLS -->
-  <section class="section" id="skills" data-section="Skills">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Skills</span></div>
-    </div>
-    <div class="section-content">
-      <div class="max-w-5xl">
-        <h2 class="reveal mono text-primary text-sm mb-2">Mastering the Modern Stack</h2>
+      function typeWriter() {
+        if (index < 'php artisan serve'.length) {
+          content += 'php artisan serve'.charAt(index);
+          document.getElementById('laodertext').textContent = content;
+          index++;
+          setTimeout(typeWriter, 100);
+        }
+      }
 
-        <div class="grid-4">
-          <div class="reveal s2 card">
-            <p class="text-primary mb-3">⚙️</p>
-            <h4 class="text-sm font-semibold mb-2">Back-End Architecture</h4>
-            <p class="text-xs text-muted leading-relaxed">Laravel (TALL Stack), PHP 8.3+, Eloquent Optimization,
-              Codeigniter.</p>
-          </div>
-          <div class="reveal s3 card">
-            <p class="text-primary mb-3">🖥️</p>
-            <h4 class="text-sm font-semibold mb-2">Infrastructure & DevOps</h4>
-            <p class="text-xs text-muted leading-relaxed">AWS (Lightsail, S3), Docker, CI/CD Pipelines (GitHub Actions),
-              Redis.</p>
-          </div>
-          <div class="reveal s4 card">
-            <p class="text-primary mb-3">🎨</p>
-            <h4 class="text-sm font-semibold mb-2">Front-End Interface</h4>
-            <p class="text-xs text-muted leading-relaxed">Tailwind CSS, Alpine.js, Livewire, Vue.js, Responsive Design.
-            </p>
-          </div>
-          <div class="reveal s5 card">
-            <p class="text-primary mb-3">🛡️</p>
-            <h4 class="text-sm font-semibold mb-2">Testing & Security</h4>
-            <p class="text-xs text-muted leading-relaxed">Pest, PHPUnit, Integration Testing, Data Encryption, OAuth2.
-            </p>
-          </div>
-        </div>
+      typeWriter();
+
+      setTimeout(function () {
+        document.querySelector('.loader').style.display = 'none';
+        document.querySelector('main').style.display = 'block';
+      }, 2500);
+    });
+  </script>
+
+
+  <main style="display: none;">
+
+    <!-- INTRO -->
+    <section class="section" id="intro" data-section="Introduction">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Introduction</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience" data-section="Experience">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Experience</span></div>
-    </div>
-    <div class="section-content" style="display:flex;align-items:center">
-      <div class="max-w-5xl">
-
-
-        <p class="reveal s1 mb-12 text-primary">4+ years building production Laravel applications across
-          multiple
-          companies.</p>
-        <div class="space-y-lg">
-
-          <div class="reveal s2 timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="text-xs mono text-muted mb-1">June 2024 – Present · 11 months</p>
-            <h4 class="text-lg font-semibold">Full Stack Laravel Developer <span class="text-primary">@ Cromp IT
-                Solution</span></h4>
-            <p class="text-muted mt-2 text-sm leading-relaxed">Working as a Laravel developer on a project basis,
-              delivering end-to-end web solutions including REST APIs, admin panels, and client-facing applications.</p>
-            <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">PHP 8</span> <span
-                class="badge">MySQL</span> <span class="badge">REST API</span></div>
-          </div>
-
-          <div class="reveal s3 timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="text-xs mono text-muted mb-1">January 2024 – Present · 2 years 4 months</p>
-            <h4 class="text-lg font-semibold">Full Stack Laravel Developer <span class="text-primary">@ Origin
-                Ventures</span></h4>
-            <p class="text-muted mt-2 text-sm leading-relaxed">Building and maintaining full-stack applications with
-              Laravel, handling architecture decisions, database design, and deployment workflows.</p>
-            <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">Vue.js</span> <span
-                class="badge">MySQL</span> <span class="badge">AWS</span></div>
-          </div>
-
-          <div class="reveal s4 timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="text-xs mono text-muted mb-1">October 2023 – January 2024 · 4 months · Delhi, India</p>
-            <h4 class="text-lg font-semibold">Senior Laravel Developer <span class="text-primary">@ AVC Dotfy LLP</span>
-            </h4>
-            <p class="text-muted mt-2 text-sm leading-relaxed">Led backend development for client projects, mentored
-              junior developers, and optimized application performance and database queries.</p>
-            <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">PHP 8</span> <span
-                class="badge">Redis</span> <span class="badge">Docker</span></div>
-          </div>
-
-          <div class="reveal s5 timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="text-xs mono text-muted mb-1">March 2023 – September 2023 · 7 months</p>
-            <h4 class="text-lg font-semibold">Laravel Developer <span class="text-primary">@ Appic</span></h4>
-            <p class="text-muted mt-2 text-sm leading-relaxed">Developed scalable web applications and RESTful APIs,
-              collaborated with cross-functional teams to deliver features on tight deadlines.</p>
-            <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">Livewire</span>
-              <span class="badge">Tailwind CSS</span> <span class="badge">MySQL</span>
-            </div>
-          </div>
-
-          <div class="reveal s5 timeline-item">
-            <div class="timeline-dot"></div>
-            <p class="text-xs mono text-muted mb-1">August 2021 – February 2023 · 1 year 7 months</p>
-            <h4 class="text-lg font-semibold">Laravel Developer <span class="text-primary">@ Layroad</span></h4>
-            <p class="text-muted mt-2 text-sm leading-relaxed">Built and shipped production web applications from
-              scratch, handling full development lifecycle including requirements, development, testing, and deployment.
-            </p>
-            <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">jQuery</span> <span
-                class="badge">Bootstrap</span> <span class="badge">MySQL</span></div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section" id="education" data-section="Education">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Education</span></div>
-    </div>
-    <div class="section-content" style="display:flex;align-items:center">
-      <div class="max-w-3xl">
-        <h2 class="reveal mono text-primary text-sm mb-2">Education & Certifications over the years</h2>
-
-        <div class="space-y">
-          <div class="reveal s2 card">
-            <div style="display:flex;align-items:flex-start;gap:1rem">
-              <div style="padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,0.1)">🎓</div>
+      <div class="section-content" style="display:flex;align-items:center;padding-top:5rem">
+        <div class="hero-grid max-w-6xl" style="padding:5rem 0">
+          <div>
+            <!-- <p class="hero-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+                <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+                <line x1="6" x2="6.01" y1="6" y2="6" />
+                <line x1="6" x2="6.01" y1="18" y2="18" />
+              </svg>
+              php artisan:serve
+            </p> -->
+            <p class="reveal mono text-primary text-sm mb-4">Hi, I'm</p>
+            <h1 class="reveal s1 text-5xl font-bold leading-tight">Shankar Gorai</h1>
+            <h2 class="reveal s2 text-2xl font-bold text-muted mt-2">Senior Laravel Developer</h2>
+            <p class="reveal s3 text-muted mt-6 text-lg leading-relaxed" style="max-width:36rem">I help companies scale
+              web applications, build robust APIs, and architect high-performance <span
+                class="text-primary font-medium">Laravel ecosystems</span>.</p>
+            <div class="reveal s4 stats-grid">
               <div>
-                <p class="text-xs mono text-muted mb-1">Education</p>
-                <h4 class="text-lg font-semibold">Diploma in Computer Science</h4>
-                <p class="text-primary text-sm font-medium mt-1">Al-kabir Polytechnic</p>
-                <p class="text-muted text-sm mt-1">2014 — 2017</p>
+                <p class="text-2xl font-bold text-gradient">4+</p>
+                <p class="text-xs text-muted mt-1">Years Experience</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-gradient">25+</p>
+                <p class="text-xs text-muted mt-1">Apps Shipped</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-gradient">3</p>
+                <p class="text-xs text-muted mt-1">Open Source Pkgs</p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-gradient">5</p>
+                <p class="text-xs text-muted mt-1">Companies</p>
               </div>
             </div>
-          </div>
-          <div class="reveal s3 card">
-            <div style="display:flex;align-items:flex-start;gap:1rem">
-              <div style="padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,0.1)">🏆</div>
-              <div>
-                <p class="text-xs mono text-muted mb-1">Certification</p>
-                <h4 class="text-lg font-semibold">MongoDB Certified Developer, Associate (C100DEV)</h4>
-                <p class="text-muted text-sm mt-2">Official MongoDB certification for database development.</p>
-              </div>
+            <div class="reveal s5 mt-10 flex-wrap gap-4" style="display:flex">
+              <a href="#contact" class="btn btn-primary glow">Free Consultation →</a>
+              <a href="#projects" class="btn btn-outline">View My Work</a>
             </div>
           </div>
-          <div class="reveal s4 card">
-            <div style="display:flex;align-items:flex-start;gap:1rem">
-              <div style="padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,0.1)">🏆</div>
-              <div>
-                <p class="text-xs mono text-muted mb-1">Certification</p>
-                <h4 class="text-lg font-semibold">cPanel Ultimate Course</h4>
-                <p class="text-muted text-sm mt-2">Server management and hosting configuration.</p>
+          <div class="reveal s2 flex-center">
+            <div style="position:relative">
+              <div class="photo-wrap glow"><img src="https://shankargorai.site/shankargorai.png" alt="Shankar Gorai">
+              </div>
+              <div class="photo-badge">
+                <p class="mono text-xs text-primary">📍 Jamshedpur, India</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS -->
-  <section class="section" id="projects" data-section="Projects">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Projects</span></div>
-    </div>
-    <div class="section-content">
-      <div class="max-w-5xl">
-        <h2 class="reveal mono text-primary text-sm mb-2">Projects delivered to the clients </h2>
-        <div class="grid-2">
-          <a href="https://vadi.co.in/" target="_blank" class="reveal s3 card project-card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden">
+    <!-- SKILLS -->
+    <section class="section" id="skills" data-section="Skills">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Skills</span></div>
+      </div>
+      <div class="section-content">
+        <div class="max-w-5xl">
+          <h2 class="reveal mono text-primary text-sm mb-2">Mastering the Modern Stack</h2>
 
-            <!-- 🔼 HOVER IMAGE -->
-            <div class="hover-image">
+          <div class="grid-4">
+            <div class="reveal s2 card">
+              <p class="text-primary mb-3">⚙️</p>
+              <h4 class="text-sm font-semibold mb-2">Back-End Architecture</h4>
+              <p class="text-xs text-muted leading-relaxed">Laravel (TALL Stack), PHP 8.3+, Eloquent Optimization,
+                Codeigniter.</p>
+            </div>
+            <div class="reveal s3 card">
+              <p class="text-primary mb-3">🖥️</p>
+              <h4 class="text-sm font-semibold mb-2">Infrastructure & DevOps</h4>
+              <p class="text-xs text-muted leading-relaxed">AWS (Lightsail, S3), Docker, CI/CD Pipelines (GitHub
+                Actions),
+                Redis.</p>
+            </div>
+            <div class="reveal s4 card">
+              <p class="text-primary mb-3">🎨</p>
+              <h4 class="text-sm font-semibold mb-2">Front-End Interface</h4>
+              <p class="text-xs text-muted leading-relaxed">Tailwind CSS, Alpine.js, Livewire, Vue.js, Responsive
+                Design.
+              </p>
+            </div>
+            <div class="reveal s5 card">
+              <p class="text-primary mb-3">🛡️</p>
+              <h4 class="text-sm font-semibold mb-2">Testing & Security</h4>
+              <p class="text-xs text-muted leading-relaxed">Pest, PHPUnit, Integration Testing, Data Encryption, OAuth2.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience" data-section="Experience">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Experience</span></div>
+      </div>
+      <div class="section-content" style="display:flex;align-items:center">
+        <div class="max-w-5xl">
+
+
+          <p class="reveal s1 mb-12 text-primary">4+ years building production Laravel applications across
+            multiple
+            companies.</p>
+          <div class="space-y-lg">
+
+            <div class="reveal s2 timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="text-xs mono text-muted mb-1">June 2024 – Present · 11 months</p>
+              <h4 class="text-lg font-semibold">Full Stack Laravel Developer <span class="text-primary">@ Cromp IT
+                  Solution</span></h4>
+              <p class="text-muted mt-2 text-sm leading-relaxed">Working as a Laravel developer on a project basis,
+                delivering end-to-end web solutions including REST APIs, admin panels, and client-facing applications.
+              </p>
+              <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">PHP 8</span>
+                <span class="badge">MySQL</span> <span class="badge">REST API</span>
+              </div>
+            </div>
+
+            <div class="reveal s3 timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="text-xs mono text-muted mb-1">January 2024 – Present · 2 years 4 months</p>
+              <h4 class="text-lg font-semibold">Full Stack Laravel Developer <span class="text-primary">@ Origin
+                  Ventures</span></h4>
+              <p class="text-muted mt-2 text-sm leading-relaxed">Building and maintaining full-stack applications with
+                Laravel, handling architecture decisions, database design, and deployment workflows.</p>
+              <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">Vue.js</span>
+                <span class="badge">MySQL</span> <span class="badge">AWS</span>
+              </div>
+            </div>
+
+            <div class="reveal s4 timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="text-xs mono text-muted mb-1">October 2023 – January 2024 · 4 months · Delhi, India</p>
+              <h4 class="text-lg font-semibold">Senior Laravel Developer <span class="text-primary">@ AVC Dotfy
+                  LLP</span>
+              </h4>
+              <p class="text-muted mt-2 text-sm leading-relaxed">Led backend development for client projects, mentored
+                junior developers, and optimized application performance and database queries.</p>
+              <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">PHP 8</span>
+                <span class="badge">Redis</span> <span class="badge">Docker</span>
+              </div>
+            </div>
+
+            <div class="reveal s5 timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="text-xs mono text-muted mb-1">March 2023 – September 2023 · 7 months</p>
+              <h4 class="text-lg font-semibold">Laravel Developer <span class="text-primary">@ Appic</span></h4>
+              <p class="text-muted mt-2 text-sm leading-relaxed">Developed scalable web applications and RESTful APIs,
+                collaborated with cross-functional teams to deliver features on tight deadlines.</p>
+              <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">Livewire</span>
+                <span class="badge">Tailwind CSS</span> <span class="badge">MySQL</span>
+              </div>
+            </div>
+
+            <div class="reveal s5 timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="text-xs mono text-muted mb-1">August 2021 – February 2023 · 1 year 7 months</p>
+              <h4 class="text-lg font-semibold">Laravel Developer <span class="text-primary">@ Layroad</span></h4>
+              <p class="text-muted mt-2 text-sm leading-relaxed">Built and shipped production web applications from
+                scratch, handling full development lifecycle including requirements, development, testing, and
+                deployment.
+              </p>
+              <div class="flex-wrap gap-2 mt-3"><span class="badge">Laravel</span> <span class="badge">jQuery</span>
+                <span class="badge">Bootstrap</span> <span class="badge">MySQL</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education" data-section="Education">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Education</span></div>
+      </div>
+      <div class="section-content" style="display:flex;align-items:center">
+        <div class="max-w-3xl">
+          <h2 class="reveal mono text-primary text-sm mb-2">Education & Certifications over the years</h2>
+
+          <div class="space-y">
+            <div class="reveal s2 card">
+              <div style="display:flex;align-items:flex-start;gap:1rem">
+                <div style="padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,0.1)">🎓</div>
+                <div>
+                  <p class="text-xs mono text-muted mb-1">Education</p>
+                  <h4 class="text-lg font-semibold">Diploma in Computer Science</h4>
+                  <p class="text-primary text-sm font-medium mt-1">Al-kabir Polytechnic</p>
+                  <p class="text-muted text-sm mt-1">2014 — 2017</p>
+                </div>
+              </div>
+            </div>
+            <div class="reveal s3 card">
+              <div style="display:flex;align-items:flex-start;gap:1rem">
+                <div style="padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,0.1)">🏆</div>
+                <div>
+                  <p class="text-xs mono text-muted mb-1">Certification</p>
+                  <h4 class="text-lg font-semibold">MongoDB Certified Developer, Associate (C100DEV)</h4>
+                  <p class="text-muted text-sm mt-2">Official MongoDB certification for database development.</p>
+                </div>
+              </div>
+            </div>
+            <div class="reveal s4 card">
+              <div style="display:flex;align-items:flex-start;gap:1rem">
+                <div style="padding:.5rem;border-radius:.5rem;background:rgba(34,197,94,0.1)">🏆</div>
+                <div>
+                  <p class="text-xs mono text-muted mb-1">Certification</p>
+                  <h4 class="text-lg font-semibold">cPanel Ultimate Course</h4>
+                  <p class="text-muted text-sm mt-2">Server management and hosting configuration.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects" data-section="Projects">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Projects</span></div>
+      </div>
+      <div class="section-content">
+        <div class="max-w-5xl">
+          <h2 class="reveal mono text-primary text-sm mb-2">Projects delivered to the clients </h2>
+          <div class="grid-2" id="projects">
+            <a href="https://vadi.co.in/" target="_blank" class="reveal s3 card project-card"
+              style="--bg:url('projects/vadi.png')">
+
+              <!-- 🔼 HOVER IMAGE -->
+              <!-- <div class="hover-image">
               <img src="projects/vadi.png" alt="Vadi Screenshot">
-            </div>
+            </div> -->
 
-            <!-- 🔽 ORIGINAL CONTENT (unchanged structure) -->
-            <div class="card-content">
+              <!-- 🔽 ORIGINAL CONTENT (unchanged structure) -->
+              <div class="card-content">
 
-              <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem">
-                <img src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi" class="project-logo" />
+                <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem">
+                  <img src="https://app.vadi.co.in/image/logos/vadiadminpanellogo.png" alt="Vadi"
+                    class="project-logo" />
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">eHealth Platform</p>
+                <h4 class="text-xl font-bold mb-2">Vadi</h4>
+
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  A comprehensive eHealth platform enabling
+                  digital health services, patient management, and telemedicine capabilities.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Livewire</span>
+                  <span class="badge">Tailwind CSS</span>
+                  <span class="badge">MySQL</span>
+                  <span class="badge">Firebase</span>
+                  <span class="badge">Razorpay</span>
+                </div>
+
               </div>
+            </a>
+            <a href="https://swadhyay.j2p.in/" target="_blank" class="reveal s3 card project-card"
+              style="--bg:url('projects/swadhyay.png')">
 
-              <p class="text-xs mono text-primary mb-2">eHealth Platform</p>
-              <h4 class="text-xl font-bold mb-2">Vadi</h4>
-
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                A comprehensive eHealth platform enabling
-                digital health services, patient management, and telemedicine capabilities.
-              </p>
-
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Livewire</span>
-                <span class="badge">Tailwind CSS</span>
-                <span class="badge">MySQL</span>
-                <span class="badge">Firebase</span>
-                <span class="badge">Razorpay</span>
-              </div>
-
-            </div>
-          </a>
-          <a href="https://swadhyay.j2p.in/" target="_blank" class="reveal s3 card project-card"
-            style="text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden">
-
-            <!-- 🔼 HOVER IMAGE -->
-            <div class="hover-image">
+              <!-- 🔼 HOVER IMAGE -->
+              <!-- <div class="hover-image">
               <img src="projects/swadhyay.png" alt="Swadhyay Screenshot">
-            </div>
+            </div> -->
 
-            <!-- 🔽 ORIGINAL CONTENT (unchanged structure) -->
-            <div class="card-content">
+              <!-- 🔽 ORIGINAL CONTENT (unchanged structure) -->
+              <div class="card-content">
 
-              <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem">
-                <img src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" class="project-logo" />
+                <div style="height:3rem;display:flex;align-items:center;margin-bottom:1rem">
+                  <img src="https://swadhyay.j2p.in/common/images/logo.png" alt="Swadhyay" class="project-logo" />
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">E-Learning</p>
+                <h4 class="text-xl font-bold mb-2">Swadhyay</h4>
+
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  Full-featured e-learning platform with course management, student progress tracking,
+                  and interactive learning modules.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Livewire</span>
+                  <span class="badge">Bootstrap</span>
+                  <span class="badge">MySQL</span>
+                  <span class="badge">YouTube API</span>
+                </div>
+
               </div>
+            </a>
 
-              <p class="text-xs mono text-primary mb-2">E-Learning</p>
-              <h4 class="text-xl font-bold mb-2">Swadhyay</h4>
+            <a href="https://kualia.app/" target="_blank" class="reveal s4 card project-card"
+              style="--bg:url('projects/Kualia.png')">
 
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                Full-featured e-learning platform with course management, student progress tracking,
-                and interactive learning modules.
-              </p>
-
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Livewire</span>
-                <span class="badge">Bootstrap</span>
-                <span class="badge">MySQL</span>
-                <span class="badge">YouTube API</span>
-              </div>
-
-            </div>
-          </a>
-
-
-          <!-- Kualia -->
-          <a href="https://kualia.app/" target="_blank" class="reveal s4 card project-card">
-
-            <div class="hover-image">
+              <!-- <div class="hover-image">
               <img src="projects/Kualia.png" alt="Kualia Screenshot">
-            </div>
+            </div> -->
 
-            <div class="card-content">
-              <div class="logo-wrap">
-                <img src="kualialogo.png" class="project-logo">
+              <div class="card-content">
+                <div class="logo-wrap">
+                  <img src="kualialogo.png" class="project-logo">
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">Online Mentorship</p>
+                <h4 class="text-xl font-bold mb-2">Kualia</h4>
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  Online mentorship platform connecting mentors and mentees with scheduling,
+                  session management, and progress tracking.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Livewire</span>
+                  <span class="badge">Tailwind CSS</span>
+                </div>
               </div>
+            </a>
 
-              <p class="text-xs mono text-primary mb-2">Online Mentorship</p>
-              <h4 class="text-xl font-bold mb-2">Kualia</h4>
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                Online mentorship platform connecting mentors and mentees with scheduling,
-                session management, and progress tracking.
-              </p>
+            <a href="https://www.ghorua.online/" target="_blank" class="reveal s5 card project-card"
+              style="--bg:url('projects/ghorua.png')">
 
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Vue.js</span>
-                <span class="badge">Redis</span>
-                <span class="badge">WebSockets</span>
-              </div>
-            </div>
-          </a>
-
-
-          <!-- Ghorua -->
-          <a href="https://www.ghorua.online/" target="_blank" class="reveal s5 card project-card">
-
-            <div class="hover-image">
+              <!-- <div class="hover-image">
               <img src="projects/ghorua.png">
-            </div>
+            </div> -->
 
-            <div class="card-content">
-              <div class="logo-wrap">
-                <img src="https://www.ghorua.online/logo.png" class="project-logo">
+              <div class="card-content">
+                <div class="logo-wrap">
+                  <img src="https://www.ghorua.online/logo.png" class="project-logo">
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">E-Commerce</p>
+                <h4 class="text-xl font-bold mb-2">Ghorua Online</h4>
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  Robust e-commerce solution with product management, payment gateway integration,
+                  order tracking, and inventory management.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Alpine.js</span>
+                  <span class="badge">Payment Gateway</span>
+                </div>
               </div>
+            </a>
 
-              <p class="text-xs mono text-primary mb-2">E-Commerce</p>
-              <h4 class="text-xl font-bold mb-2">Ghorua Online</h4>
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                Robust e-commerce solution with product management, payment gateway integration,
-                order tracking, and inventory management.
-              </p>
+            <a href="https://bisonxchange.com/" target="_blank" class="reveal s5 card project-card"
+              style="--bg:url('projects/bison.png')">
 
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Alpine.js</span>
-                <span class="badge">Payment Gateway</span>
+              <!-- <div class="hover-image">
+              <img src="projects/bison.png">
+            </div> -->
+
+              <div class="card-content">
+                <div class="logo-wrap">
+                  <img src="https://bisonxchange.com/logo.png" class="project-logo">
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">Crypto Trading WebApp</p>
+                <h4 class="text-xl font-bold mb-2">BisonXchange</h4>
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  Bisonexchange is a web application that allows users to trade in crypto currency.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Livewire</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
 
 
-          <!-- BisonXchange -->
-          <a href="https://bisonxchange.com/" target="_blank" class="reveal s5 card project-card">
+            <a href="https://sendpilot.site" target="_blank" class="reveal s5 card project-card"
+              style="--bg:url('projects/sendpilot.png')">
 
-            <div class="hover-image">
-              <img src="https://bisonxchange.com/logo.png">
-            </div>
-
-            <div class="card-content">
-              <div class="logo-wrap">
-                <img src="https://bisonxchange.com/logo.png" class="project-logo">
-              </div>
-
-              <p class="text-xs mono text-primary mb-2">Crypto Trading WebApp</p>
-              <h4 class="text-xl font-bold mb-2">BisonXchange</h4>
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                Bisonexchange is a web application that allows users to trade in crypto currency.
-              </p>
-
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Livewire</span>
-              </div>
-            </div>
-          </a>
-
-
-          <!-- SendPilot -->
-          <a href="https://sendpilot.site" target="_blank" class="reveal s5 card project-card">
-
-            <div class="hover-image">
+              <!-- <div class="hover-image">
               <img src="projects/sendpilot.png">
-            </div>
+            </div> -->
 
-            <div class="card-content">
-              <div class="logo-wrap">
-                <img src="https://sendpilot.site/media/public/YsqueUBV0yaboS6h82Kk5AtJMBCZnv7YV1z8rolR.png"
-                  class="project-logo">
+              <div class="card-content">
+                <div class="logo-wrap">
+                  <img src="https://sendpilot.site/media/public/YsqueUBV0yaboS6h82Kk5AtJMBCZnv7YV1z8rolR.png"
+                    class="project-logo">
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">Bulk Whatsapp Sender</p>
+                <h4 class="text-xl font-bold mb-2">SendPilot</h4>
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  Sendpilot is whatsapp bulk sender SaaS using Meta official API.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Vue.js</span>
+                  <span class="badge">Inertia.js</span>
+                  <span class="badge">Websocket</span>
+
+                  <span class="badge">Payment Gateway</span>
+                </div>
               </div>
-
-              <p class="text-xs mono text-primary mb-2">Bulk Whatsapp Sender</p>
-              <h4 class="text-xl font-bold mb-2">SendPilot</h4>
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                Sendpilot is whatsapp bulk sender SaaS using Meta official API.
-              </p>
-
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Vue.js</span>
-                <span class="badge">Inertia.js</span>
-                <span class="badge">Payment Gateway</span>
-              </div>
-            </div>
-          </a>
+            </a>
 
 
-          <!-- Khajrana -->
-          <a href="https://app.shreeganeshkhajrana.com/" target="_blank" class="reveal s5 card project-card">
+            <a href="https://app.shreeganeshkhajrana.com/" target="_blank" class="reveal s5 card project-card"
+              style="--bg:url('projects/khajrana.jpg')">
 
-            <div class="hover-image">
+              <!-- <div class="hover-image">
               <img src="projects/khajrana.jpg">
-            </div>
+            </div> -->
 
-            <div class="card-content">
-              <div class="logo-wrap">
-                <img src="https://shreeganeshkhajrana.com/wp-content/uploads/2024/05/Khajrana-logo-1.png"
-                  class="project-logo">
+              <div class="card-content">
+                <div class="logo-wrap">
+                  <img src="https://shreeganeshkhajrana.com/wp-content/uploads/2024/05/Khajrana-logo-1.png"
+                    class="project-logo">
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">ERP System</p>
+                <h4 class="text-xl font-bold mb-2">Khajrana Temple</h4>
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  System to manage donations, inventory, and approvals.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Livewire</span>
+                  <span class="badge">MySQL</span>
+                  <span class="badge">Payment Gateway</span>
+                </div>
               </div>
+            </a>
 
-              <p class="text-xs mono text-primary mb-2">ERP System</p>
-              <h4 class="text-xl font-bold mb-2">Khajrana Temple</h4>
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                System to manage donations, inventory, and approvals.
-              </p>
+            <a href="https://biblebowlapp.christiantechsolutions.com/" target="_blank"
+              class="reveal s5 card project-card" style="--bg:url('projects/bibblebowl.png')">
 
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Livewire</span>
-                <span class="badge">MySQL</span>
-                <span class="badge">Payment Gateway</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://app.shreeganeshkhajrana.com/" target="_blank" class="reveal s5 card project-card">
-
-            <div class="hover-image">
+              <!-- <div class="hover-image">
               <img src="projects/bibblebowl.png">
-            </div>
+            </div> -->
 
-            <div class="card-content">
-              <div class="logo-wrap">
-                <img src="https://biblebowlapp.christiantechsolutions.com/logo.png" class="project-logo">
+              <div class="card-content">
+                <div class="logo-wrap">
+                  <img src="https://biblebowlapp.christiantechsolutions.com/logo.png" class="project-logo">
+                </div>
+
+                <p class="text-xs mono text-primary mb-2">Quiz App admin panel</p>
+                <h4 class="text-xl font-bold mb-2">Bibble Bowl</h4>
+                <p class="text-muted text-sm leading-relaxed" style="flex:1">
+                  Admin panel for managing quiz applications.
+                </p>
+
+                <div class="flex-wrap gap-2 mt-4">
+                  <span class="badge">Laravel</span>
+                  <span class="badge">Livewire</span>
+                  <span class="badge">MySQL</span>
+
+                </div>
               </div>
-
-              <p class="text-xs mono text-primary mb-2">Quiz App admin panel</p>
-              <h4 class="text-xl font-bold mb-2">Bibble Bowl</h4>
-              <p class="text-muted text-sm leading-relaxed" style="flex:1">
-                Admin panel for managing quiz applications.
-              </p>
-
-              <div class="flex-wrap gap-2 mt-4">
-                <span class="badge">Laravel</span>
-                <span class="badge">Livewire</span>
-                <span class="badge">MySQL</span>
-
-              </div>
-            </div>
-          </a>
-
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OPEN SOURCE -->
-  <section class="section" id="opensource" data-section="Open Source">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Open Source</span></div>
-    </div>
-    <div class="section-content">
-      <div class="max-w-5xl">
-        <h2 class="reveal mono text-primary text-sm mb-2">Laravel packages I've built and shared with the
-          developer community.</h2>
-        <div class="grid-2" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-          <a href="https://github.com/Shankar-Tom/laravel-visit-tracker" target="_blank" rel="noopener noreferrer"
-            class="reveal s3 card" style="text-decoration:none;color:inherit">
-            <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
-                class="badge">Laravel</span></div>
-            <h4 class="mono text-sm font-semibold mb-2">laravel-visit-tracker</h4>
-            <p class="text-muted text-xs leading-relaxed">A Laravel package to track visits and page views with detailed
-              analytics and reporting.</p>
-            <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
-                style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
-                class="text-xs text-muted">PHP</span></div>
-          </a>
-          <a href="https://github.com/Shankar-Tom/country-phone-validator" target="_blank" rel="noopener noreferrer"
-            class="reveal s4 card" style="text-decoration:none;color:inherit">
-            <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
-                class="badge">Laravel</span></div>
-            <h4 class="mono text-sm font-semibold mb-2">country-phone-validator</h4>
-            <p class="text-muted text-xs leading-relaxed">Laravel package to validate phone numbers using country name
-              or dial code with comprehensive coverage.</p>
-            <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
-                style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
-                class="text-xs text-muted">PHP</span></div>
-          </a>
-          <a href="https://github.com/Shankar-Tom/laravel-search" target="_blank" rel="noopener noreferrer"
-            class="reveal s5 card" style="text-decoration:none;color:inherit">
-            <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
-                class="badge">Laravel</span></div>
-            <h4 class="mono text-sm font-semibold mb-2">laravel-search</h4>
-            <p class="text-muted text-xs leading-relaxed">Global search across Laravel models and relationships with
-              flexible query building.</p>
-            <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
-                style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
-                class="text-xs text-muted">PHP</span></div>
-          </a>
-          <a href="https://github.com/Shankar-Tom/laravel-firebase-eloquent" target="_blank" rel="noopener noreferrer"
-            class="reveal s5 card" style="text-decoration:none;color:inherit">
-            <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
-                class="badge">Laravel</span></div>
-            <h4 class="mono text-sm font-semibold mb-2">laravel-firebase-eloquent</h4>
-            <p class="text-muted text-xs leading-relaxed">Lightweight Eloquent-like models for Firebase Realtime
-              Database with CRUD, where, whereIn, orderBy, limit, paginate, timestamps.</p>
-            <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
-                style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
-                class="text-xs text-muted">PHP</span></div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact" data-section="Contact">
-    <div class="section-bg">
-      <div class="section-bg-inner"><span class="section-bg-text">Contact</span></div>
-    </div>
-    <div class="section-content" style="display:flex;align-items:center">
-      <div class="max-w-3xl" style="text-align:center">
-        <h2 class="reveal mono text-primary text-sm mb-2">I'm always open
-          to discussing new projects, creative ideas, or opportunities to be part of your vision.</h2>
-
-        <div class="reveal s3 grid-2" style="max-width:28rem;margin:0 auto 2.5rem">
-          <a href="mailto:shankargoraise@gmail.com" class="card"
-            style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:.75rem"><span
-              class="material-icons">email</span>
-            <div style="text-align:left">
-              <p class="text-xs text-muted">Email</p>
-              <p class="text-sm">shankargoraise@gmail.com</p>
-            </div>
-          </a>
-          <div class="card" style="display:flex;align-items:center;gap:.75rem"><span
-              class="material-icons">location_on</span>
-            <div style="text-align:left">
-              <p class="text-xs text-muted">Location</p>
-              <p class="text-sm">Jamshedpur,Jharkhand,India</p>
-            </div>
-          </div>
-
-          <div class="reveal s4">
-            <a href="tel:+918114577909" class="btn btn-primary glow">
-              <span class="material-icons" style="vertical-align: middle; margin-right: 5px;">
-                call
-              </span>
-              Say Hello →
             </a>
-          </div>
 
-          <div class="reveal s4">
-            <a href="https://wa.me/918114577909" target="_blank" class="btn btn-primary glow">
-              <span class="material-icons" style="vertical-align: middle; margin-right: 5px;">
-                message
-              </span>
-              Say Hi ! →
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE -->
+    <section class="section" id="opensource" data-section="Open Source">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Open Source</span></div>
+      </div>
+      <div class="section-content">
+        <div class="max-w-5xl">
+          <h2 class="reveal mono text-primary text-sm mb-2">Laravel packages I've built and shared with the
+            developer community.</h2>
+          <div class="grid-2" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+            <a href="https://github.com/Shankar-Tom/laravel-visit-tracker" target="_blank" rel="noopener noreferrer"
+              class="reveal s3 card" style="text-decoration:none;color:inherit">
+              <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
+                  class="badge">Laravel</span></div>
+              <h4 class="mono text-sm font-semibold mb-2">laravel-visit-tracker</h4>
+              <p class="text-muted text-xs leading-relaxed">A Laravel package to track visits and page views
+                with detailed
+                analytics and reporting.</p>
+              <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
+                  style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
+                  class="text-xs text-muted">PHP</span></div>
+            </a>
+            <a href="https://github.com/Shankar-Tom/country-phone-validator" target="_blank" rel="noopener noreferrer"
+              class="reveal s4 card" style="text-decoration:none;color:inherit">
+              <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
+                  class="badge">Laravel</span></div>
+              <h4 class="mono text-sm font-semibold mb-2">country-phone-validator</h4>
+              <p class="text-muted text-xs leading-relaxed">Laravel package to validate phone numbers using
+                country name
+                or dial code with comprehensive coverage.</p>
+              <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
+                  style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
+                  class="text-xs text-muted">PHP</span></div>
+            </a>
+            <a href="https://github.com/Shankar-Tom/laravel-search" target="_blank" rel="noopener noreferrer"
+              class="reveal s5 card" style="text-decoration:none;color:inherit">
+              <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
+                  class="badge">Laravel</span></div>
+              <h4 class="mono text-sm font-semibold mb-2">laravel-search</h4>
+              <p class="text-muted text-xs leading-relaxed">Global search across Laravel models and
+                relationships with
+                flexible query building.</p>
+              <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
+                  style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
+                  class="text-xs text-muted">PHP</span></div>
+            </a>
+            <a href="https://github.com/Shankar-Tom/laravel-firebase-eloquent" target="_blank" rel="noopener noreferrer"
+              class="reveal s5 card" style="text-decoration:none;color:inherit">
+              <div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><span>⚡</span><span
+                  class="badge">Laravel</span></div>
+              <h4 class="mono text-sm font-semibold mb-2">laravel-firebase-eloquent</h4>
+              <p class="text-muted text-xs leading-relaxed">Lightweight Eloquent-like models for Firebase
+                Realtime
+                Database with CRUD, where, whereIn, orderBy, limit, paginate, timestamps.</p>
+              <div class="flex-wrap gap-2 mt-4" style="align-items:center"><span
+                  style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block"></span><span
+                  class="text-xs text-muted">PHP</span></div>
             </a>
           </div>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem">
-      <a href="https://github.com/Shankar-Tom" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/shankar-gorai-a35ba8208" target="_blank">LinkedIn</a>
-      <a href="mailto:shankargoraise@gmail.com">Email</a>
-    </div>
-    <p class="text-xs mono text-muted">© 2025 Shankar Gorai. Built with passion.</p>
-  </footer>
+    <!-- CONTACT -->
+    <section class="section" id="contact" data-section="Contact">
+      <div class="section-bg">
+        <div class="section-bg-inner"><span class="section-bg-text">Contact</span></div>
+      </div>
+      <div class="section-content" style="display:flex;align-items:center">
+        <div class="max-w-3xl" style="text-align:center">
+          <h2 class="reveal mono text-primary text-sm mb-2">I'm always open
+            to discussing new projects, creative ideas, or opportunities to be part of your vision.</h2>
+
+          <div class="reveal s3 grid-2" style="max-width:28rem;margin:0 auto 2.5rem">
+            <a href="mailto:shankargoraise@gmail.com" class="card"
+              style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:.75rem"><span
+                class="material-icons">email</span>
+              <div style="text-align:left">
+                <p class="text-xs text-muted">Email</p>
+                <p class="text-sm">shankargoraise@gmail.com</p>
+              </div>
+            </a>
+            <div class="card" style="display:flex;align-items:center;gap:.75rem"><span
+                class="material-icons">location_on</span>
+              <div style="text-align:left">
+                <p class="text-xs text-muted">Location</p>
+                <p class="text-sm">Jamshedpur,Jharkhand,India</p>
+              </div>
+            </div>
+
+            <div class="reveal s4">
+              <a href="tel:+918114577909" class="btn btn-primary glow">
+                <span class="material-icons" style="vertical-align: middle; margin-right: 5px;">
+                  call
+                </span>
+                Say Hello →
+              </a>
+            </div>
+
+            <div class="reveal s4">
+              <a href="https://wa.me/918114577909" target="_blank" class="btn btn-primary glow">
+                <span class="material-icons" style="vertical-align: middle; margin-right: 5px;">
+                  message
+                </span>
+                Say Hi ! →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem">
+        <a href="https://github.com/Shankar-Tom" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/shankar-gorai-a35ba8208" target="_blank">LinkedIn</a>
+        <a href="mailto:shankargoraise@gmail.com">Email</a>
+      </div>
+      <p class="text-xs mono text-muted">© 2025 Shankar Gorai. Built with passion.</p>
+    </footer>
+
+  </main>
+
 
   <script>
     // Scroll reveal with reverse
@@ -1245,6 +699,9 @@
       requestAnimationFrame(updateSections);
     }
     updateSections();
+
+
+
   </script>
 </body>
 
