@@ -141,7 +141,7 @@ nav {
 .section-content {
     position: relative;
     z-index: 10;
-    min-height: 100vh;
+    min-height: 10vh;
     padding: 6rem 1.5rem
 }
 
