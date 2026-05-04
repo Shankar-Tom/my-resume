@@ -39,28 +39,7 @@
       </div> -->
     </div>
   </div>
-  <script>
-    window.addEventListener('load', function () {
-      let index = 0;
-      let content = '';
 
-      function typeWriter() {
-        if (index < 'php artisan serve'.length) {
-          content += 'php artisan serve'.charAt(index);
-          document.getElementById('laodertext').textContent = content;
-          index++;
-          setTimeout(typeWriter, 100);
-        }
-      }
-
-      typeWriter();
-
-      setTimeout(function () {
-        document.querySelector('.loader').style.display = 'none';
-        document.querySelector('main').style.display = 'block';
-      }, 2500);
-    });
-  </script>
 
 
   <main style="display: none;">
@@ -91,7 +70,7 @@
                 class="text-primary font-medium">Laravel ecosystems</span>.</p>
             <div class="reveal s4 stats-grid">
               <div>
-                <p class="text-2xl font-bold text-gradient">4+</p>
+                <p class="text-2xl font-bold text-gradient">8+</p>
                 <p class="text-xs text-muted mt-1">Years Experience</p>
               </div>
               <div>
@@ -303,7 +282,7 @@
           <h2 class="reveal mono text-primary text-sm mb-2">Projects delivered to the clients </h2>
           <div class="grid-2" id="projects">
             <a href="https://vadi.co.in/" target="_blank" class="reveal s3 card project-card"
-              style="--bg:url('projects/vadi.png')">
+              style="--bg:url('images/projects/vadi.png')">
 
               <!-- 🔼 HOVER IMAGE -->
               <!-- <div class="hover-image">
@@ -338,7 +317,7 @@
               </div>
             </a>
             <a href="https://swadhyay.j2p.in/" target="_blank" class="reveal s3 card project-card"
-              style="--bg:url('projects/swadhyay.png')">
+              style="--bg:url('images/projects/swadhyay.png')">
 
               <!-- 🔼 HOVER IMAGE -->
               <!-- <div class="hover-image">
@@ -372,7 +351,7 @@
             </a>
 
             <a href="https://kualia.app/" target="_blank" class="reveal s4 card project-card"
-              style="--bg:url('projects/Kualia.png')">
+              style="--bg:url('images/projects/Kualia.png')">
 
               <!-- <div class="hover-image">
               <img src="projects/Kualia.png" alt="Kualia Screenshot">
@@ -380,7 +359,7 @@
 
               <div class="card-content">
                 <div class="logo-wrap">
-                  <img src="kualialogo.png" class="project-logo">
+                  <img src="images/logos/kualialogo.png" class="project-logo">
                 </div>
 
                 <p class="text-xs mono text-primary mb-2">Online Mentorship</p>
@@ -399,7 +378,7 @@
             </a>
 
             <a href="https://www.ghorua.online/" target="_blank" class="reveal s5 card project-card"
-              style="--bg:url('projects/ghorua.png')">
+              style="--bg:url('images/projects/ghorua.png')">
 
               <!-- <div class="hover-image">
               <img src="projects/ghorua.png">
@@ -426,7 +405,7 @@
             </a>
 
             <a href="https://bisonxchange.com/" target="_blank" class="reveal s5 card project-card"
-              style="--bg:url('projects/bison.png')">
+              style="--bg:url('images/projects/bison.png')">
 
               <!-- <div class="hover-image">
               <img src="projects/bison.png">
@@ -434,7 +413,7 @@
 
               <div class="card-content">
                 <div class="logo-wrap">
-                  <img src="https://bisonxchange.com/logo.png" class="project-logo">
+                  <img src="images/logos/bison.png" class="project-logo">
                 </div>
 
                 <p class="text-xs mono text-primary mb-2">Crypto Trading WebApp</p>
@@ -452,7 +431,7 @@
 
 
             <a href="https://sendpilot.site" target="_blank" class="reveal s5 card project-card"
-              style="--bg:url('projects/sendpilot.png')">
+              style="--bg:url('images/projects/sendpilot.png')">
 
               <!-- <div class="hover-image">
               <img src="projects/sendpilot.png">
@@ -483,7 +462,7 @@
 
 
             <a href="https://app.shreeganeshkhajrana.com/" target="_blank" class="reveal s5 card project-card"
-              style="--bg:url('projects/khajrana.jpg')">
+              style="--bg:url('images/projects/khajrana.jpg')">
 
               <!-- <div class="hover-image">
               <img src="projects/khajrana.jpg">
@@ -511,7 +490,7 @@
             </a>
 
             <a href="https://biblebowlapp.christiantechsolutions.com/" target="_blank"
-              class="reveal s5 card project-card" style="--bg:url('projects/bibblebowl.png')">
+              class="reveal s5 card project-card" style="--bg:url('images/projects/bibblebowl.png')">
 
               <!-- <div class="hover-image">
               <img src="projects/bibblebowl.png">
@@ -670,6 +649,26 @@
 
 
   <script>
+    window.addEventListener('load', function () {
+      let index = 0;
+      let content = '';
+
+      function typeWriter() {
+        if (index < 'php artisan serve'.length) {
+          content += 'php artisan serve'.charAt(index);
+          document.getElementById('laodertext').textContent = content;
+          index++;
+          setTimeout(typeWriter, 100);
+        }
+      }
+
+      typeWriter();
+
+      setTimeout(function () {
+        document.querySelector('.loader').style.display = 'none';
+        document.querySelector('main').style.display = 'block';
+      }, 2500);
+    });
     // Scroll reveal with reverse
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
