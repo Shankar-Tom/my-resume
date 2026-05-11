@@ -569,6 +569,8 @@ footer a:hover {
     /* 👈 key change */
     background-repeat: no-repeat;
     background-position: center;
+    transform: scale(1.1);
+    z-index: 999;
 }
 
 /* ✅ HIDE TEXT SMOOTHLY */
